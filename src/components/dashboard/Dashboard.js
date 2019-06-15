@@ -14,10 +14,10 @@ class Dashboard extends Component {
     return (
       <div className="dashboard container">
         <div className="row">
-          <div className="col s12 m6 opacity">
+          <div className="col s12 opacity">
             <GameList games={games} />
           </div>
-          <div className="col s12 m5 offset-m1 opacity">
+          <div className="col s12 opacity">
             <Chatroom messages={messages} />
             <Notifications notifications={notifications} />
           </div>
