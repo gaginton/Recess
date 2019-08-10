@@ -10,8 +10,7 @@ export const createGame = game => {
     }
     firestore
       .collection("games")
-      .doc(`${game.title}_${game.dateTime}`)
-      .set({
+      .add({
         ...game,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
@@ -35,7 +34,7 @@ export const joinGame = game => {
     const newPlayer = `${profile.firstName} ${profile.lastName}`;
     const playersPlus = game.players;
     console.log("game ", game.dateTime.toDate());
-    for (var i = 0; i < playersPlus.length; i++) {
+    for (let i = 0; i < playersPlus.length; i++) {
       if (playersPlus[i] === newPlayer) {
         return;
       }
@@ -45,9 +44,10 @@ export const joinGame = game => {
         break;
       }
     }
+    const gameId = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
     firestore
       .collection("games")
-      .doc(`${game.title}_${game.dateTime.toDate()}`)
+      .doc(gameId)
       .update({
         ...game
       })
@@ -66,7 +66,7 @@ export const leaveGame = game => {
     const profile = getState().firebase.profile;
     const leavingPlayer = `${profile.firstName} ${profile.lastName}`;
     const playersMinus = game.players;
-    for (var i = 0; i < playersMinus.length; i++) {
+    for (let i = 0; i < playersMinus.length; i++) {
       if (playersMinus[i] === leavingPlayer) {
         playersMinus.splice(i, 1);
         playersMinus.push("");
@@ -74,9 +74,10 @@ export const leaveGame = game => {
         break;
       }
     }
+    const gameId = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
     firestore
       .collection("games")
-      .doc(`${game.title}_${game.dateTime.toDate()}`)
+      .doc(gameId)
       .update({
         ...game
       })

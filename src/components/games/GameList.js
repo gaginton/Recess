@@ -14,6 +14,7 @@ const GameList = ({ games }) => {
             return currentDate <= game.dateTime.toDate();
           })
           .map(game => {
+              console.log(game);
             return (
               <Link to={"/game/" + game.id} key={game.id}>
                 <div className="row pad-0">
@@ -21,7 +22,7 @@ const GameList = ({ games }) => {
                     <GameIcon />
                   </div>
                   <div className="col s9 m9 opacity pad-0">
-                    <GameSummary game={game} />
+                    <GameSummary game={{...game, id: game.id}} />
                   </div>
                 </div>
               </Link>
@@ -41,7 +42,7 @@ const GameList = ({ games }) => {
                     <GameIcon />
                   </div>
                   <div className="col s9 m9 opacity pad-0">
-                    <GameSummary game={game} />
+                      <GameSummary game={{...game, id: game.id}} />
                   </div>
                 </div>
               </Link>
