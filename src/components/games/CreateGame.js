@@ -84,7 +84,10 @@ export class CreateGame extends Component {
       this.state.title !== "" &&
       this.state.content !== "" &&
       this.state.location !== "" &&
-      this.state.dateTime !== ""
+      this.state.dateTime !== "" &&
+      this.state.minPlayers >= 1 &&
+      this.state.maxPlayers >= 1 &&
+      this.state.noTeams >= 1
     ) {
       this.props.createGame(this.state);
       this.props.history.push("/");

@@ -17,6 +17,8 @@ class Dashboard extends Component {
           <div className="col s12 opacity">
             <GameList games={games} />
           </div>
+        </div>
+        <div className="row">
           <div className="col s12 opacity">
             <Chatroom messages={messages} />
             <Notifications notifications={notifications} />

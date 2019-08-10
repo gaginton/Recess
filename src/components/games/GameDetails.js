@@ -40,7 +40,7 @@ const GameDetails = props => {
             </div>
             <p>{game.content}</p>
             <p>
-              Total # of Players: {minPlayers}- {maxPlayers}{" "}
+              Total # of Players: {minPlayers} - {maxPlayers}{" "}
             </p>
             {displayPlayers} {displayMaxTime} {displayEquipment}
           </div>
@@ -67,6 +67,24 @@ const GameDetails = props => {
               Posted by: {game.authorFirstName} {game.authorLastName}
             </div>
             <div>{moment(game.createdAt.toDate()).calendar()}</div>
+          </div>
+          <div>
+            <div
+              data-spotim-module="recirculation"
+              data-spot-id="sp_nmNmWmFj"
+            />
+            <script
+              async
+              src="https://recirculation.spot.im/spot/sp_nmNmWmFj"
+            />
+            <script
+              async
+              src="https://launcher.spot.im/spot/sp_nmNmWmFj"
+              data-spotim-module="spotim-launcher"
+              // data-post-url="ARTICLE_URL"
+              data-article-tags="Game" //WILL BE BASED ON CATEGORY
+              data-post-id={game.id}
+            />
           </div>
         </div>
       </div>
