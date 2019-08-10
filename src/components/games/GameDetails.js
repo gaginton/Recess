@@ -62,13 +62,8 @@ const GameDetails = props => {
               </button>
             </span>
           </div>
-          <div className="card-action grey lighten-4 grey-text">
-            <div>
-              Posted by: {game.authorFirstName} {game.authorLastName}
-            </div>
-            <div>{moment(game.createdAt.toDate()).calendar()}</div>
-          </div>
-          <div>
+          <div className="spotim container">
+            <div className="bold">Comments Powered by Spot.IM</div>
             <div
               data-spotim-module="recirculation"
               data-spot-id="sp_nmNmWmFj"
@@ -81,7 +76,7 @@ const GameDetails = props => {
               async
               src="https://launcher.spot.im/spot/sp_nmNmWmFj"
               data-spotim-module="spotim-launcher"
-              data-post-url={window.location.pathname}
+              data-post-url={window.location.href}
               data-article-tags="Game" //WILL BE BASED ON CATEGORY LATER ON
               data-post-id={
                 window.location.pathname.split("/")[
@@ -89,6 +84,12 @@ const GameDetails = props => {
                 ]
               }
             />
+          </div>
+          <div className="card-action grey lighten-4 grey-text">
+            <div>
+              Posted by: {game.authorFirstName} {game.authorLastName}
+            </div>
+            <div>{moment(game.createdAt.toDate()).calendar()}</div>
           </div>
         </div>
       </div>
