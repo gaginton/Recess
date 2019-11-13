@@ -7,7 +7,19 @@ const SignedIn = props => {
   return (
     <ul className="right furtherRight">
       <li>
-        <NavLink to="/create">New Game</NavLink>
+        {props.viewStyle != "mapStyle" && (
+          <NavLink to="/map" onClick={props.viewStyle == "mapStyle"}>
+            Map
+          </NavLink>
+        )}
+        {props.viewStyle == "mapStyle" && (
+          <NavLink to="/" onClick={props.viewStyle == "listStyle"}>
+            List
+          </NavLink>
+        )}
+      </li>
+      <li>
+        <NavLink to="/create">New</NavLink>
       </li>
       <li>
         <a onClick={props.signOut}>Log Out</a>
@@ -19,6 +31,7 @@ const SignedIn = props => {
       </li>
     </ul>
   );
+  // }
 };
 
 const mapDispatchToProps = dispatch => {

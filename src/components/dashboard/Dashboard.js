@@ -6,17 +6,28 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
+import Map from "../games/map";
 
 class Dashboard extends Component {
   render() {
-    const { games, auth, notifications } = this.props; //REMOVED MESSAGES SINCE USING SPOT.IM
+    const { games, auth, notifications, viewStyle } = this.props; //REMOVED MESSAGES SINCE USING SPOT.IM
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="dashboard container">
         <div className="row">
-          <div className="col s12 opacity">
+          {viewStyle != "mapStyle" && (
+            <div className="col s12 opacity">
+              <GameList games={games} />
+            </div>
+          )}
+          {viewStyle == "mapStyle" && (
+            <div className="col s12 opacity">
+              <Map games={games} />
+            </div>
+          )}
+          {/* <div className="col s12 opacity">
             <GameList games={games} />
-          </div>
+          </div> */}
           <div className="col s12 opacity">
             {/* <Chatroom messages={messages} /> */}
             <Notifications notifications={notifications} />
@@ -32,7 +43,8 @@ const mapStateToProps = state => {
     games: state.firestore.ordered.games,
     auth: state.firebase.auth,
     notifications: state.firestore.ordered.notifications,
-    messages: state.firestore.ordered.chatroom
+    messages: state.firestore.ordered.chatroom,
+    viewStyle: state.viewStyle
   };
 };
 

@@ -60,6 +60,11 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
   font-size: 24px !important;
 }
 
+.white {
+  color: white;
+  background-color: transparent !important;
+}
+
 /* SPACIAL CLASSES */
 .card .card-content {
   padding: 16px;
