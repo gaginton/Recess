@@ -1,25 +1,28 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import "./index.css";
+import { NavLink, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOut } from "../../store/actions/authActions";
 
 const SignedIn = props => {
+  console.log({ props });
+
   return (
     <ul className="right furtherRight">
       <li>
-        {props.viewStyle != "mapStyle" && (
-          <NavLink to="/map" onClick={props.viewStyle == "mapStyle"}>
-            Map
-          </NavLink>
-        )}
-        {props.viewStyle == "mapStyle" && (
-          <NavLink to="/" onClick={props.viewStyle == "listStyle"}>
-            List
-          </NavLink>
-        )}
+        <NavLink to="/" exact activeClassName="navItem-active">
+          List
+        </NavLink>
       </li>
       <li>
-        <NavLink to="/create">New</NavLink>
+        <NavLink to="/map" exact activeClassName="navItem-active">
+          Map
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/create" exact activeClassName="navItem-active">
+          New
+        </NavLink>
       </li>
       <li>
         <a onClick={props.signOut}>Log Out</a>
@@ -40,7 +43,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  null,
-  mapDispatchToProps
-)(SignedIn);
+export default connect(null, mapDispatchToProps)(withRouter(SignedIn));

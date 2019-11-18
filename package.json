@@ -16,6 +16,7 @@
     "react-router-dom": "^5.0.0",
     "react-scripts": "^3.0.1",
     "react-scrollable-feed": "^1.0.3",
+    "react-select": "^3.0.8",
     "react-super-select": "^1.0.20",
     "redux": "^4.0.1",
     "redux-firestore": "^0.5.7",

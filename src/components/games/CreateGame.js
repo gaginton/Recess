@@ -4,90 +4,56 @@ import { createGame } from "../../store/actions/gameActions";
 import { Redirect } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import ReactSuperSelect from "react-super-select";
+// import ReactSuperSelect from "react-super-select";
 import classNames from "classnames";
+import Select from "react-select";
 
 // var ReactSuperSelect = require('react-super-select');
 
-var gameTypes = [
+const gameTypes = [
   {
-    id: 1,
+    value: 1,
     attributeName: "Sport Games",
     label: "Ball",
     iconClass: "rss-soccer",
     group: "Video"
   },
   {
-    id: 2,
+    value: 2,
     attributeName: "Party Games",
     label: "Party",
     iconClass: "rss-cup",
     group: "Party"
   },
   {
-    id: 3,
+    value: 3,
     attributeName: "Tabletop Games",
     label: "Imagine",
     iconClass: "rss-board",
     group: "Board"
   },
   {
-    id: 4,
+    value: 4,
     attributeName: "Video Games",
     label: "Level Up",
     iconClass: "rss-remote",
     group: "Video"
   },
   {
-    id: 5,
+    value: 5,
     attributeName: "Educational and Talent Games",
     label: "Learn",
     iconClass: "rss-cap",
     group: "Education"
   },
   {
-    id: 6,
+    value: 6,
     attributeName: "Classic Recess",
     label: "Classic Recess Games",
     iconClass: "rss-cone",
     group: "Classic"
   }
 ];
-
-var _getHighlightedSearchLabel = function(item, search, searchRegex) {
-  var labelMarkup = item.label.replace(
-    searchRegex,
-    '<span style="background-color: #f90;">' + search + "</span>"
-  );
-  return React.DOM.span({ dangerouslySetInnerHTML: { __html: labelMarkup } });
-};
-
-var gameTypeTemplate = function(item, search) {
-  if (console && console.info) {
-    console.info(
-      "search term (%s) is provided for highlighting/modifying template output",
-      search
-    );
-  }
-  var itemClasses = classNames(
-      "grocery-item",
-      "example-" + item.group.toLowerCase()
-    ),
-    iconClasses = classNames(
-      "grocery-icon",
-      "rss-grocery",
-      "rss-grocery-" + item.attributeName
-    ),
-    labelMarkup = search
-      ? _getHighlightedSearchLabel(item, search, new RegExp(search, "i"))
-      : item.label;
-  return (
-    <div className={itemClasses}>
-      <span className={iconClasses}></span>
-      <p>{labelMarkup}</p>
-    </div>
-  );
-};
 
 export class CreateGame extends Component {
   state = {
@@ -104,7 +70,7 @@ export class CreateGame extends Component {
     players: [],
     equipment: "",
     isCoop: "",
-    category: ""
+    category: gameTypes[0]
   };
   handleChange = e => {
     this.setState({
@@ -116,11 +82,11 @@ export class CreateGame extends Component {
       dateTime: date
     });
   };
-  handleGameTypeChange = category => {
-    this.setState({
-      category: category
-    });
-  };
+  // handleGameTypeChange = category => {
+  //   this.setState({
+  //     category: category
+  //   });
+  // };
   handleSubmit = e => {
     e.preventDefault();
     if (
@@ -133,6 +99,13 @@ export class CreateGame extends Component {
       this.props.history.push("/");
     } else return (this.gameError = "Mandatory fields missing!");
   };
+
+  handleSelectCategory = option => {
+    this.setState({
+      category: option
+    });
+  };
+
   render() {
     const { auth } = this.props;
     let gameError = null;
@@ -201,13 +174,17 @@ export class CreateGame extends Component {
           </div>
           <div className="input-field">
             {/* <ReactSuperSelect
-              customFilterFunction:customFilterExample
               placeholder="Pick a game type"
               searchPlaceholder="Filter games by provided categories"
               onChange={this.handleGameTypeChange}
               customOptionTemplateFunction={gameTypeTemplate}
               dataSource={gameTypes}
             /> */}
+            <Select
+              value={this.state.category}
+              onChange={this.handleSelectCategory}
+              options={gameTypes}
+            />
           </div>
           {/* ---------------- NOT-MANDATORY FIELDS ----------------------- */}
           <div className="row">
@@ -296,7 +273,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(CreateGame);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateGame);

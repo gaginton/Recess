@@ -8,10 +8,22 @@ export const createGame = game => {
     while (players.length < game.maxPlayers) {
       players.push("");
     }
+
+    console.log({
+      ...game,
+      category: game.category.value,
+      authorFirstName: profile.firstName,
+      authorLastName: profile.lastName,
+      authorId: authorID,
+      createdAt: new Date(),
+      players
+    });
+
     firestore
       .collection("games")
       .add({
         ...game,
+        category: game.category.value,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
         authorId: authorID,
@@ -44,7 +56,9 @@ export const joinGame = game => {
         break;
       }
     }
-    const gameId = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
+    const gameId = window.location.pathname.split("/")[
+      window.location.pathname.split("/").length - 1
+    ];
     firestore
       .collection("games")
       .doc(gameId)
@@ -74,7 +88,9 @@ export const leaveGame = game => {
         break;
       }
     }
-    const gameId = window.location.pathname.split("/")[window.location.pathname.split("/").length - 1];
+    const gameId = window.location.pathname.split("/")[
+      window.location.pathname.split("/").length - 1
+    ];
     firestore
       .collection("games")
       .doc(gameId)
