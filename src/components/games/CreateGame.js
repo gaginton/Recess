@@ -4,52 +4,48 @@ import { createGame } from "../../store/actions/gameActions";
 import { Redirect } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-// import ReactSuperSelect from "react-super-select";
-import classNames from "classnames";
 import Select from "react-select";
-
-// var ReactSuperSelect = require('react-super-select');
 
 const gameTypes = [
   {
     value: 1,
     attributeName: "Sport Games",
-    label: "Ball",
+    label: "Sport",
     iconClass: "rss-soccer",
     group: "Video"
   },
   {
     value: 2,
     attributeName: "Party Games",
-    label: "Party",
+    label: "Party Game",
     iconClass: "rss-cup",
     group: "Party"
   },
   {
     value: 3,
     attributeName: "Tabletop Games",
-    label: "Imagine",
+    label: "Tabletop Game",
     iconClass: "rss-board",
     group: "Board"
   },
   {
     value: 4,
     attributeName: "Video Games",
-    label: "Level Up",
+    label: "Video Game",
     iconClass: "rss-remote",
     group: "Video"
   },
   {
     value: 5,
     attributeName: "Educational and Talent Games",
-    label: "Learn",
+    label: "Talent Game",
     iconClass: "rss-cap",
     group: "Education"
   },
   {
     value: 6,
     attributeName: "Classic Recess",
-    label: "Classic Recess Games",
+    label: "Classic Recess Game",
     iconClass: "rss-cone",
     group: "Classic"
   }
@@ -173,13 +169,6 @@ export class CreateGame extends Component {
             />
           </div>
           <div className="input-field">
-            {/* <ReactSuperSelect
-              placeholder="Pick a game type"
-              searchPlaceholder="Filter games by provided categories"
-              onChange={this.handleGameTypeChange}
-              customOptionTemplateFunction={gameTypeTemplate}
-              dataSource={gameTypes}
-            /> */}
             <Select
               value={this.state.category}
               onChange={this.handleSelectCategory}

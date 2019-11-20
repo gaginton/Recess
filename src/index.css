@@ -49,6 +49,21 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
   color: #ec407a !important;
 }
 
+/* SECTION SPACING AND Z-INDEX */
+.nav-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  text-align: center;
+}
+
+.container.section,
+.container.dashboard {
+  margin-top: 50px;
+  z-index: 0;
+}
+
 /* FONT STYLES */
 .small-text {
   font-size: 16px;

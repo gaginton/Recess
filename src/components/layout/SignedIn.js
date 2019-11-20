@@ -5,24 +5,54 @@ import { connect } from "react-redux";
 import { signOut } from "../../store/actions/authActions";
 
 const SignedIn = props => {
-  console.log({ props });
-
+  // console.log({ props });
   return (
-    <ul className="right furtherRight">
-      <li>
-        <NavLink to="/" exact activeClassName="navItem-active">
-          List
-        </NavLink>
+    <ul className="right furtherRight navbar">
+      <li className="nav-item dropdown">
+        <a
+          className="nav-link dropdown-toggle"
+          id="viewsDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          View
+        </a>
+        <div
+          className="dropdown-menu dropdown-menu-right"
+          aria-labelledby="viewsDropdown"
+        >
+          <NavLink to="/" exact activeClassName="navItem-active">
+            List
+          </NavLink>
+          <NavLink to="/map" exact activeClassName="navItem-active">
+            Map
+          </NavLink>
+        </div>
       </li>
-      <li>
-        <NavLink to="/map" exact activeClassName="navItem-active">
-          Map
-        </NavLink>
-      </li>
-      <li>
-        <NavLink to="/create" exact activeClassName="navItem-active">
+      <li className="nav-item dropdown">
+        <a
+          className="nav-link dropdown-toggle"
+          id="createDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
           New
-        </NavLink>
+        </a>
+        <div
+          className="dropdown-menu dropdown-menu-right"
+          aria-labelledby="createDropdown"
+        >
+          <NavLink to="/create" exact activeClassName="navItem-active">
+            Game
+          </NavLink>
+          <NavLink to="/createLeague" exact activeClassName="navItem-active">
+            League
+          </NavLink>
+        </div>
       </li>
       <li>
         <a onClick={props.signOut}>Log Out</a>

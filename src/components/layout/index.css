@@ -1,3 +1,18 @@
 .navItem-active {
+  z-index: 1;
   border-bottom: 2px solid red;
+}
+
+.navbar a:hover,
+.dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.nav-item.dropdown div {
+  display: none;
+}
+li.nav-item.dropdown:hover div {
+  display: block;
+  background-color: black;
+  opacity: 0.9;
 }

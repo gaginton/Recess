@@ -7,6 +7,7 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import CreateGame from "./components/games/CreateGame";
 import Map from "./components/games/map";
+import CreateLeague from "./components/games/CreateLeague";
 
 class App extends Component {
   render() {
@@ -16,11 +17,12 @@ class App extends Component {
           <Navbar />
           <Switch>
             <Route exact path="/" component={Dashboard} />
-            <Route path="/game/:id" component={GameDetails} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
-            <Route path="/create" component={CreateGame} />
+            <Route path="/game/:id" component={GameDetails} />
             <Route exact path="/map" component={Map} />
+            <Route path="/create" component={CreateGame} />
+            <Route path="/createLeague" component={CreateLeague} />
           </Switch>
         </div>
       </BrowserRouter>
