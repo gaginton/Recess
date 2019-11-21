@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 // import DatePicker from "react-datepicker";
 // import "react-datepicker/dist/react-datepicker.css";
 // import Select from "react-select";
+import CreateGame from "./CreateGame";
 
 export class CreateLeague extends Component {
   state = {
@@ -28,6 +29,7 @@ export class CreateLeague extends Component {
           <h4 className="bold">Choose Game</h4>
           <h4 className="bold">Create League Schedule</h4>
           <h4 className="bold">Modify Game Rules</h4>
+          <CreateGame />
         </form>
       </div>
     );

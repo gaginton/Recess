@@ -9,45 +9,45 @@ import Select from "react-select";
 const gameTypes = [
   {
     value: 1,
-    attributeName: "Sport Games",
-    label: "Sport",
-    iconClass: "rss-soccer",
-    group: "Video"
+    attributeName: "Recess",
+    label: "Classic Recess Games",
+    iconClass: "rss-cone",
+    group: "Recess"
   },
   {
     value: 2,
-    attributeName: "Party Games",
-    label: "Party Game",
+    attributeName: "Talent",
+    label: "Talent Games",
+    iconClass: "rss-cap",
+    group: "Talent"
+  },
+  {
+    value: 3,
+    attributeName: "Sport",
+    label: "Sports Games",
+    iconClass: "rss-soccer",
+    group: "Sport"
+  },
+  {
+    value: 4,
+    attributeName: "Digital",
+    label: "Video Games",
+    iconClass: "rss-remote",
+    group: "Digital"
+  },
+  {
+    value: 5,
+    attributeName: "Party",
+    label: "Party Games",
     iconClass: "rss-cup",
     group: "Party"
   },
   {
-    value: 3,
-    attributeName: "Tabletop Games",
-    label: "Tabletop Game",
-    iconClass: "rss-board",
-    group: "Board"
-  },
-  {
-    value: 4,
-    attributeName: "Video Games",
-    label: "Video Game",
-    iconClass: "rss-remote",
-    group: "Video"
-  },
-  {
-    value: 5,
-    attributeName: "Educational and Talent Games",
-    label: "Talent Game",
-    iconClass: "rss-cap",
-    group: "Education"
-  },
-  {
     value: 6,
-    attributeName: "Classic Recess",
-    label: "Classic Recess Game",
-    iconClass: "rss-cone",
-    group: "Classic"
+    attributeName: "Tabletop",
+    label: "Tabletop Games",
+    iconClass: "rss-board",
+    group: "Tabletop"
   }
 ];
 
