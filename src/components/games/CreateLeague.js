@@ -127,7 +127,6 @@ export class CreateLeague extends Component {
           <div>
             This should update based on the game chosen in the first drawer.
           </div>
-          <CreateGame />
         </form>
       </div>
     );

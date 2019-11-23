@@ -2,27 +2,81 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createGame } from "../../store/actions/gameActions";
 import { Redirect } from "react-router-dom";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Select from "react-select";
 import GameTypes from "./GameTypes";
+import OptionalFields from "./OptionalFields";
+import SubmitGame from "./SubmitGame";
+import MandatoryFields from "./MandatoryFields";
 
 export class CreateGame extends Component {
+  constructor(props) {
+    super(props);
+    this._next = this._next.bind(this);
+    this._prev = this._prev.bind(this);
+  }
+  _next() {
+    let currentStep = this.state.currentStep;
+    currentStep = currentStep >= 2 ? 3 : currentStep + 1;
+    this.setState({
+      currentStep: currentStep
+    });
+  }
+  _prev() {
+    let currentStep = this.state.currentStep;
+    currentStep = currentStep <= 1 ? 1 : currentStep - 1;
+    this.setState({
+      currentStep: currentStep
+    });
+  }
+  get previousButton() {
+    let currentStep = this.state.currentStep;
+    if (currentStep !== 1) {
+      return (
+        <button
+          className="btn btn-secondary"
+          type="button"
+          onClick={this._prev}
+        >
+          Previous
+        </button>
+      );
+    }
+    return null;
+  }
+  get nextButton() {
+    let currentStep = this.state.currentStep;
+    if (currentStep < 3) {
+      return (
+        <button
+          className="btn btn-primary float-right"
+          type="button"
+          onClick={this._next}
+        >
+          Next
+        </button>
+      );
+    }
+    return null;
+  }
   state = {
+    // MANDATORY
+    currentStep: 1,
     title: "",
     content: "",
     location: "",
-    address: "",
     dateTime: "",
+    category: GameTypes[0],
+    // OPTIONAL
+    address: "",
     minPlayers: 1,
-    maxPlayers: 80,
+    maxPlayers: 40,
     noTeams: 1,
     maxLength: "",
     minAge: "",
-    players: [],
     equipment: "",
-    isCoop: "",
-    category: GameTypes[0]
+    // OTHER
+    players: [],
+    isCoop: ""
   };
   handleChange = e => {
     this.setState({
@@ -34,11 +88,11 @@ export class CreateGame extends Component {
       dateTime: date
     });
   };
-  // handleGameTypeChange = category => {
-  //   this.setState({
-  //     category: category
-  //   });
-  // };
+  handleSelectCategory = option => {
+    this.setState({
+      category: option
+    });
+  };
   handleSubmit = e => {
     e.preventDefault();
     if (
@@ -51,13 +105,6 @@ export class CreateGame extends Component {
       this.props.history.push("/");
     } else return (this.gameError = "Mandatory fields missing!");
   };
-
-  handleSelectCategory = option => {
-    this.setState({
-      category: option
-    });
-  };
-
   render() {
     const { auth } = this.props;
     let gameError = null;
@@ -65,141 +112,38 @@ export class CreateGame extends Component {
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
-          <h4 className="bold">Create Public Game</h4>
-          {/* ---------------- MANDATORY FIELDS ----------------------- */}
-          <div className="grey-text text-darken-3">
-            * Title, description, location and start date/time are neccessary
-            fields. <br />
-            All other fields may be left blank, if not applicable.
+          <h4 className="bold">Create Game</h4>
+          <MandatoryFields
+            currentStep={this.state.currentStep}
+            handleChange={this.handleChange}
+            handleSelectCategory={this.handleSelectCategory}
+            handleDateChange={this.handleDateChange}
+            title={this.state.title}
+            content={this.state.content}
+            location={this.state.location}
+            dateTime={this.state.dateTime}
+            category={this.state.category}
+          />
+          <OptionalFields
+            currentStep={this.state.currentStep}
+            handleChange={this.handleChange}
+            address={this.state.address}
+            minPlayers={this.state.minPlayers}
+            maxPlayers={this.state.maxPlayers}
+            noTeams={this.state.noTeams}
+            maxLength={this.state.maxLength}
+            minAge={this.state.minAge}
+            equipment={this.state.equipment}
+          />
+          <SubmitGame
+            currentStep={this.state.currentStep}
+            handleSubmit={this.handleSubmit}
+          />
+          <div className="red-text center">
+            {gameError ? <p>{gameError}</p> : null}
           </div>
-          <div className="input-field">
-            <label htmlFor="title">
-              * Game Title (Ex: Football, Tag, DnD, Beer Pong)
-            </label>
-            <input type="text" id="title" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="content">
-              * Game Description (Ex: Full court, Shirts vs Skins, Beginners
-              Welcome, 10 cup)
-            </label>
-            <textarea
-              className="materialize-textarea"
-              id="content"
-              onChange={this.handleChange}
-            />
-          </div>
-          <div className="input-field">
-            <label htmlFor="location">
-              * Location (Ex: Central Park, XBox Live, Mobile)
-            </label>
-            <input type="text" id="location" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="address">Address</label>
-            <input type="text" id="address" onChange={this.handleChange} />
-          </div>
-          {/* <div className="input-field">
-            <span className="small-text grey-text">
-              Start Date and Time:{" "}
-              <input
-                type="datetime-local"
-                id="dateTime"
-                onChange={this.handleChange}
-              />
-            </span>
-          </div> */}
-          <div className="input-field">
-            <DatePicker
-              // id="gameDateTimeSelector"
-              selected={
-                this.state.dateTime ? new Date(this.state.dateTime) : null
-              }
-              onChange={this.handleDateChange}
-              minDate={new Date()}
-              placeholderText="* Start Date and Time"
-              showTimeInput
-              // showMonthDropdown
-              timeInputLabel="Time:"
-              dateFormat="MM/dd/yyyy h:mm aa"
-            />
-          </div>
-          <div className="input-field">
-            <Select
-              value={this.state.category}
-              onChange={this.handleSelectCategory}
-              options={GameTypes}
-            />
-          </div>
-          {/* ---------------- NOT-MANDATORY FIELDS ----------------------- */}
-          <div className="row">
-            <div className="col s12 m6">
-              {/* ---------------- TEAM/COOP FIELDS ----------------------- */}
-              <div className="grey-text text-darken-3">
-                Team and Roster Layout
-              </div>
-              <div className="input-field">
-                <label htmlFor="minPlayers">Minimum Players</label>
-                <input
-                  type="number"
-                  id="minPlayers"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="input-field">
-                <label htmlFor="maxPlayers">Maximum Players</label>
-                <input
-                  type="number"
-                  id="maxPlayers"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="input-field">
-                <label htmlFor="noTeams">Number of Teams</label>
-                <input
-                  type="number"
-                  id="noTeams"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-            <div className="col s12 m6">
-              {/* ---------------- ADDITIONAL FIELDS ----------------------- */}
-              <div className="grey-text text-darken-3">
-                Additional Fields <br />
-              </div>
-              <div className="input-field">
-                <label htmlFor="maxLength">
-                  Maximum Length of Game (Minutes)
-                </label>
-                <input
-                  type="number"
-                  id="maxLength"
-                  onChange={this.handleChange}
-                />
-              </div>
-              <div className="input-field">
-                <label htmlFor="minAge">Minimum Age of Players</label>
-                <input type="number" id="minAge" onChange={this.handleChange} />
-              </div>
-              <div className="input-field">
-                <label htmlFor="equipment">
-                  Please bring to game (Equipment, fees, etc.)
-                </label>
-                <input
-                  type="text"
-                  id="equipment"
-                  onChange={this.handleChange}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Create</button>
-            <div className="red-text center">
-              {gameError ? <p>{gameError}</p> : null}
-            </div>
-          </div>
+          {this.previousButton}
+          {this.nextButton}
         </form>
       </div>
     );
