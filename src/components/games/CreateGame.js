@@ -5,51 +5,7 @@ import { Redirect } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Select from "react-select";
-
-const gameTypes = [
-  {
-    value: 1,
-    attributeName: "Recess",
-    label: "Classic Recess Games",
-    iconClass: "rss-cone",
-    group: "Recess"
-  },
-  {
-    value: 2,
-    attributeName: "Talent",
-    label: "Talent Games",
-    iconClass: "rss-cap",
-    group: "Talent"
-  },
-  {
-    value: 3,
-    attributeName: "Sport",
-    label: "Sports Games",
-    iconClass: "rss-soccer",
-    group: "Sport"
-  },
-  {
-    value: 4,
-    attributeName: "Digital",
-    label: "Video Games",
-    iconClass: "rss-remote",
-    group: "Digital"
-  },
-  {
-    value: 5,
-    attributeName: "Party",
-    label: "Party Games",
-    iconClass: "rss-cup",
-    group: "Party"
-  },
-  {
-    value: 6,
-    attributeName: "Tabletop",
-    label: "Tabletop Games",
-    iconClass: "rss-board",
-    group: "Tabletop"
-  }
-];
+import GameTypes from "./GameTypes";
 
 export class CreateGame extends Component {
   state = {
@@ -66,7 +22,7 @@ export class CreateGame extends Component {
     players: [],
     equipment: "",
     isCoop: "",
-    category: gameTypes[0]
+    category: GameTypes[0]
   };
   handleChange = e => {
     this.setState({
@@ -172,7 +128,7 @@ export class CreateGame extends Component {
             <Select
               value={this.state.category}
               onChange={this.handleSelectCategory}
-              options={gameTypes}
+              options={GameTypes}
             />
           </div>
           {/* ---------------- NOT-MANDATORY FIELDS ----------------------- */}
