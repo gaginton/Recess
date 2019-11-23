@@ -12,6 +12,13 @@ export class MandatoryFields extends Component {
       <div>
         <h4 className="bold">Mandatory Fields</h4>
         <div className="input-field">
+          <Select
+            onChange={this.props.handleSelectCategory}
+            options={GameTypes}
+            value={this.props.category}
+          />
+        </div>
+        <div className="input-field">
           <label htmlFor="title">
             * Game Title (Ex: Football, Tag, DnD, Beer Pong)
           </label>
@@ -58,13 +65,6 @@ export class MandatoryFields extends Component {
             // showMonthDropdown
             timeInputLabel="Time:"
             dateFormat="MM/dd/yyyy h:mm aa"
-          />
-        </div>
-        <div className="input-field">
-          <Select
-            onChange={this.props.handleSelectCategory}
-            options={GameTypes}
-            value={this.props.category}
           />
         </div>
       </div>

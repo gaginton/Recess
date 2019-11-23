@@ -29,9 +29,6 @@ export class SubmitGame extends Component {
           >
             Create Game
           </button>
-          <div className="red-text center">
-            {this.props.gameError ? <p>{this.props.gameError}</p> : null}
-          </div>
         </div>
       </div>
     );

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GameList from "../games/GameList";
+// import GameList from "../games/GameList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
@@ -7,15 +7,13 @@ import { Redirect } from "react-router-dom";
 
 class Map extends Component {
   render() {
-    const { games, auth } = this.props; //REMOVED MESSAGES SINCE USING SPOT.IM
+    const { games, auth } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="dashboard container">
         <div className="row">
           <h1 className="white">GOOGLE MAP WILL TAKE UP ENTIRE SCREEN</h1>
-          {/* <div className="col s12 opacity">
-            <GameList games={games} />
-          </div> */}
+          {/* <GameList games={games} */}
         </div>
       </div>
     );

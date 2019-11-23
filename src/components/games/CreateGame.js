@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { createGame } from "../../store/actions/gameActions";
 import { Redirect } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
-import GameTypes from "./GameTypes";
+// import GameTypes from "./GameTypes";
 import OptionalFields from "./OptionalFields";
 import SubmitGame from "./SubmitGame";
 import MandatoryFields from "./MandatoryFields";
@@ -59,18 +59,18 @@ export class CreateGame extends Component {
     return null;
   }
   state = {
-    // MANDATORY
     currentStep: 1,
+    // MANDATORY
     title: "",
     content: "",
     location: "",
     dateTime: "",
-    category: GameTypes[0],
+    category: "",
     // OPTIONAL
     address: "",
-    minPlayers: 1,
-    maxPlayers: 40,
-    noTeams: 1,
+    minPlayers: "",
+    maxPlayers: "",
+    noTeams: "",
     maxLength: "",
     minAge: "",
     equipment: "",
@@ -99,11 +99,13 @@ export class CreateGame extends Component {
       this.state.title !== "" &&
       this.state.content !== "" &&
       this.state.location !== "" &&
-      this.state.dateTime !== ""
+      this.state.dateTime !== "" &&
+      this.state.category !== ""
     ) {
       this.props.createGame(this.state);
       this.props.history.push("/");
-    } else return (this.gameError = "Mandatory fields missing!");
+      // FIX VALIDATION TO INCLUDE MORE ERROR MESSAGES
+    } else return (this.gameError = "Mandatory fields are missing!");
   };
   render() {
     const { auth } = this.props;
@@ -140,7 +142,7 @@ export class CreateGame extends Component {
             handleSubmit={this.handleSubmit}
           />
           <div className="red-text center">
-            {gameError ? <p>{gameError}</p> : null}
+            {{ gameError } ? <p>{gameError}</p> : null}
           </div>
           {this.previousButton}
           {this.nextButton}

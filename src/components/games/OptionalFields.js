@@ -33,6 +33,7 @@ export class OptionalFields extends Component {
                 id="minPlayers"
                 onChange={this.props.handleChange}
                 value={this.props.minPlayers}
+                min="2"
               />
             </div>
             <div className="input-field">
@@ -42,6 +43,8 @@ export class OptionalFields extends Component {
                 id="maxPlayers"
                 onChange={this.props.handleChange}
                 value={this.props.maxPlayers}
+                min="2"
+                max="80"
               />
             </div>
             <div className="input-field">
@@ -51,6 +54,7 @@ export class OptionalFields extends Component {
                 id="noTeams"
                 onChange={this.props.handleChange}
                 value={this.props.noTeams}
+                max={this.props.maxPlayers}
               />
             </div>
           </div>
