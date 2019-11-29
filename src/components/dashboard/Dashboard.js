@@ -7,14 +7,19 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import Map from "../games/map";
+import { RecessInfo } from "../modals/RecessInfo";
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     const { games, auth, notifications, viewStyle } = this.props; //REMOVED MESSAGES SINCE USING SPOT.IM
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="dashboard container">
-        <div className="row">
+        <div className="row pad-0">
           {viewStyle != "mapStyle" && (
             <div className="col s12 opacity">
               <GameList games={games} />
@@ -25,14 +30,18 @@ class Dashboard extends Component {
               <Map games={games} />
             </div>
           )}
-          {/* <div className="col s12 opacity">
-            <GameList games={games} />
-          </div> */}
+        </div>
+        {/* <div className="row pad-0">
           <div className="col s12 opacity">
-            {/* <Chatroom messages={messages} /> */}
+            <Chatroom messages={messages} />
+          </div>
+        </div> */}
+        <div className="row pad-0">
+          <div className="col s12 opacity">
             <Notifications notifications={notifications} />
           </div>
         </div>
+        <RecessInfo initialModalState={false} />
       </div>
     );
   }

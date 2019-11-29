@@ -49,6 +49,10 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
   color: #ec407a !important;
 }
 
+.modal.fade.show {
+  background: none;
+}
+
 /* SECTION SPACING AND Z-INDEX */
 .nav-wrapper {
   position: fixed;
@@ -147,4 +151,8 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 
 .gameActionButtonContainer {
   margin-bottom: 10px;
+}
+
+a:hover {
+  color: #fff !important;
 }

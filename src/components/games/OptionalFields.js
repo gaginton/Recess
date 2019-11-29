@@ -9,16 +9,15 @@ export class OptionalFields extends Component {
       <div>
         <h4 className="bold">Optional Fields</h4>
         <div className="input-field">
-          <label htmlFor="address">Address</label>
+          <label htmlFor="address">
+            Address (Game location or league registeration location)
+          </label>
           <input
             type="text"
             id="address"
             onChange={this.props.handleChange}
             value={this.props.address}
           />
-        </div>
-        <div className="grey-text text-darken-3">
-          * Address is necessary to see game on Map.
         </div>
         <div className="row">
           <div className="col s12 m6">

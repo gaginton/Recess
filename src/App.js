@@ -10,6 +10,10 @@ import Map from "./components/games/map";
 import CreateLeague from "./components/games/CreateLeague";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
   render() {
     return (
       <BrowserRouter>

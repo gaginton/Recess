@@ -1,3 +1,7 @@
+.navbar {
+  padding: 0 !important;
+}
+
 .navItem-active {
   z-index: 1;
   border-bottom: 2px solid red;
@@ -15,4 +19,19 @@ li.nav-item.dropdown:hover div {
   display: block;
   background-color: black;
   opacity: 0.9;
+}
+
+.nav-link {
+  padding: 0 1rem !important;
+}
+
+li a {
+  margin: 0 !important;
+  text-align: center;
+}
+
+.dropdown-menu.dropdown-menu-right {
+  margin: 0 !important;
+  border: 0 !important;
+  padding: 0 !important;
 }

@@ -77,7 +77,8 @@ export class CreateLeague extends Component {
     isCoop: "",
     numOfMatches: "",
     gameDates: "",
-    region: ""
+    region: "",
+    referralLinks: ""
   };
   handleChange = e => {
     this.setState({
