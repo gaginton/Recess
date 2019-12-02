@@ -37,11 +37,10 @@ class Dashboard extends Component {
             <Chatroom messages={messages} />
           </div>
         </div> */}
-        <div className="row pad-0">
-          <div className="col s12 opacity">
-            <Notifications notifications={notifications} />
-          </div>
-        </div>
+        <Notifications
+          notifications={notifications}
+          initialModalState={false}
+        />
         <RecessInfo initialModalState={false} />
       </div>
     );
