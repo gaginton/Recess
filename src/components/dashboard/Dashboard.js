@@ -21,16 +21,17 @@ class Dashboard extends Component {
       <div className="dashboard container">
         <div className="row pad-0">
           {viewStyle != "mapStyle" && (
-            <div className="col s12 opacity">
+            <div className="col opacity">
               <GameList games={games} />
             </div>
           )}
           {viewStyle == "mapStyle" && (
-            <div className="col s12 opacity">
+            <div className="col opacity">
               <Map games={games} />
             </div>
           )}
         </div>
+
         {/* <div className="row pad-0">
           <div className="col s12 opacity">
             <Chatroom messages={messages} />

@@ -84,11 +84,6 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
   padding: 16px;
 }
 
-.pad-0 {
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-}
-
 .opacity {
   opacity: 0.9;
 }
@@ -157,7 +152,14 @@ a:hover {
   color: #fff !important;
 }
 
-.pad-0 {
-  padding: 0;
-  margin: 0;
+.mar-0 {
+  margin: 0 !important;
+}
+
+.padRight-0 {
+  padding-right: 0 !important;
+}
+
+.padLeft-0 {
+  padding-left: 0 !important;
 }

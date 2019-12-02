@@ -63,27 +63,8 @@ const GameDetails = props => {
             </span>
           </div>
           <div className="spotim container">
-            <div className="bold">Comments Powered by Spot.IM</div>
-            <div
-              data-spotim-module="recirculation"
-              data-spot-id="sp_nmNmWmFj"
-            />
-            <script
-              async
-              src="https://recirculation.spot.im/spot/sp_nmNmWmFj"
-            />
-            <script
-              async
-              src="https://launcher.spot.im/spot/sp_nmNmWmFj"
-              data-spotim-module="spotim-launcher"
-              data-post-url={window.location.href}
-              data-article-tags="Game" //WILL BE BASED ON CATEGORY LATER ON
-              data-post-id={
-                window.location.pathname.split("/")[
-                  window.location.pathname.split("/").length - 1
-                ]
-              }
-            />
+            <div className="bold">Discuss this Game</div>
+            {/* REMOVED SPOT.IM  */}
           </div>
           <div className="card-action grey lighten-4 grey-text">
             <div>
@@ -121,9 +102,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default compose(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  ),
+  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect([{ collection: "games" }])
 )(GameDetails);

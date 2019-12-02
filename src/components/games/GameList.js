@@ -17,11 +17,11 @@ const GameList = ({ games }) => {
             console.log(game);
             return (
               <Link to={"/game/" + game.id} key={game.id}>
-                <div className="row pad-0">
-                  <div className="col s3 opacity pad-0">
+                <div className="row mar-0">
+                  <div className="col-3 opacity mar-0 padRight-0">
                     <GameIcon />
                   </div>
-                  <div className="col s9 opacity pad-0">
+                  <div className="col-9 opacity mar-0 padLeft-0">
                     <GameSummary game={{ ...game, id: game.id }} />
                   </div>
                 </div>
@@ -37,11 +37,11 @@ const GameList = ({ games }) => {
           .map(game => {
             return (
               <Link to={"/game/" + game.id} key={game.id}>
-                <div className="row pad-0">
-                  <div className="col s3 m3 pad-0">
+                <div className="row mar-0">
+                  <div className="col-3 m3 mar-0 padRight-0">
                     <GameIcon />
                   </div>
-                  <div className="col s9 m9 opacity pad-0">
+                  <div className="col-9 m9 opacity mar-0 padLeft-0">
                     <GameSummary game={{ ...game, id: game.id }} />
                   </div>
                 </div>
