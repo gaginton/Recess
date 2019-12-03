@@ -17,9 +17,9 @@ export class RecessInfo extends React.Component {
   }
   render() {
     return (
-      <div className="modalContainer inlineBlock">
+      <div className="modalContainer inlineBlock bottomLeft">
         <Button color="danger" onClick={this.toggle}>
-          Info
+          I
         </Button>
         <Modal
           isOpen={this.state.modal}

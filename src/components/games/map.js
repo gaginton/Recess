@@ -45,11 +45,11 @@ class Map extends Component {
   render() {
     const mapProps = {
       center: this.state.location,
-      zoom: 11
+      zoom: 12
     };
 
-    const { games, auth, notifications, viewStyle } = this.props;
-    if (!auth.uid) return <Redirect to="/signin" />;
+    const { games, notifications, viewStyle } = this.props;
+    // if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <React.Fragment>
         {mapProps.center && (
@@ -74,18 +74,8 @@ class Map extends Component {
             </GoogleMapReact>
           </div>
         )}
-
-        <div className="dashboard container">
-          <div className="row">
-            {/* <h1 className="white">GOOGLE MAP WILL TAKE UP ENTIRE SCREEN</h1> */}
-            {/* <GameList games={games} */}
-          </div>
-          <Notifications
-            notifications={notifications}
-            initialModalState={false}
-          />
-          <RecessInfo initialModalState={false} />
-        </div>
+        {/* <GameList games={games} */}
+        <RecessInfo initialModalState={false} />
       </React.Fragment>
     );
   }
@@ -94,7 +84,7 @@ class Map extends Component {
 const mapStateToProps = state => {
   return {
     games: state.firestore.ordered.games,
-    auth: state.firebase.auth,
+    // auth: state.firebase.auth,
     notifications: state.firestore.ordered.notifications,
     messages: state.firestore.ordered.chatroom,
     viewStyle: state.viewStyle

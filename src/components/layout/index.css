@@ -25,6 +25,12 @@ li.nav-item.dropdown:hover div {
   padding: 0 1rem !important;
 }
 
+@media (max-width: 600px) {
+  .nav-link {
+    padding: 0 5px !important;
+  }
+}
+
 li a {
   margin: 0 !important;
   text-align: center;

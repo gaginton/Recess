@@ -51,6 +51,9 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 
 .modal.fade.show {
   background: none;
+  max-height: calc(100% - 64px);
+  max-width: 100%;
+  margin-top: 64px;
 }
 
 /* SECTION SPACING AND Z-INDEX */
@@ -170,8 +173,16 @@ a:hover {
 
 .mapContainer {
   width: 100vw;
-  height: calc(100vh - 64px);
-  margin-top: 64px;
+  height: calc(100vh - 50px);
+  margin-top: 50px;
+}
+
+@media only screen and (min-width: 601px) {
+  .mapContainer {
+    width: 100vw;
+    height: calc(100vh - 64px);
+    margin-top: 64px;
+  }
 }
 
 .mapMarker {
@@ -181,4 +192,10 @@ a:hover {
   border-radius: 100%;
   border: 2px solid white;
   box-shadow: 0px 1px 2px black;
+}
+
+.bottomLeft {
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
 }
