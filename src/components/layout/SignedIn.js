@@ -60,7 +60,12 @@ const SignedIn = props => {
         </a>
       </li>
       <li>
-        <NavLink to="/" className="btn btn-floating pink lighten-1">
+        <NavLink
+          to="/profile"
+          className="btn btn-floating pink lighten-1"
+          exact
+          activeClassName="navItem-active"
+        >
           {props.profile.initials}
         </NavLink>
       </li>

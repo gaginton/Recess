@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Notifications from "./Notifications";
 // import Chatroom from "../chatroom/Chatroom";
 import GameList from "../games/GameList";
 import { connect } from "react-redux";
@@ -37,10 +36,6 @@ class Dashboard extends Component {
             <Chatroom messages={messages} />
           </div>
         </div> */}
-        {/* <Notifications
-          notifications={notifications}
-          initialModalState={false}
-        /> */}
         <RecessInfo initialModalState={false} />
       </div>
     );
