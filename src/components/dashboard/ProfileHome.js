@@ -12,7 +12,7 @@ class ProfileHome extends Component {
     this.state = {};
   }
   render() {
-    const { games, auth, notifications } = this.props;
+    const { auth, notifications } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <React.Fragment>

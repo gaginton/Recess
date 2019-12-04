@@ -14,7 +14,7 @@ const GameList = ({ games }) => {
             return currentDate <= game.dateTime.toDate();
           })
           .map(game => {
-            console.log(game);
+            // console.log(game);
             return (
               <Link to={"/game/" + game.id} key={game.id}>
                 <div className="row mar-0">

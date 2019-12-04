@@ -8,6 +8,8 @@ import OptionalFields from "./OptionalFields";
 import SubmitGame from "./SubmitGame";
 import MandatoryFields from "./MandatoryFields";
 
+const MAPS_API_KEY = "AIzaSyAM6_5p4WOHokKXAJ_U2bVmbBDpUqdm7-U";
+
 export class CreateGame extends Component {
   constructor(props) {
     super(props);
@@ -68,6 +70,7 @@ export class CreateGame extends Component {
     category: "",
     // OPTIONAL
     address: "",
+    markers: "",
     minPlayers: "",
     maxPlayers: "",
     noTeams: "",
@@ -102,11 +105,31 @@ export class CreateGame extends Component {
       this.state.dateTime !== "" &&
       this.state.category !== ""
     ) {
+      if (this.state.address !== "") {
+        this.updateLocation(this.state.address);
+        console.log("address updated", this.state.markers);
+        // GIVE ERROR MESSAGE IF ADDRESS DOES NOT GIVE COORD
+      }
       this.props.createGame(this.state);
       this.props.history.push("/");
       // FIX VALIDATION TO INCLUDE MORE ERROR MESSAGES
     } else return (this.gameError = "Mandatory fields are missing!");
   };
+  async updateLocation(address) {
+    await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}+123&key=${MAPS_API_KEY}`
+    )
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          markers: res.results.map(result => ({
+            lat: result.geometry.location.lat,
+            lng: result.geometry.location.lng
+          }))
+        });
+      })
+      .then(console.log("markers 2", this.state));
+  }
   render() {
     const { auth } = this.props;
     let gameError = null;

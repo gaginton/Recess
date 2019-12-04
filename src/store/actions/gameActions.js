@@ -8,16 +8,15 @@ export const createGame = game => {
     while (players.length < game.maxPlayers) {
       players.push("");
     }
-
-    console.log({
-      ...game,
-      category: game.category.value,
-      authorFirstName: profile.firstName,
-      authorLastName: profile.lastName,
-      authorId: authorID,
-      createdAt: new Date(),
-      players
-    });
+    // console.log({
+    //   ...game,
+    //   category: game.category.value,
+    //   authorFirstName: profile.firstName,
+    //   authorLastName: profile.lastName,
+    //   authorId: authorID,
+    //   createdAt: new Date(),
+    //   players
+    // });
 
     firestore
       .collection("games")
@@ -45,7 +44,7 @@ export const joinGame = game => {
     const profile = getState().firebase.profile;
     const newPlayer = `${profile.firstName} ${profile.lastName}`;
     const playersPlus = game.players;
-    console.log("game ", game.dateTime.toDate());
+    // console.log("game ", game.dateTime.toDate());
     for (let i = 0; i < playersPlus.length; i++) {
       if (playersPlus[i] === newPlayer) {
         return;

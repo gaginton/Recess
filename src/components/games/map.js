@@ -3,9 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { Redirect } from "react-router-dom";
+// import { Redirect } from "react-router-dom";
 import { RecessInfo } from "../modals/RecessInfo";
-import Notifications from "../dashboard/Notifications";
 import GoogleMapReact from "google-map-react";
 
 const MAPS_API_KEY = "AIzaSyAM6_5p4WOHokKXAJ_U2bVmbBDpUqdm7-U";
@@ -17,20 +16,18 @@ class Map extends Component {
   }
   componentDidMount() {
     navigator.geolocation.getCurrentPosition(position => {
-      console.log("here!!!", position);
       this.setState({
-        location: {
+        mapCenterLocation: {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         }
       });
     });
-    this.updateLocation("רוטשילד 123");
+    this.updateLocation("Melchett 66, Tel Aviv");
   }
-
-  updateLocation(location) {
-    fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=%D7%A8%D7%95%D7%98%D7%A9%D7%99%D7%9C%D7%93+123&key=${MAPS_API_KEY}`
+  async updateLocation(address) {
+    await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}+123&key=${MAPS_API_KEY}`
     )
       .then(res => res.json())
       .then(res => {
@@ -41,15 +38,15 @@ class Map extends Component {
           }))
         });
       });
+    console.log("markers 1", this.state.markers[0]);
   }
   render() {
     const mapProps = {
-      center: this.state.location,
+      center: this.state.mapCenterLocation,
       zoom: 12
     };
-
-    const { games, notifications, viewStyle } = this.props;
-    // if (!auth.uid) return <Redirect to="/signin" />;
+    // const { games } = this.props;  WILL USE
+    // if (!auth.uid) return <Redirect to="/signin" />; MAY REMOVE SO PEOPLE CAN SEE MAP
     return (
       <React.Fragment>
         {mapProps.center && (
@@ -83,11 +80,8 @@ class Map extends Component {
 
 const mapStateToProps = state => {
   return {
-    games: state.firestore.ordered.games,
+    games: state.firestore.ordered.games
     // auth: state.firebase.auth,
-    notifications: state.firestore.ordered.notifications,
-    messages: state.firestore.ordered.chatroom,
-    viewStyle: state.viewStyle
   };
 };
 
