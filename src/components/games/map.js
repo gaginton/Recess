@@ -23,29 +23,28 @@ class Map extends Component {
         }
       });
     });
-    this.updateLocation("Melchett 66, Tel Aviv");
   }
-  async updateLocation(address) {
-    await fetch(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${address}+123&key=${MAPS_API_KEY}`
-    )
-      .then(res => res.json())
-      .then(res => {
-        this.setState({
-          markers: res.results.map(result => ({
-            lat: result.geometry.location.lat,
-            lng: result.geometry.location.lng
-          }))
-        });
-      });
-    console.log("markers 1", this.state.markers[0]);
-  }
+  // async updateLocation(address) {
+  //   await fetch(
+  //     `https://maps.googleapis.com/maps/api/geocode/json?address=${address}+123&key=${MAPS_API_KEY}`
+  //   )
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       this.setState({
+  //         markers: res.results.map(result => ({
+  //           lat: result.geometry.location.lat,
+  //           lng: result.geometry.location.lng
+  //         }))
+  //       });
+  //     });
+  //   console.log("markers 1", this.state.markers[0]);
+  // }
   render() {
     const mapProps = {
       center: this.state.mapCenterLocation,
-      zoom: 12
+      zoom: 14
     };
-    // const { games } = this.props;  WILL USE
+    const { games } = this.props;
     // if (!auth.uid) return <Redirect to="/signin" />; MAY REMOVE SO PEOPLE CAN SEE MAP
     return (
       <React.Fragment>
@@ -59,15 +58,17 @@ class Map extends Component {
               defaultZoom={mapProps.zoom}
               options={{ gestureHandling: "greedy" }}
             >
-              {this.state.markers &&
-                this.state.markers.map(marker => (
-                  <div
-                    lat={marker.lat}
-                    lng={marker.lng}
-                    text="My Marker"
-                    className="mapMarker"
-                  ></div>
-                ))}
+              {games &&
+                games.map(game =>
+                  game.markers.map(marker => (
+                    <div
+                      lat={marker.lat}
+                      lng={marker.lng}
+                      text={game.title}
+                      className="mapMarker"
+                    />
+                  ))
+                )}
             </GoogleMapReact>
           </div>
         )}
@@ -87,8 +88,5 @@ const mapStateToProps = state => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([
-    { collection: "games", orderBy: ["dateTime", "asc"] },
-    { collection: "notifications", limit: 20, orderBy: ["time", "desc"] }
-  ])
+  firestoreConnect([{ collection: "games", orderBy: ["dateTime", "asc"] }])
 )(Map);

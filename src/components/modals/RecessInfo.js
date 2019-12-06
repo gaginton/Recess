@@ -32,7 +32,8 @@ export class RecessInfo extends React.Component {
             <h4>Recess is...</h4>
             <p>
               an app to find, create and organize games. Recess' goal is to help
-              good people find nearby games and leagues.
+              good people find nearby games and leagues. Written by: Guy Ginton,
+              Ori Gold, Oren Spiegel, Eldad Bercovici.
               <br />
             </p>
             <h4>Games vs Leagues</h4>

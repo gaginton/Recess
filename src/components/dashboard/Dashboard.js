@@ -19,16 +19,9 @@ class Dashboard extends Component {
     return (
       <div className="dashboard container">
         <div className="row pad-0">
-          {
-            <div className="col opacity">
-              <GameList games={games} />
-            </div>
-          }
-          {/* {
-            <div className="col opacity">
-              <Map games={games} />
-            </div>
-          } */}
+          <div className="col opacity">
+            <GameList games={games} />
+          </div>
         </div>
 
         {/* <div className="row pad-0">
