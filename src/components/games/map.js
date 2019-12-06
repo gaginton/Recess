@@ -6,6 +6,7 @@ import { compose } from "redux";
 // import { Redirect } from "react-router-dom";
 import { RecessInfo } from "../modals/RecessInfo";
 import GoogleMapReact from "google-map-react";
+import MapMarker from "./MapMarker";
 
 const MAPS_API_KEY = "AIzaSyAM6_5p4WOHokKXAJ_U2bVmbBDpUqdm7-U";
 
@@ -61,11 +62,12 @@ class Map extends Component {
               {games &&
                 games.map(game =>
                   game.markers.map(marker => (
-                    <div
+                    <MapMarker
                       lat={marker.lat}
                       lng={marker.lng}
-                      text={game.title}
-                      className="mapMarker"
+                      title={game.title}
+                      gameId={game.id}
+                      gameCategory={game.category}
                     />
                   ))
                 )}
