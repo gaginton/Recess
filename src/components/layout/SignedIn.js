@@ -49,9 +49,9 @@ const SignedIn = props => {
           <NavLink to="/create" exact activeClassName="navItem-active">
             Game
           </NavLink>
-          <NavLink to="/createLeague" exact activeClassName="navItem-active">
+          {/* <NavLink to="/createLeague" exact activeClassName="navItem-active">
             League
-          </NavLink>
+          </NavLink> */}
         </div>
       </li>
       <li className="nav-item">

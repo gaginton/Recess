@@ -32,13 +32,14 @@ export class RecessInfo extends React.Component {
             <h4>Recess is...</h4>
             <p>
               an app to find, create and organize games. Recess' goal is to help
-              good people find nearby games and leagues. Written by: Guy Ginton,
-              Ori Gold, Oren Spiegel, Eldad Bercovici.
+              good people find nearby games and leagues, and ultimately find the
+              most suitable matches. Written by: Guy Ginton, Ori Gold, Eldad
+              Bercovici and Oren Spiegel.
               <br />
             </p>
             <h4>Games vs Leagues</h4>
             <p>
-              Recess offers two options for creating events: Create Game or
+              Recess will offer two options for creating events: Create Game or
               Create League.
             </p>
             <p>
@@ -47,13 +48,15 @@ export class RecessInfo extends React.Component {
               private or public. Users may duplicate and modify games.
             </p>
             <p>
-              <b>Leagues</b> are more rigid, organized sets of games. They have
-              either "Elimination" or "First to" rounds. Leagues are identified
-              by their registration deadline, which may differ from the first
-              game day. Game rules and players can not be modified after the
-              registeration deadline. Leagues may occur over the course of 1 or
-              more days. Recess will build tools to help with league
-              organization, and assigning matches.
+              <b>Leagues</b> are more rigid, organized sets of games. Leagues
+              have rounds, over the course of one or more days. Organizers set a
+              "First to" paramter -- a value of 1 is equivalent to elimination
+              rules, and a value of 2 means 'the first team to log 2 wins
+              advances to next round.' Leagues are identified by their
+              registration deadline, which may differ from the first game day.
+              Game rules can not be modified after the registeration deadline.
+              Recess will build tools to help with league organization, and
+              assigning matches.
             </p>
             <p>
               Games are split into 6 categories: 1. Classic Recess, 2. Talent,
@@ -68,11 +71,11 @@ export class RecessInfo extends React.Component {
               matches.
               <p>
                 <b>"Game Administrators"</b> are given the option to end a game
-                within 24 hours of it's start time. After the game is ended,
-                either by the admin or 24 hours elapsing, the Game Admin can
-                enter the final score. Each player then has 24 hours to approve
-                or disapprove the score. All players must approve a score for it
-                to be recorded.
+                within 24 hours of its start time. After a game is ended, either
+                by the admin or 24 hours elapsing, the Game Admin can enter the
+                final score. Each player then has 24 hours to approve or
+                disapprove the score. All players must approve a score for it to
+                be recorded.
               </p>
               <p>
                 <b>"League Administrators"</b> will be allowed to end matches
