@@ -25,21 +25,7 @@ class Map extends Component {
       });
     });
   }
-  // async updateLocation(address) {
-  //   await fetch(
-  //     `https://maps.googleapis.com/maps/api/geocode/json?address=${address}+123&key=${MAPS_API_KEY}`
-  //   )
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       this.setState({
-  //         markers: res.results.map(result => ({
-  //           lat: result.geometry.location.lat,
-  //           lng: result.geometry.location.lng
-  //         }))
-  //       });
-  //     });
-  //   console.log("markers 1", this.state.markers[0]);
-  // }
+
   render() {
     const mapProps = {
       center: this.state.mapCenterLocation,

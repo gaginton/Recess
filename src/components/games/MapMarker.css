@@ -10,3 +10,17 @@
 .mapMarker.category-4 {
   background: green;
 }
+
+.mapMarker-hoverBox {
+  background: black;
+  color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  min-width: 50px;
+  padding: 5px;
+  font-size: 10px;
+}
+
+.category-4 ~ .mapMarker-hoverBox {
+  border: 3px solid green;
+}
