@@ -15,7 +15,13 @@ export class CreateGame extends Component {
     super(props);
     this._next = this._next.bind(this);
     this._prev = this._prev.bind(this);
+    this.updateLocation = this.updateLocation.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
+  // componentDidUpdate() {
+  //   console.log("component did update", this.state);
+  //   // this.props.createGame(this.state);
+  // }
   _next() {
     let currentStep = this.state.currentStep;
     currentStep = currentStep >= 2 ? 3 : currentStep + 1;
@@ -96,7 +102,7 @@ export class CreateGame extends Component {
       category: option
     });
   };
-  handleSubmit = e => {
+  async handleSubmit(e) {
     e.preventDefault();
     if (
       this.state.title !== "" &&
@@ -106,15 +112,14 @@ export class CreateGame extends Component {
       this.state.category !== ""
     ) {
       if (this.state.address !== "") {
-        this.updateLocation(this.state.address);
-        console.log("address updated", this.state.markers);
+        await this.updateLocation(this.state.address);
         // GIVE ERROR MESSAGE IF ADDRESS DOES NOT GIVE COORD
       }
       this.props.createGame(this.state);
       this.props.history.push("/");
       // FIX VALIDATION TO INCLUDE MORE ERROR MESSAGES
     } else return (this.gameError = "Mandatory fields are missing!");
-  };
+  }
   async updateLocation(address) {
     await fetch(
       `https://maps.googleapis.com/maps/api/geocode/json?address=${address}+123&key=${MAPS_API_KEY}`
@@ -128,7 +133,7 @@ export class CreateGame extends Component {
           }))
         });
       })
-      .then(console.log("markers 2", this.state));
+      .catch(console.log);
   }
   render() {
     const { auth } = this.props;
