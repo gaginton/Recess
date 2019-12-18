@@ -54,6 +54,7 @@ class Map extends Component {
                       title={game.title}
                       gameId={game.id}
                       gameCategory={game.category}
+                      dateTime={game.dateTime}
                     />
                   ))
                 )}

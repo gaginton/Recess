@@ -43,7 +43,7 @@ export class OptionalFields extends Component {
                 onChange={this.props.handleChange}
                 value={this.props.maxPlayers}
                 min="2"
-                max="80"
+                max="50"
               />
             </div>
             <div className="input-field">

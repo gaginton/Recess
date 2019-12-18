@@ -28,7 +28,7 @@ const GameDetails = props => {
       <p>Players must bring: {game.equipment}</p>
     ) : null;
     var minPlayers = game.minPlayers ? game.minPlayers : 1;
-    var maxPlayers = game.maxPlayers ? game.maxPlayers : 80;
+    var maxPlayers = game.maxPlayers ? game.maxPlayers : 20;
     return (
       <div className="container section">
         <div className="game-details card z-depth-0 opacity">
