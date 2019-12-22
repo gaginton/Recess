@@ -1,3 +1,5 @@
+import firebase from "firebase/app";
+
 export const createGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // MAKE ASYNC CALL TO DATABASE
@@ -42,22 +44,24 @@ export const joinGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
-    const newPlayer = `${profile.firstName} ${profile.lastName}`;
+    const currentUser = firebase.auth().currentUser;
+    const newPlayer = {
+      id: currentUser.uid,
+      name: `${profile.firstName} ${profile.lastName}`
+    };
     const playersPlus = game.players;
     // console.log("game ", game.dateTime.toDate());
-    for (let i = 0; i < playersPlus.length; i++) {
-      if (playersPlus[i] === newPlayer) {
-        return;
-      }
-      if (playersPlus[i] === "") {
-        playersPlus[i] = newPlayer;
-        game.players = playersPlus;
-        break;
-      }
+
+    if (playersPlus.find(player => player.id === currentUser.uid)) {
+      return;
     }
+
+    playersPlus.push(newPlayer);
+
     const gameId = window.location.pathname.split("/")[
       window.location.pathname.split("/").length - 1
     ];
+
     firestore
       .collection("games")
       .doc(gameId)
@@ -76,17 +80,13 @@ export const joinGame = game => {
 export const leaveGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
-    const profile = getState().firebase.profile;
-    const leavingPlayer = `${profile.firstName} ${profile.lastName}`;
-    const playersMinus = game.players;
-    for (let i = 0; i < playersMinus.length; i++) {
-      if (playersMinus[i] === leavingPlayer) {
-        playersMinus.splice(i, 1);
-        playersMinus.push("");
-        game.players = playersMinus;
-        break;
-      }
-    }
+    const currentUser = firebase.auth().currentUser;
+
+    const playersMinus = game.players.filter(
+      user => user.id !== currentUser.uid
+    );
+    game.players = playersMinus;
+
     const gameId = window.location.pathname.split("/")[
       window.location.pathname.split("/").length - 1
     ];

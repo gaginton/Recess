@@ -16,8 +16,9 @@ const GameDetails = props => {
         Current players:{" "}
         {game.players
           .filter(function(e) {
-            return e.replace(/(\r\n|\n|\r)/gm, "");
+            return e.name.replace(/(\r\n|\n|\r)/gm, "");
           })
+          .map(user => user.name)
           .join(", ")}{" "}
       </p>
     ) : null;
