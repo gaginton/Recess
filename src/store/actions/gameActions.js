@@ -20,7 +20,8 @@ export const createGame = game => {
     //   players
     // });
 
-    firestore
+    firebase
+      .firestore()
       .collection("games")
       .add({
         ...game,
@@ -31,7 +32,8 @@ export const createGame = game => {
         createdAt: new Date(),
         players
       })
-      .then(() => {
+      .then(res => {
+        res.set({ id: res.id }, { merge: true });
         dispatch({ type: "CREATE_GAME", game });
       })
       .catch(err => {
@@ -41,32 +43,32 @@ export const createGame = game => {
 };
 
 export const joinGame = game => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
+  return async (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const currentUser = firebase.auth().currentUser;
-    const newPlayer = {
-      id: currentUser.uid,
-      name: `${profile.firstName} ${profile.lastName}`
-    };
-    const playersPlus = game.players;
-    // console.log("game ", game.dateTime.toDate());
-
-    if (playersPlus.find(player => player.id === currentUser.uid)) {
-      return;
-    }
-
-    playersPlus.push(newPlayer);
 
     const gameId = window.location.pathname.split("/")[
       window.location.pathname.split("/").length - 1
     ];
 
-    firestore
+    const gamePlayerDoc = await firebase
+      .firestore()
+      .doc(`/games/${gameId}/players/${currentUser.uid}`)
+      .get();
+
+    if (gamePlayerDoc.exists) {
+      return;
+    }
+
+    firebase
+      .firestore()
       .collection("games")
       .doc(gameId)
-      .update({
-        ...game
+      .collection("players")
+      .doc(currentUser.uid)
+      .set({
+        name: `${profile.firstName} ${profile.lastName}`
       })
       .then(() => {
         dispatch({ type: "JOINED_GAME", game });

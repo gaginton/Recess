@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import firebase from "firebase/app";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
@@ -9,12 +10,29 @@ import { leaveGame } from "../../store/actions/gameActions";
 
 const GameDetails = props => {
   const { game, auth } = props;
+  const [gamePlayers, setGamePlayers] = useState([]);
+
+  useEffect(() => {
+    if (!game) {
+      return;
+    }
+
+    console.log({ game });
+
+    return firebase
+      .firestore()
+      .collection(`/games/${game.id}/players`)
+      .onSnapshot(res => {
+        setGamePlayers(res.docs.map(doc => doc.data()));
+      });
+  }, [game]);
+
   // if (!auth.uid) return <Redirect to="/signin" />;
   if (game) {
     var displayPlayers = game.players ? (
       <p>
         Current players:{" "}
-        {game.players
+        {gamePlayers
           .filter(function(e) {
             return e.name.replace(/(\r\n|\n|\r)/gm, "");
           })
