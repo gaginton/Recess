@@ -9,7 +9,7 @@ import { leaveGame } from "../../store/actions/gameActions";
 
 const GameDetails = props => {
   const { game, auth } = props;
-  if (!auth.uid) return <Redirect to="/signin" />;
+  // if (!auth.uid) return <Redirect to="/signin" />;
   if (game) {
     var displayPlayers = game.players ? (
       <p>
@@ -33,35 +33,47 @@ const GameDetails = props => {
       <div className="container section">
         <div className="game-details card z-depth-0 opacity">
           <div className="card-cont ent">
+            {/* HEADER ROW WITH TITLE */}
             <div className="card-title bold">{game.title}</div>
-            <div className="card-title">
-              {game.location} || {moment(game.dateTime.toDate()).calendar()}
-              {/* {moment(game.dateTime).format("MMMM Do YYYY, h:mm:ss a")} */}
+            {/* COL 1 GAME INFO*/}
+            <div className="row">
+              <div className="col-6">
+                <div className="card-title">
+                  {game.location} || {moment(game.dateTime.toDate()).calendar()}
+                  {/* {moment(game.dateTime).format("MMMM Do YYYY, h:mm:ss a")} */}
+                </div>
+                <p>{game.content}</p>
+                <p>
+                  Number of Players: {minPlayers} - {maxPlayers}{" "}
+                </p>
+                {displayPlayers} {displayMaxTime} {displayEquipment}
+                <div className="gameActionButtonContainer">
+                  <span className="input-field">
+                    <button
+                      className="btn blue z-depth-0"
+                      onClick={() => props.joinGame(game)}
+                    >
+                      JOIN
+                    </button>
+                  </span>
+
+                  <span className="input-field leaveGameButton">
+                    <button
+                      className="btn blue z-depth-0"
+                      onClick={() => props.leaveGame(game)}
+                    >
+                      LEAVE
+                    </button>
+                  </span>
+                </div>
+              </div>
+              {/* COL 2 */}
+              <div className="col-6">
+                <div className="card-title">Arrange Teams:</div>
+              </div>
             </div>
-            <p>{game.content}</p>
-            <p>
-              Total # of Players: {minPlayers} - {maxPlayers}{" "}
-            </p>
-            {displayPlayers} {displayMaxTime} {displayEquipment}
           </div>
-          <div className="gameActionButtonContainer">
-            <span className="input-field">
-              <button
-                className="btn blue z-depth-0"
-                onClick={() => props.joinGame(game)}
-              >
-                JOIN
-              </button>
-            </span>
-            <span className="input-field leaveGameButton">
-              <button
-                className="btn blue z-depth-0"
-                onClick={() => props.leaveGame(game)}
-              >
-                LEAVE
-              </button>
-            </span>
-          </div>
+          {/* FOOTER GOES HERE */}
           <div className="spotim container">
             <div className="bold">Discuss this Game</div>
             {/* REMOVED SPOT.IM  */}

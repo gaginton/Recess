@@ -7,6 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import OptionalFields from "./OptionalFields";
 import SubmitGame from "./SubmitGame";
 import MandatoryFields from "./MandatoryFields";
+// import AddressField from "./AddressField"
 
 const MAPS_API_KEY = "AIzaSyAM6_5p4WOHokKXAJ_U2bVmbBDpUqdm7-U";
 
@@ -154,6 +155,11 @@ export class CreateGame extends Component {
             dateTime={this.state.dateTime}
             category={this.state.category}
           />
+          {/* <AddressField
+            handleChange={this.handleChange}
+            currentStep={this.state.currentStep}
+            address={this.state.address}
+          /> */}
           <OptionalFields
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}
