@@ -47,7 +47,6 @@ export const joinGame = game => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const currentUser = firebase.auth().currentUser;
-
     const gameId = window.location.pathname.split("/")[
       window.location.pathname.split("/").length - 1
     ];
@@ -83,21 +82,23 @@ export const leaveGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const currentUser = firebase.auth().currentUser;
-
-    const playersMinus = game.players.filter(
-      user => user.id !== currentUser.uid
-    );
-    game.players = playersMinus;
-
+    const profile = getState().firebase.profile;
     const gameId = window.location.pathname.split("/")[
       window.location.pathname.split("/").length - 1
     ];
-    firestore
+
+    // const playersMinus = game.players.filter(
+    //   user => user.id !== currentUser.uid
+    // );
+    // game.players = playersMinus;
+
+    firebase
+      .firestore()
       .collection("games")
       .doc(gameId)
-      .update({
-        ...game
-      })
+      .collection("players")
+      .doc(currentUser.uid)
+      .delete()
       .then(() => {
         dispatch({ type: "LEFT_GAME", game });
       })

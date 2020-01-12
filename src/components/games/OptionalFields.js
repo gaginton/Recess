@@ -47,7 +47,7 @@ export class OptionalFields extends Component {
               />
             </div>
             <div className="input-field">
-              <label htmlFor="noTeams">Number of Teams</label>
+              <label htmlFor="noTeams">Set Number of Teams</label>
               <input
                 type="number"
                 id="noTeams"
