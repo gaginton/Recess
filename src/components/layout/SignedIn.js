@@ -23,10 +23,10 @@ const SignedIn = props => {
           className="dropdown-menu dropdown-menu-right"
           aria-labelledby="viewsDropdown"
         >
-          <NavLink to="/" exact activeClassName="navItem-active">
+          <NavLink to="/list" exact activeClassName="navItem-active">
             List
           </NavLink>
-          <NavLink to="/map" exact activeClassName="navItem-active">
+          <NavLink to="/" exact activeClassName="navItem-active">
             Map
           </NavLink>
         </div>

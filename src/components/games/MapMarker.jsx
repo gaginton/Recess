@@ -24,7 +24,6 @@ const MapMarker = ({
 
   return (
     <Link
-      ref={ref}
       to={"/game/" + gameId}
       key={gameId}
       onMouseOver={handleMouseOver}
@@ -34,6 +33,7 @@ const MapMarker = ({
         className={`mapMarker category-${gameCategory}`}
         lat={lat}
         lng={lng}
+        ref={ref}
       />
       <p className="mapMarker-hoverBox">
         {title} <br />

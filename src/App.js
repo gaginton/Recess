@@ -21,11 +21,11 @@ class App extends Component {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/" component={Map} />
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
             <Route path="/game/:id" component={GameDetails} />
-            <Route exact path="/map" component={Map} />
+            <Route exact path="/list" component={Dashboard} />
             <Route path="/create" component={CreateGame} />
             {/* <Route path="/createLeague" component={CreateLeague} /> */}
             <Route path="/profile" component={ProfileHome} />

@@ -51,6 +51,10 @@ export const joinGame = game => {
       window.location.pathname.split("/").length - 1
     ];
 
+    // if (currentUser == null) {
+    //   return;
+    // }
+
     const gamePlayerDoc = await firebase
       .firestore()
       .doc(`/games/${gameId}/players/${currentUser.uid}`)
