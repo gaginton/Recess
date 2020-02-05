@@ -43,6 +43,8 @@
   text-decoration: none !important;
   opacity: 0.9;
   box-sizing: content-box;
+  z-index: 0;
+  position: relative;
 }
 
 .category-1 ~ .mapMarker-hoverBox {
@@ -69,5 +71,6 @@
   box-shadow: 5px 5px 20px 10px rgba(0, 0, 0, 0.25),
     -5px -5px 20px 10px rgba(0, 0, 0, 0.22);
   text-decoration: none !important;
-  z-index: 1000 !important;
+  z-index: 1001;
+  position: relative;
 }
