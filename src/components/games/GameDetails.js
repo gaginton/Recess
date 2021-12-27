@@ -7,6 +7,7 @@ import { Redirect } from "react-router-dom";
 import moment from "moment";
 import { joinGame } from "../../store/actions/gameActions";
 import { leaveGame } from "../../store/actions/gameActions";
+import TeamCards from "../teams/TeamCards"
 
 const GameDetails = props => {
   const { game, auth } = props;
@@ -17,7 +18,7 @@ const GameDetails = props => {
       return;
     }
 
-    console.log({ game });
+    // console.log({ game });
 
     return firebase
       .firestore()
@@ -26,6 +27,10 @@ const GameDetails = props => {
         setGamePlayers(res.docs.map(doc => doc.data()));
       });
   }, [game]);
+
+  function handleTeamsChange(newTeams) {
+    console.log(newTeams);
+  }
 
   // if (!auth.uid) return <Redirect to="/signin" />;
   if (game) {
@@ -89,6 +94,7 @@ const GameDetails = props => {
               {/* COL 2 */}
               <div className="col-6">
                 <div className="card-title">Arrange Teams:</div>
+                <TeamCards game={game} teams={game.teams} onChange={handleTeamsChange}/>
               </div>
             </div>
           </div>

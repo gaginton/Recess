@@ -85,8 +85,8 @@ export class CreateGame extends Component {
     minAge: "",
     equipment: "",
     // OTHER
-    players: [],
-    isCoop: ""
+    isCoop: "",
+    teams: []
   };
   handleChange = e => {
     this.setState({

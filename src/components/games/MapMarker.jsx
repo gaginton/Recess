@@ -14,32 +14,35 @@ const MapMarker = ({
 }) => {
   const ref = useRef();
 
-  function handleMouseOver() {
-    ref.current.parentNode.style.zIndex = "1";
-  }
+  // function handleMouseOver() {
+  //   ref.current.parentNode.style.zIndex = "1001";
+  //   ref.current.style.zIndex = "1001";
+  // }
 
-  function handleMouseOut() {
-    ref.current.parentNode.style.zIndex = null;
-  }
+  // function handleMouseOut() {
+  //   ref.current.parentNode.style.zIndex = "0";
+  //   ref.current.style.zIndex = "0";
+  // }
 
   return (
-    <Link
-      to={"/game/" + gameId}
-      key={gameId}
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
-    >
+    <div className="mapMarker"> 
       <div
         className={`mapMarker category-${gameCategory}`}
         lat={lat}
         lng={lng}
-        ref={ref}
       />
-      <p className="mapMarker-hoverBox">
-        {title} <br />
-        {moment(dateTime.toDate()).calendar()}
-      </p>
-    </Link>
+      <Link
+        key={gameId}
+        // onMouseOver={handleMouseOver}
+        // onMouseOut={handleMouseOut}
+        to={"/game/" + gameId}
+      >
+        <p className="mapMarker-hoverBox" ref={ref} >
+          {title} <br />
+          {moment(dateTime.toDate()).calendar()}
+        </p>
+      </Link>
+    </div>
   );
 };
 
