@@ -14,24 +14,25 @@ class ProfileHome extends Component {
   render() {
     const { auth, notifications } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
-    return (
+    return (  
       <React.Fragment>
-        <div className="mapContainer padLeft-20">
-          <h1 className="text-white">Coming Soon...</h1>
-          <p className="text-white">
-            In Q1 Recess will add: Customize your layout and settings, game tags
-            (FPS, free for all, Xbox etc.) Game Scoring, Notifications, Private
-            Game, User Profiles and much more!
-            <br />
+        <div className="mapContainer text-white pad-50">
+          <h1>Coming in Q1...</h1>
+            <li>Customize your layout and settings</li>
+            <li>"Standard game"</li>
+            <li>Game scoring</li>
+            <li>Push Notifications</li>
+            <li>Google Calendar sync</li>
+            <li>Private games</li>
+            <li>User Profiles</li>
+            <li>MUCH, MUCH MORE!</li>            
             Write to me at guyginton@gmail.com for feedback, suggestions and
             anything else.
-          </p>
+            <br/>
           <Notifications
             notifications={notifications}
             initialModalState={false}
           />
-
-          <RecessInfo initialModalState={false} />
         </div>
       </React.Fragment>
     );
