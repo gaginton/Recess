@@ -86,7 +86,7 @@ export const leaveGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const currentUser = firebase.auth().currentUser;
-    const profile = getState().firebase.profile;
+    // const profile = getState().firebase.profile;
     const gameId = window.location.pathname.split("/")[
       window.location.pathname.split("/").length - 1
     ];

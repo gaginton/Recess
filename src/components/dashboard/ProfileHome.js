@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
-import { RecessInfo } from "../modals/RecessInfo";
+// import { RecessInfo } from "../modals/RecessInfo";
 import Notifications from "../dashboard/Notifications";
 
 class ProfileHome extends Component {

@@ -9,16 +9,15 @@ const SignedIn = props => {
   return (
     <ul className="right furtherRight navbar">
       <li className="nav-item dropdown">
-        <a
+        <button
           className="nav-link dropdown-toggle"
           id="viewsDropdown"
-          role="button"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
         >
           View
-        </a>
+        </button>
         <div
           className="dropdown-menu dropdown-menu-right"
           aria-labelledby="viewsDropdown"
@@ -32,16 +31,15 @@ const SignedIn = props => {
         </div>
       </li>
       <li className="nav-item dropdown">
-        <a
+        <button
           className="nav-link dropdown-toggle"
           id="createDropdown"
-          role="button"
           data-toggle="dropdown"
           aria-haspopup="true"
           aria-expanded="false"
         >
           New
-        </a>
+        </button>
         <div
           className="dropdown-menu dropdown-menu-right"
           aria-labelledby="createDropdown"
@@ -55,9 +53,11 @@ const SignedIn = props => {
         </div>
       </li>
       <li className="nav-item">
-        <a onClick={props.signOut} className="nav-link">
+        <button 
+        onClick={props.signOut} 
+        className="nav-link">
           Log Out
-        </a>
+        </button>
       </li>
       <li>
         <NavLink

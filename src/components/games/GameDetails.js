@@ -32,7 +32,7 @@ const GameDetails = props => {
     console.log(newTeams);
   }
 
-  // if (!auth.uid) return <Redirect to="/signin" />;
+  if (!auth.uid) return <Redirect to="/signin" />;
   if (game) {
     var displayPlayers = game.players ? (
       <p>

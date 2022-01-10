@@ -4,7 +4,7 @@
 
 .navItem-active {
   z-index: 1;
-  border-bottom: 2px solid red;
+  background-color: red;
 }
 
 .navbar a:hover,
@@ -22,7 +22,15 @@ li.nav-item.dropdown:hover div {
 }
 
 .nav-link {
-  padding: 0 1rem !important;
+  background-color: transparent;
+  color: white; 
+  border: none;
+  cursor: pointer;
+  /* text-decoration: underline; */
+  /* padding: 0 1rem !important; */
+  display: inline;
+  margin: 0;
+  padding: 0;
 }
 
 @media (max-width: 600px) {
