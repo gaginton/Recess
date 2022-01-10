@@ -143,7 +143,7 @@ export class CreateGame extends Component {
     return (
       <div className="container">
         <form className="white" onSubmit={this.handleSubmit}>
-          <h4 className="bold">Create Game</h4>
+          {/* <h4 className="bold">Create Game</h4> */}
           <MandatoryFields
             currentStep={this.state.currentStep}
             handleChange={this.handleChange}

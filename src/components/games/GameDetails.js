@@ -36,7 +36,7 @@ const GameDetails = props => {
   if (game) {
     var displayPlayers = game.players ? (
       <p>
-        Current players:{" "}
+        Players:{" "}
         {gamePlayers
           .filter(function(e) {
             return e.name.replace(/(\r\n|\n|\r)/gm, "");
@@ -66,7 +66,7 @@ const GameDetails = props => {
                   {game.location} || {moment(game.dateTime.toDate()).calendar()}
                   {/* {moment(game.dateTime).format("MMMM Do YYYY, h:mm:ss a")} */}
                 </div>
-                <p>{game.content}</p>
+                <p>Description: {game.content}</p>
                 <p>
                   Number of Players: {minPlayers} - {maxPlayers}{" "}
                 </p>
