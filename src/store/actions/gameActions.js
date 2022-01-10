@@ -25,7 +25,7 @@ export const createGame = game => {
       .collection("games")
       .add({
         ...game,
-        category: game.category.option.value,
+        category: game.category.value,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
         authorId: authorID,

@@ -4,11 +4,14 @@ import GameTypes from "./GameTypes";
 
 // 1. Classic Squid 2. Talent Mic 3. Sports Ball 
 // 4. Video Games Controller 5. Party Cup 6. Tabletop & More Dice
-// PLEASE ONLY SVG
 
 
 
-const GameIcon = ( category ) => (
+const GameIcon = ( { category } ) => {
+  const gameCat = GameTypes.find( ( gameType ) => {
+    return gameType.value === category
+  })
+  return (
   <div className="card z-depth-0 list-container opacity">
     
     <div className="filler" />
@@ -17,10 +20,10 @@ const GameIcon = ( category ) => (
       width={100}
       className="mar-auto"
       >
-      <img src={src} alt={label} />
+      <img src={gameCat.src} alt={gameCat.label} />
     </LazyLoad>
   </div>
-);
+)};
 
 
 

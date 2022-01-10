@@ -100,9 +100,8 @@ export class CreateGame extends Component {
   };
   handleSelectCategory = option => {
     this.setState({
-      category: option.value
+      category: option
     });
-    console.log("handleSelectCategory: ", option)
   };
   async handleSubmit(e) {
     e.preventDefault();
