@@ -6,29 +6,29 @@
   box-shadow: 0px 1px 2px black;
 }
 
-.mapMarker.category-1 {
+.mapMarker.category-classic {
   background: orange;
 }
-.mapMarker.category-2 {
+.mapMarker.category-talent {
   background: blue;
 }
-.mapMarker.category-3 {
+.mapMarker.category-sport {
   background: green;
 }
-.mapMarker.category-4 {
+.mapMarker.category-digital {
   background: purple;
 }
-.mapMarker.category-5 {
+.mapMarker.category-party {
   background: red;
 }
-.mapMarker.category-6 {
+.mapMarker.category-tabletop {
   background: white;
 }
 
 .mapMarker-hoverBox {
   background: black;
   color: white;
-  border: 1px solid white;
+  /* border: 1px solid white; */
   width: 150px;
   height: 50px;
   padding: 10px;
@@ -47,22 +47,22 @@
   position: relative;
 }
 
-.category-1 ~ .mapMarker-hoverBox {
+.category-classic ~ a > .mapMarker-hoverBox {
   border: 3px solid orange;
 }
-.category-2 ~ .mapMarker-hoverBox {
+.category-talent ~ a > .mapMarker-hoverBox {
   border: 3px solid blue;
 }
-.category-3 ~ .mapMarker-hoverBox {
+.category-sport ~ a > .mapMarker-hoverBox {
   border: 3px solid green;
 }
-.category-4 ~ .mapMarker-hoverBox {
+.category-digital ~ a > .mapMarker-hoverBox {
   border: 3px solid purple;
 }
-.category-5 ~ .mapMarker-hoverBox {
+.category-party ~ a > .mapMarker-hoverBox {
   border: 3px solid red;
 }
-.category-6 ~ .mapMarker-hoverBox {
+.category-tabletop ~ a > .mapMarker-hoverBox {
   border: 3px solid white;
 }
 
