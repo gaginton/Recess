@@ -14,7 +14,7 @@ class Dashboard extends Component {
     this.state = {};
   }
   render() {
-    const { games, auth } = this.props; //REMOVED MESSAGES SINCE USING SPOT.IM
+    const { games, auth } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="dashboard container">

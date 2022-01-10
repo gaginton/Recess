@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import GameIcon from "./GameIcon";
 
 const GameList = ({ games }) => {
+  // console.log("GameList games props: ", games)
   let currentDate = new Date();
   return (
     <div className="game-list section">
@@ -19,7 +20,7 @@ const GameList = ({ games }) => {
               <Link to={"/game/" + game.id} key={game.id}>
                 <div className="row mar-0">
                   <div className="col-3 opacity mar-0 padRight-0">
-                    <GameIcon />
+                    <GameIcon category={game.category} />
                   </div>
                   <div className="col-9 opacity mar-0 padLeft-0">
                     <GameSummary game={{ ...game, id: game.id }} />
@@ -39,7 +40,7 @@ const GameList = ({ games }) => {
               <Link to={"/game/" + game.id} key={game.id}>
                 <div className="row mar-0">
                   <div className="col-3 m3 mar-0 padRight-0">
-                    <GameIcon />
+                    <GameIcon category={game.category} />
                   </div>
                   <div className="col-9 m9 opacity mar-0 padLeft-0">
                     <GameSummary game={{ ...game, id: game.id }} />

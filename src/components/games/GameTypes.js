@@ -1,46 +1,52 @@
-const GameTypes = [
-  {
-    value: 1,
+const GameTypes = {
+  "classic": {
+    value: "classic",
     attributeName: "Recess",
     label: "Classic Recess Games",
     iconClass: "rss-cone",
-    group: "Recess"
+    group: "Recess",
+    src: "https://www.svgrepo.com/show/108005/traffic-cone.svg"
   },
-  {
-    value: 2,
+  "talent": {
+    value: "talent",
     attributeName: "Talent",
     label: "Talent Games",
     iconClass: "rss-cap",
-    group: "Talent"
+    group: "Talent",
+    src: "https://svgsilh.com/svg/2094866.svg"
   },
-  {
-    value: 3,
-    attributeName: "Sport",
+  "sports": {
+    value: "sports",
+    attributeName: "Sports",
     label: "Sports Games",
     iconClass: "rss-soccer",
-    group: "Sport"
+    group: "Sports",
+    src: "https://upload.wikimedia.org/wikipedia/commons/7/72/Basketball_Clipart.svg"
   },
-  {
-    value: 4,
+  "digital": {
+    value: "digital",
     attributeName: "Digital",
     label: "Video Games",
     iconClass: "rss-remote",
-    group: "Digital"
+    group: "Digital",
+    src: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Video_game_controller_icon_designed_by_Maico_Amorim.svg"
   },
-  {
-    value: 5,
+  "party": {
+    value: "party",
     attributeName: "Party",
     label: "Party Games",
     iconClass: "rss-cup",
-    group: "Party"
+    group: "Party",
+    src: "https://www.pngfind.com/pngs/m/23-235518_beer-pong-red-beer-pong-cup-png-transparent.png"
   },
-  {
-    value: 6,
+  "tabletop": {
+    value: "tabletop",
     attributeName: "Tabletop",
     label: "Tabletop Games",
     iconClass: "rss-board",
-    group: "Tabletop"
+    group: "Tabletop",
+    src: "https://upload.wikimedia.org/wikipedia/commons/a/ac/Dice_simple.svg"
   }
-];
+};
 
 export default GameTypes;

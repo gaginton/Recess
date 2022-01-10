@@ -14,7 +14,7 @@ export class MandatoryFields extends Component {
         <div className="input-field">
           <Select
             onChange={this.props.handleSelectCategory}
-            options={GameTypes}
+            options={Object.values(GameTypes)}
             value={this.props.category}
           />
         </div>
