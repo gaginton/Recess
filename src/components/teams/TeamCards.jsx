@@ -4,7 +4,7 @@ import "./TeamCards.css";
 import { useState } from "react";
 import { connect } from "react-redux";
 import { useEffect } from "react";
-import firebase from "firebase/app";
+import firebase from 'firebase/compat/app';
 
 // import moment from "moment";
 

@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import firebase from 'firebase/compat/app';
 
 export const createGame = game => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
