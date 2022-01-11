@@ -2,6 +2,9 @@
   "name": "recess",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12"
+  },
   "dependencies": {
     "bootstrap": "^4.3.1",
     "firebase": "^9.6.2",
