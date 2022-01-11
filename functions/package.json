@@ -13,7 +13,7 @@
     "firebase-functions": "^3.16.0"
   },
   "engines": {
-    "node": ">=10"
+    "node": "16"
   },
   "private": true
 }
