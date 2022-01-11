@@ -14,13 +14,13 @@ class Dashboard extends Component {
     this.state = {};
   }
   render() {
-    const { games, auth } = this.props;
+    const { games, auth, filter } = this.props;
     if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="dashboard container">
         <div className="row pad-0">
           <div className="col opacity">
-            <GameList games={games} />
+            <GameList games={games} filter={filter} />
           </div>
         </div>
 
@@ -40,7 +40,8 @@ const mapStateToProps = state => {
     games: state.firestore.ordered.games,
     auth: state.firebase.auth,
     notifications: state.firestore.ordered.notifications,
-    messages: state.firestore.ordered.chatroom
+    messages: state.firestore.ordered.chatroom,
+    filter: state.game.filter
   };
 };
 

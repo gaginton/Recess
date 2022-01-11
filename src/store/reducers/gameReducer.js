@@ -1,11 +1,10 @@
+import { FILTER_BY } from "../actions/filterActions";
+
 const initState = {
-  games: [
-    { id: "1", title: "Basketball", content: "shirts vs skins" },
-    { id: "2", title: "Football", content: "6 vs 6" },
-    { id: "3", title: "Tag", content: "League rules" },
-    { id: "4", title: "Beer Pong", content: "21 Must have ID" },
-    { id: "5", title: "Hide n Seek", content: "One vs All" }
-  ]
+  filter: {
+    title: "",
+    categories: []
+  }
 };
 
 const gameReducer = (state = initState, action) => {
@@ -22,9 +21,24 @@ const gameReducer = (state = initState, action) => {
     case "JOIN_GAME_ERROR":
       // console.log("join game error", action.err);
       return state;
+    case "FILTER_GAMES":
+      return filterGamesReducer(state, action);
     default:
       return state;
   }
 };
+
+const filterGamesReducer = (state, action) => {
+  switch (action.filterBy) {
+    case FILTER_BY.TITLE:
+      return filterByTitle(state, action);
+    default:
+      return state;
+  }
+};
+
+const filterByTitle = (state, action) => {
+  return { ...state, filter: { ...state.filter, title: action.value }};
+}
 
 export default gameReducer;
