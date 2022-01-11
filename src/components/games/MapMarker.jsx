@@ -7,7 +7,6 @@ const MapMarker = ({
   lat,
   lng,
   title,
-  content,
   gameId,
   gameCategory,
   dateTime

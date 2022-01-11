@@ -65,7 +65,7 @@ const TeamCards = ({
   console.log("teams: ", teams);
   return (
     <div className=".teamCardContainer"> 
-      {/* {teams.map(team => <>
+      {teams.map(team => <>
         <Team team={team}/>
         <div>
           <button onClick={handleAddClick.bind(null, team)}>Add Players</button>
@@ -75,7 +75,7 @@ const TeamCards = ({
         <div className="addPlayersModal">
           <AvailablePlayers game={game} team={selectedTeam}/>
         </div>
-      )} */}
+      )}
     </div>
   );
 };

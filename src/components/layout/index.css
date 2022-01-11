@@ -49,3 +49,10 @@ li a {
   border: 0 !important;
   padding: 0 !important;
 }
+
+.row-full {
+  /* position: fixed; */
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
