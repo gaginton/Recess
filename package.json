@@ -1,9 +1,9 @@
 {
   "name": "recess",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "engines": {
-    "node": ">12"
+    "node": ">=10"
   },
   "dependencies": {
     "bootstrap": "^4.3.1",
