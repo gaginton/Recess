@@ -6,19 +6,11 @@ export const createGame = game => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorID = getState().firebase.auth;
+    // console.log("authorID: ", authorID)
     let players = [`${profile.firstName} ${profile.lastName}`];
     while (players.length < game.maxPlayers) {
       players.push("");
     }
-    // console.log({
-    //   ...game,
-    //   category: game.category.value,
-    //   authorFirstName: profile.firstName,
-    //   authorLastName: profile.lastName,
-    //   authorId: authorID,
-    //   createdAt: new Date(),
-    //   players
-    // });
 
     firebase
       .firestore()
@@ -28,7 +20,7 @@ export const createGame = game => {
         category: game.category.value,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
-        authorId: authorID,
+        authorId: authorID.uid,
         createdAt: new Date(),
         players
       })
