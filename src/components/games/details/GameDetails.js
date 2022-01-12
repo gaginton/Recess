@@ -18,8 +18,6 @@ const GameDetails = (props) => {
             return;
         }
 
-        // console.log({ game });
-
         return firebase
             .firestore()
             .collection(`/games/${game.id}/players`)
@@ -34,7 +32,7 @@ const GameDetails = (props) => {
 
     if (!auth.uid) return <Redirect to="/signin" />;
     if (game) {
-        const displayPlayers = game.players ? (
+        const displayPlayers = gamePlayers ? (
             <p>
                 Players:{" "}
                 {gamePlayers
