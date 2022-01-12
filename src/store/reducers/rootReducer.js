@@ -6,11 +6,11 @@ import { firestoreReducer } from "redux-firestore";
 import { firebaseReducer } from "react-redux-firebase";
 
 const rootReducer = combineReducers({
-  auth: authReducer,
-  game: gameReducer,
-  message: chatReducer,
-  firestore: firestoreReducer,
-  firebase: firebaseReducer
+    auth: authReducer,
+    game: gameReducer,
+    message: chatReducer,
+    firestore: firestoreReducer,
+    firebase: firebaseReducer
 });
 
 export default rootReducer;

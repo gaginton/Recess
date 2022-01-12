@@ -1,18 +1,18 @@
 const initState = {
-  chatroom: [{ id: "1", message: "Hello World!" }]
+    chatroom: [{ id: "1", message: "Hello World!" }]
 };
 
 const chatReducer = (state = initState, action) => {
-  switch (action.type) {
+    switch (action.type) {
     case "CREATE_MESSAGE":
-      // console.log("created message", action.message);
-      return state;
+        // console.log("created message", action.message);
+        return state;
     case "CREATE_MESSAGE_ERROR":
-      // console.log("create message error", action.err);
-      return state;
+        // console.log("create message error", action.err);
+        return state;
     default:
-      return state;
-  }
+        return state;
+    }
 };
 
 export default chatReducer;

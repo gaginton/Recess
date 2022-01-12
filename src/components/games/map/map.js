@@ -11,79 +11,80 @@ import MapMarker from "./MapMarker";
 const MAPS_API_KEY = "AIzaSyAM6_5p4WOHokKXAJ_U2bVmbBDpUqdm7-U";
 
 class Map extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  componentDidMount() {
-    navigator.geolocation.getCurrentPosition(position => {
-      this.setState({
-        mapCenterLocation: {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
-      });
-    });
-  }
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+    componentDidMount() {
+        navigator.geolocation.getCurrentPosition((position) => {
+            this.setState({
+                mapCenterLocation: {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                }
+            });
+        });
+    }
 
-  render() {
-    const mapProps = {
-      center: this.state.mapCenterLocation,
-      zoom: 16
-    };
-    const { games } = this.props;
-    const filterMarkers = (event) => {
-      return event.markers !== ""
+    render() {
+        const mapProps = {
+            center: this.state.mapCenterLocation,
+            zoom: 16
+        };
+        const { games } = this.props;
+        const filterMarkers = (event) => {
+            return event.markers !== ""
         && event.markers !== null
         && Number.isFinite(event.markers[0].lat)
         && Number.isFinite(event.markers[0].lng);
-    };
+        };
 
-    let gamesWithAddress = (games && games.filter(filterMarkers)) || [];
-    // if (!auth.uid) return <Redirect to="/signin" />; MAY REMOVE SO PEOPLE CAN SEE MAP
-    return (
-      <React.Fragment>
-        {mapProps.center && (
-          <div className="mapContainer">
-            <GoogleMapReact
-              bootstrapURLKeys={{
-                key: MAPS_API_KEY
-              }}
-              defaultCenter={mapProps.center}
-              defaultZoom={mapProps.zoom}
-              options={{ gestureHandling: "greedy" }}
-            >
-              {gamesWithAddress &&
-                gamesWithAddress.map(game =>
-                  game.markers.map(marker => (
-                    <MapMarker
-                      lat={marker.lat}
-                      lng={marker.lng}
-                      title={game.title}
-                      gameId={game.id}
-                      gameCategory={game.category}
-                      dateTime={game.dateTime}
-                    />
-                  ))
+        const gamesWithAddress = (games && games.filter(filterMarkers)) || [];
+        // if (!auth.uid) return <Redirect to="/signin" />; MAY REMOVE SO PEOPLE CAN SEE MAP
+        return (
+            <React.Fragment>
+                {mapProps.center && (
+                    <div className="mapContainer">
+                        <GoogleMapReact
+                            bootstrapURLKeys={{
+                                key: MAPS_API_KEY
+                            }}
+                            defaultCenter={mapProps.center}
+                            defaultZoom={mapProps.zoom}
+                            options={{ gestureHandling: "greedy" }}
+                        >
+                            {gamesWithAddress &&
+                gamesWithAddress.map((game) =>
+                    game.markers.map((marker, i) => (
+                        <MapMarker
+                            key={i}
+                            lat={marker.lat}
+                            lng={marker.lng}
+                            title={game.title}
+                            gameId={game.id}
+                            gameCategory={game.category}
+                            dateTime={game.dateTime}
+                        />
+                    ))
                 )}
-            </GoogleMapReact>
-          </div>
-        )}
-        {/* <GameList games={games} */}
-        <RecessInfo initialModalState={false} />
-      </React.Fragment>
-    );
-  }
+                        </GoogleMapReact>
+                    </div>
+                )}
+                {/* <GameList games={games} */}
+                <RecessInfo initialModalState={false} />
+            </React.Fragment>
+        );
+    }
 }
 
-const mapStateToProps = state => {
-  return {
-    games: state.firestore.ordered.games
+const mapStateToProps = (state) => {
+    return {
+        games: state.firestore.ordered.games
     // auth: state.firebase.auth,
-  };
+    };
 };
 
 export default compose(
-  connect(mapStateToProps),
-  firestoreConnect([{ collection: "games", orderBy: ["dateTime", "asc"] }])
+    connect(mapStateToProps),
+    firestoreConnect([{ collection: "games", orderBy: ["dateTime", "asc"] }])
 )(Map);

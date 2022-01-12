@@ -1,23 +1,24 @@
 import React from "react";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
+import { Redirect } from "react-router-dom";
 import PlayerCard from "./PlayerCard";
 
-const PlayerDnD = props => {
-  const drop = e => {
-    e.preventDefault();
-    const card_id = e.dataTransfer.getData("card_id");
-    const card = document.getElementById(card_id);
-    card.style.display = "block";
-    e.target.appendChild(card);
-  };
-  const dragOver = e => {
-    e.preventDefault();
-  };
-  const { game, auth } = props;
-  //   AUTHOR SHOULD BE GAME CREATOR OR ON LIST OF ADMIN
-  if (!auth.uid) return <Redirect to="/signin" />;
-  if (game) {
+const PlayerDnD = (props) => {
+    const drop = (e) => {
+        e.preventDefault();
+        const card_id = e.dataTransfer.getData("card_id");
+        const card = document.getElementById(card_id);
+        card.style.display = "block";
+        e.target.appendChild(card);
+    };
+    const dragOver = (e) => {
+        e.preventDefault();
+    };
+    const { game, auth } = props;
+    //   AUTHOR SHOULD BE GAME CREATOR OR ON LIST OF ADMIN
+    if (!auth.uid) return <Redirect to="/signin" />;
+    if (game) {
     // var displayPlayers = game.players ? (
     //   <p>
     //     Current players:{" "}
@@ -29,27 +30,27 @@ const PlayerDnD = props => {
     //   </p>
     // ) : null;
     // CREATE 1 PLAYER DND PER game.noTeams. So if 2, should have 2. If null, make as many teams as players.
-    return (
-      <div className="container section flexbox">
-        <div
-          id={props.id}
-          onDrop={drop}
-          onDragOver={dragOver}
-          className={props.className}
-        >
-          <PlayerCard id="playerCard-1" className="playerCard" draggable="true">
-            <p>Card One</p>
-          </PlayerCard>
-        </div>
-      </div>
-    );
-  } else {
-    return (
-      <div className="container center">
-        <p>Loading Players...</p>
-      </div>
-    );
-  }
+        return (
+            <div className="container section flexbox">
+                <div
+                    id={props.id}
+                    onDrop={drop}
+                    onDragOver={dragOver}
+                    className={props.className}
+                >
+                    <PlayerCard id="playerCard-1" className="playerCard" draggable="true">
+                        <p>Card One</p>
+                    </PlayerCard>
+                </div>
+            </div>
+        );
+    } else {
+        return (
+            <div className="container center">
+                <p>Loading Players...</p>
+            </div>
+        );
+    }
 };
 
 // const mapStateToProps = (state, ownProps) => {
@@ -69,6 +70,6 @@ const PlayerDnD = props => {
 // };
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect([{ collection: "games" }])
+    connect(mapStateToProps, mapDispatchToProps),
+    firestoreConnect([{ collection: "games" }])
 )(PlayerDnD);

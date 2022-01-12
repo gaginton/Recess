@@ -10,47 +10,47 @@ import GameList from "../games/list/GameList";
 import { RecessInfo } from "../modals/RecessInfo";
 
 class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    const { games, auth, filter } = this.props;
-    // if (!auth.uid) return <Redirect to="/signin" />;
-    return (
-      <div className="dashboard container">
-        <div className="row pad-0">
-          <div className="col opacity">
-            <GameList games={games} filter={filter} />
-          </div>
-        </div>
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+    render() {
+        const { games, auth, filter } = this.props;
+        // if (!auth.uid) return <Redirect to="/signin" />;
+        return (
+            <div className="dashboard container">
+                <div className="row pad-0">
+                    <div className="col opacity">
+                        <GameList games={games} filter={filter} />
+                    </div>
+                </div>
 
-        {/* <div className="row pad-0">
+                {/* <div className="row pad-0">
           <div className="col s12 opacity">
             <Chatroom messages={messages} />
           </div>
         </div> */}
-        <RecessInfo initialModalState={false} />
-      </div>
-    );
-  }
+                <RecessInfo initialModalState={false} />
+            </div>
+        );
+    }
 }
 
-const mapStateToProps = state => {
-  return {
-    games: state.firestore.ordered.games,
-    auth: state.firebase.auth,
-    notifications: state.firestore.ordered.notifications,
-    messages: state.firestore.ordered.chatroom,
-    filter: state.game.filter
-  };
+const mapStateToProps = (state) => {
+    return {
+        games: state.firestore.ordered.games,
+        auth: state.firebase.auth,
+        notifications: state.firestore.ordered.notifications,
+        messages: state.firestore.ordered.chatroom,
+        filter: state.game.filter
+    };
 };
 
 export default compose(
-  connect(mapStateToProps),
-  firestoreConnect([
-    { collection: "games", orderBy: ["dateTime", "asc"] },
-    { collection: "notifications", limit: 20, orderBy: ["time", "desc"] }
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: "games", orderBy: ["dateTime", "asc"] },
+        { collection: "notifications", limit: 20, orderBy: ["time", "desc"] }
     // { collection: "chatroom", limit: 20, orderBy: ["createdAt", "asc"] }
-  ])
+    ])
 )(Dashboard);

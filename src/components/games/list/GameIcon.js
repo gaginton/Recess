@@ -8,22 +8,23 @@ import GameTypes from "../GameTypes";
 
 
 const GameIcon = ( { category } ) => {
-  const gameCat = GameTypes.find( ( gameType ) => {
-    return gameType.value === category
-  })
-  return (
-  <div className="card z-depth-0 list-container opacity">
+    const gameCat = GameTypes.find( ( gameType ) => {
+        return gameType.value === category;
+    });
+    return (
+        <div className="card z-depth-0 list-container opacity">
     
-    <div className="filler" />
-    <LazyLoad 
-      height={100}
-      width={100}
-      className="mar-auto"
-      >
-      <img src={gameCat.src} alt={gameCat.label} />
-    </LazyLoad>
-  </div>
-)};
+            <div className="filler" />
+            <LazyLoad 
+                height={100}
+                width={100}
+                className="mar-auto"
+            >
+                <img src={gameCat.src} alt={gameCat.label} />
+            </LazyLoad>
+        </div>
+    );
+};
 
 
 
