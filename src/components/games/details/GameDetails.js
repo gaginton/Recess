@@ -5,9 +5,9 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import moment from "moment";
-import { joinGame } from "../../store/actions/gameActions";
-import { leaveGame } from "../../store/actions/gameActions";
-import TeamCards from "../teams/TeamCards"
+import { joinGame } from "../../../store/actions/gameActions";
+import { leaveGame } from "../../../store/actions/gameActions";
+import TeamCards from "./teams/TeamCards";
 
 const GameDetails = props => {
   const { game, auth } = props;

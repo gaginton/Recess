@@ -1,8 +1,8 @@
 import React from "react";
-import GameSummary from "./GameSummary";
 import { Link } from "react-router-dom";
-import GameFilter from "./GameFilter"
+import GameFilter from "../filter/GameFilter"
 import GameIcon from "./GameIcon";
+import GameSummary from "./GameSummary";
 
 const GameList = ({ games, filter }) => {
   let currentDate = new Date();

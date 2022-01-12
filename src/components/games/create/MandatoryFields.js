@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import DatePicker from "react-datepicker";
 import Select from "react-select";
-import GameTypes from "./GameTypes";
+import GameTypes from "../GameTypes";
 
 export class MandatoryFields extends Component {
   render() {

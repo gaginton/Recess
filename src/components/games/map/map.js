@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 // import { Redirect } from "react-router-dom";
-import { RecessInfo } from "../modals/RecessInfo";
+import { RecessInfo } from "../../modals/RecessInfo";
 import GoogleMapReact from "google-map-react";
 import MapMarker from "./MapMarker";
 

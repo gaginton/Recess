@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import Chatroom from "../chatroom/Chatroom";
-import GameList from "../games/GameList";
+import GameList from "../games/list/GameList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";

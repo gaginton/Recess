@@ -1,6 +1,6 @@
 import React from "react";
 import LazyLoad from "react-lazy-load";
-import GameTypes from "./GameTypes";
+import GameTypes from "../GameTypes";
 
 // 1. Classic Squid 2. Talent Mic 3. Sports Ball 
 // 4. Video Games Controller 5. Party Cup 6. Tabletop & More Dice

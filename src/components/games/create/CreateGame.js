@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createGame } from "../../store/actions/gameActions";
+import { createGame } from "../../../store/actions/gameActions";
 import { Redirect } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
 // import GameTypes from "./GameTypes";

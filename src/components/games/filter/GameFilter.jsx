@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Select from "react-select";
-import { FILTER_BY, createFilterAction } from "../../store/actions/filterActions";
+import { FILTER_BY, createFilterAction } from "../../../store/actions/filterActions";
 import "./GameFilter.css";
-import GameTypes from "./GameTypes";
+import GameTypes from "../GameTypes";
 
 export class GameFilter extends Component {
     constructor(props) {
