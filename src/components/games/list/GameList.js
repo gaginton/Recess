@@ -23,16 +23,18 @@ const GameList = ({ games, filter }) => {
   }
 
   const createGameElement = (game) => (
-  <Link to={"/game/" + game.id} key={game.id}>
-    <div className="row mar-0">
-      <div className="col-3 opacity mar-0 padRight-0">
-        <GameIcon category={game.category} />
+    <Link to={"/game/" + game.id} key={game.id}>
+      <div className="row mar-0">
+        <div className="col-3 opacity mar-0 padRight-0">
+          <GameIcon category={game.category} />
+        </div>
+        <div className="col-9 opacity mar-0 padLeft-0">
+          <GameSummary game={{ ...game, id: game.id }} />
+        </div>
       </div>
-      <div className="col-9 opacity mar-0 padLeft-0">
-        <GameSummary game={{ ...game, id: game.id }} />
-      </div>
-    </div>
-  </Link>);
+    </Link>);
+
+  // if (!auth.uid) return <Redirect to="/signin" />; // ONLY SHOW LIST IF SIGNED IN
 
   return (
     <React.Fragment>
@@ -40,10 +42,10 @@ const GameList = ({ games, filter }) => {
       <div className="game-list section">
         <div className="white-text">Available Games</div>
         {games && filterGames(games)
-            .filter(game => {
-              return currentDate <= game.dateTime.toDate();
-            })
-            .map(createGameElement)}
+          .filter(game => {
+            return currentDate <= game.dateTime.toDate();
+          })
+          .map(createGameElement)}
         <div className="white-text">Previous Games</div>
         {games &&
           games

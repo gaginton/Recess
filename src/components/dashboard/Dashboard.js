@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-// import Chatroom from "../chatroom/Chatroom";
-import GameList from "../games/list/GameList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
-import { Redirect } from "react-router-dom";
-// import Map from "../games/map";
+// import { Redirect } from "react-router-dom";
+// import Map from "../games/map/map";
+import GameList from "../games/list/GameList";
+// import Chatroom from "../chatroom/Chatroom";
+// import GameFilter from "../games/filter/GameFilter";
 import { RecessInfo } from "../modals/RecessInfo";
 
 class Dashboard extends Component {
@@ -15,7 +16,7 @@ class Dashboard extends Component {
   }
   render() {
     const { games, auth, filter } = this.props;
-    if (!auth.uid) return <Redirect to="/signin" />;
+    // if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div className="dashboard container">
         <div className="row pad-0">
