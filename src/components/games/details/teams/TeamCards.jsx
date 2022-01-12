@@ -32,7 +32,7 @@ const Player = connect(state => state.players)(({player, F}) => {
 function Team({team}) {
   return <div>
     <div>{team.name}</div>
-    <div>{team.players.map(player => <Player player={player}/>)}</div>
+    <div>{team.players.map((player, i) => <Player player={player} key={i}/>)}</div>
   </div>
 }
 
