@@ -13,7 +13,10 @@ const GameList = ({ games, filter }) => {
       return games;
     }
     if (filter.title && filter.title.length > 0) {
-      return games.filter(game => game.title.toLowerCase().includes(filter.title.toLowerCase()));
+      games = games.filter(game => game.title.toLowerCase().includes(filter.title.toLowerCase()));
+    }
+    if (filter.categories && filter.categories.length > 0) {
+      games = games.filter(game => filter.categories.includes(game.category.toLowerCase()));
     }
 
     return games;

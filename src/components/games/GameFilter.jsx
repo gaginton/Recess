@@ -1,23 +1,14 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Select from "react-select";
 import { FILTER_BY, createFilterAction } from "../../store/actions/filterActions";
 import "./GameFilter.css";
+import GameTypes from "./GameTypes";
 
 export class GameFilter extends Component{
     constructor(props) {
         super(props);
         this.props = props;
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(e) {
-        switch (e.target.id) {
-            case FILTER_BY.TITLE:
-                this.props.filterByTitle(e.target.value);
-                break;
-            default:
-                break;
-        }
     }
 
     render() {
@@ -28,8 +19,22 @@ export class GameFilter extends Component{
                     <input
                         id={FILTER_BY.TITLE}
                         type="text"
-                        onChange={this.handleChange}
+                        onChange={(e) => this.props.filterByTitle(e.target.value)}
                         value={this.props.filter.title}
+                    />
+                </div>
+                <div>
+                    <strong>Filter by Category:</strong>
+                    <Select
+                        isMulti={true}
+                        aria-multiselectable={true}
+                        isClearable={true}
+                        id={FILTER_BY.CATEGORY}
+                        options={GameTypes}
+                        onChange={(categories) => this.props.filterByCategory(categories ? categories.map(cat => cat.value) : [])}
+                        value={
+                            GameTypes.filter((gameCategory) => this.props.filter.categories.includes(gameCategory.value))
+                        }
                     />
                 </div>
             </div>
@@ -46,7 +51,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
     return {
         filterByTitle: (title) => dispatch(createFilterAction(FILTER_BY.TITLE, title)),
-        filterByCategory: (category) => dispatch(createFilterAction(FILTER_BY.CATEGORY, category)),
+        filterByCategory: (categories) => dispatch(createFilterAction(FILTER_BY.CATEGORY, categories)),
         filterByDate: (date) => dispatch(createFilterAction(FILTER_BY.DATE, date))
     };
 };

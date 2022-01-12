@@ -32,13 +32,20 @@ const filterGamesReducer = (state, action) => {
   switch (action.filterBy) {
     case FILTER_BY.TITLE:
       return filterByTitle(state, action);
+    case FILTER_BY.CATEGORY:
+      return filterByCategory(state, action);
     default:
       return state;
   }
 };
 
-const filterByTitle = (state, action) => {
-  return { ...state, filter: { ...state.filter, title: action.value }};
+const filterByTitle = (state, { value }) => {
+  return { ...state, filter: { ...state.filter, title: value }};
+}
+
+const filterByCategory = (state, { value }) => {
+  let newCategories = value;
+  return { ...state, filter: { ...state.filter, categories: newCategories}}
 }
 
 export default gameReducer;
