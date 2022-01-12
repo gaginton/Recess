@@ -16,17 +16,17 @@ const SignedIn = (props) => {
                     aria-haspopup="true"
                     aria-expanded="false"
                 >
-          View
+                    View
                 </button>
                 <div
                     className="dropdown-menu dropdown-menu-right"
                     aria-labelledby="viewsDropdown"
                 >
                     <NavLink to="/list" exact activeClassName="navItem-active">
-            List
+                        List
                     </NavLink>
                     <NavLink to="/" exact activeClassName="navItem-active">
-            Map
+                        Map
                     </NavLink>
                 </div>
             </li>
@@ -38,14 +38,14 @@ const SignedIn = (props) => {
                     aria-haspopup="true"
                     aria-expanded="false"
                 >
-          New
+                    New
                 </button>
                 <div
                     className="dropdown-menu dropdown-menu-right"
                     aria-labelledby="createDropdown"
                 >
                     <NavLink to="/createGame" exact activeClassName="navItem-active">
-            Game
+                        Game
                     </NavLink>
                     {/* <NavLink to="/createLeague" exact activeClassName="navItem-active">
             League
@@ -53,10 +53,10 @@ const SignedIn = (props) => {
                 </div>
             </li>
             <li className="nav-item">
-                <button 
-                    onClick={props.signOut} 
+                <button
+                    onClick={props.signOut}
                     className="nav-link">
-          Log Out
+                    Log Out
                 </button>
             </li>
             <li>

@@ -12,7 +12,7 @@ const Navbar = (props) => {
         <nav className="nav-wrapper black darken-3 mr-auto" fixed="top">
             <div className="container">
                 <Link to="/" className="brand-logo">
-          Recess
+                    Recess
                 </Link>
                 {links}
             </div>

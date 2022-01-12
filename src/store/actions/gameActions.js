@@ -2,7 +2,7 @@ import firebase from "firebase/compat/app";
 
 export const createGame = (game) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
-    // MAKE ASYNC CALL TO DATABASE
+        // MAKE ASYNC CALL TO DATABASE
         const firestore = getFirestore();
         const profile = getState().firebase.profile;
         const authorID = getState().firebase.auth;

@@ -9,7 +9,7 @@ const GameSummary = ({ game }) => {
                 <div>@{game.location.substring(0, 32)}</div>
                 <div>Start: {moment(game.dateTime.toDate()).calendar()}</div>
                 <div className="grey-text small-text">
-          Host: {game.authorFirstName} {game.authorLastName}{" "}
+                    Host: {game.authorFirstName} {game.authorLastName}{" "}
                 </div>
             </div>
         </div>

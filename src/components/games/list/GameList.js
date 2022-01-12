@@ -48,11 +48,11 @@ const GameList = ({ games, filter }) => {
                     .map(createGameElement)}
                 <div className="white-text">Previous Games</div>
                 {games &&
-          games
-              .filter((game) => {
-                  return currentDate >= game.dateTime.toDate();
-              })
-              .map(createGameElement)}
+                    games
+                        .filter((game) => {
+                            return currentDate >= game.dateTime.toDate();
+                        })
+                        .map(createGameElement)}
             </div>
         </React.Fragment>
     );

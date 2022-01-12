@@ -34,9 +34,9 @@ class Map extends Component {
         const { games } = this.props;
         const filterMarkers = (event) => {
             return event.markers !== ""
-        && event.markers !== null
-        && Number.isFinite(event.markers[0].lat)
-        && Number.isFinite(event.markers[0].lng);
+                && event.markers !== null
+                && Number.isFinite(event.markers[0].lat)
+                && Number.isFinite(event.markers[0].lng);
         };
 
         const gamesWithAddress = (games && games.filter(filterMarkers)) || [];
@@ -54,19 +54,19 @@ class Map extends Component {
                             options={{ gestureHandling: "greedy" }}
                         >
                             {gamesWithAddress &&
-                gamesWithAddress.map((game) =>
-                    game.markers.map((marker, i) => (
-                        <MapMarker
-                            key={i}
-                            lat={marker.lat}
-                            lng={marker.lng}
-                            title={game.title}
-                            gameId={game.id}
-                            gameCategory={game.category}
-                            dateTime={game.dateTime}
-                        />
-                    ))
-                )}
+                                gamesWithAddress.map((game) =>
+                                    game.markers.map((marker, i) => (
+                                        <MapMarker
+                                            key={i}
+                                            lat={marker.lat}
+                                            lng={marker.lng}
+                                            title={game.title}
+                                            gameId={game.id}
+                                            gameCategory={game.category}
+                                            dateTime={game.dateTime}
+                                        />
+                                    ))
+                                )}
                         </GoogleMapReact>
                     </div>
                 )}
@@ -80,7 +80,7 @@ class Map extends Component {
 const mapStateToProps = (state) => {
     return {
         games: state.firestore.ordered.games
-    // auth: state.firebase.auth,
+        // auth: state.firebase.auth,
     };
 };
 

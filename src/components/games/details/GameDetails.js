@@ -36,7 +36,7 @@ const GameDetails = (props) => {
     if (game) {
         const displayPlayers = game.players ? (
             <p>
-        Players:{" "}
+                Players:{" "}
                 {gamePlayers
                     .filter(function (e) {
                         return e.name.replace(/(\r\n|\n|\r)/gm, "");
@@ -71,7 +71,7 @@ const GameDetails = (props) => {
                                         className="btn blue z-depth-0"
                                         onClick={() => props.joinGame(game)}
                                     >
-                    JOIN
+                                        JOIN
                                     </button>
                                 </span>
                                 <span className="input-field leaveGameButton">
@@ -79,7 +79,7 @@ const GameDetails = (props) => {
                                         className="btn blue z-depth-0"
                                         onClick={() => props.leaveGame(game)}
                                     >
-                    LEAVE
+                                        LEAVE
                                     </button>
                                 </span>
                             </div>
@@ -95,7 +95,7 @@ const GameDetails = (props) => {
                                 </div>
                                 <p>Description: {game.content}</p>
                                 <p>
-                  Number of Players: {minPlayers} - {maxPlayers}{" "}
+                                    Number of Players: {minPlayers} - {maxPlayers}{" "}
                                 </p>
                                 {displayMaxTime}
                                 {displayEquipment}
@@ -116,7 +116,7 @@ const GameDetails = (props) => {
                     {/* </div> */}
                     <div className="card-action grey lighten-4 grey-text">
                         <div>
-              Posted by: {game.authorFirstName} {game.authorLastName}
+                            Posted by: {game.authorFirstName} {game.authorLastName}
                         </div>
                         <div>{moment(game.createdAt.toDate()).calendar()}</div>
                     </div>

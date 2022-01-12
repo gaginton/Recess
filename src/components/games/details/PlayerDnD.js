@@ -19,17 +19,17 @@ const PlayerDnD = (props) => {
     //   AUTHOR SHOULD BE GAME CREATOR OR ON LIST OF ADMIN
     if (!auth.uid) return <Redirect to="/signin" />;
     if (game) {
-    // var displayPlayers = game.players ? (
-    //   <p>
-    //     Current players:{" "}
-    //     {game.players
-    //       .filter(function(e) {
-    //         return e.replace(/(\r\n|\n|\r)/gm, "");
-    //       })
-    //       .join(", ")}{" "}
-    //   </p>
-    // ) : null;
-    // CREATE 1 PLAYER DND PER game.noTeams. So if 2, should have 2. If null, make as many teams as players.
+        // var displayPlayers = game.players ? (
+        //   <p>
+        //     Current players:{" "}
+        //     {game.players
+        //       .filter(function(e) {
+        //         return e.replace(/(\r\n|\n|\r)/gm, "");
+        //       })
+        //       .join(", ")}{" "}
+        //   </p>
+        // ) : null;
+        // CREATE 1 PLAYER DND PER game.noTeams. So if 2, should have 2. If null, make as many teams as players.
         return (
             <div className="container section flexbox">
                 <div

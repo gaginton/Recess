@@ -7,15 +7,15 @@ import GameTypes from "../GameTypes";
 
 
 
-const GameIcon = ( { category } ) => {
-    const gameCat = GameTypes.find( ( gameType ) => {
+const GameIcon = ({ category }) => {
+    const gameCat = GameTypes.find((gameType) => {
         return gameType.value === category;
     });
     return (
         <div className="card z-depth-0 list-container opacity">
-    
+
             <div className="filler" />
-            <LazyLoad 
+            <LazyLoad
                 height={100}
                 width={100}
                 className="mar-auto"
