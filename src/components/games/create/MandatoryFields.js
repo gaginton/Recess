@@ -31,8 +31,7 @@ export class MandatoryFields extends Component {
         </div>
         <div className="input-field">
           <label htmlFor="content">
-            * Game Description (Ex: Full court, Shirts vs Skins, Beginners
-            Welcome, 10 cup)
+            * Game Description (Rules, Expectations etc.)
           </label>
           <textarea
             className="materialize-textarea"

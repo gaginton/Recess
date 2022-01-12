@@ -10,7 +10,7 @@ export class OptionalFields extends Component {
         <h4 className="bold">Optional Fields</h4>
         <div className="input-field">
           <label htmlFor="address">
-            Address (Game location or league registeration location)
+            Address (Game location for map)
           </label>
           <input
             type="text"

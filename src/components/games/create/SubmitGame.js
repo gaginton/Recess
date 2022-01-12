@@ -9,18 +9,12 @@ export class SubmitGame extends Component {
       <div>
         <h4 className="bold">Read Terms and Create Game</h4>
         <div className="grey-text text-darken-3">
-          * Please note, by clicking "Create Game" you are creating a PUBLIC
-          game, visible to all Recess users. These games can not be modified in
-          the current Recess version. Private games and editing, up until the
-          day of a game, are features expected soon.
-        </div>
-        <div className="grey-text text-darken-3">
-          * Your information is confidential. However, Recess is not responsible
-          for what you write online. We recommend you do not give personal
-          information to strangers.
-        </div>
-        <div className="grey-text text-darken-3">
-          * Please do not use this app if you are under 18 years of age.
+          <li>Note, by clicking "Create Game" you are creating a PUBLIC game.</li>
+          <li>Public games are visible to all Recess users. </li>
+          <li>Currently, games can not be modified. </li>
+          <li>Recess login uses Google's Authentication.</li>
+          <li>That said, we rec you do not give personal info to strangers.</li>
+          <li>Please do not use this app if you are under 18 years of age.</li>
         </div>
         <div className="input-field">
           <button
