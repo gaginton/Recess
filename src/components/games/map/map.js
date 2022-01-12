@@ -32,6 +32,18 @@ class Map extends Component {
       zoom: 14
     };
     const { games } = this.props;
+    function filterMarkers(event) {
+      if (
+        event.markers !== ""
+        && event.markers !== null
+        && Number.isFinite(event.markers[0].lat)
+        && Number.isFinite(event.markers[0].lng)
+      ) {
+        return true
+      }
+      return false;
+    }
+    let gamesWithAddress = games.filter(filterMarkers)
     // if (!auth.uid) return <Redirect to="/signin" />; MAY REMOVE SO PEOPLE CAN SEE MAP
     return (
       <React.Fragment>
@@ -45,8 +57,8 @@ class Map extends Component {
               defaultZoom={mapProps.zoom}
               options={{ gestureHandling: "greedy" }}
             >
-              {games &&
-                games.map(game =>
+              {gamesWithAddress &&
+                gamesWithAddress.map(game =>
                   game.markers.map(marker => (
                     <MapMarker
                       lat={marker.lat}
