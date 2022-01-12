@@ -29,7 +29,7 @@ class Map extends Component {
   render() {
     const mapProps = {
       center: this.state.mapCenterLocation,
-      zoom: 14
+      zoom: 16
     };
     const { games } = this.props;
     function filterMarkers(event) {
