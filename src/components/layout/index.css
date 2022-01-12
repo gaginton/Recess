@@ -56,3 +56,8 @@ li a {
   margin: 0 auto;
   text-align: center;
 }
+
+.input-group {
+  align-content: center;
+  align-items: center !important;
+}
