@@ -1,36 +1,26 @@
 import firebase from "firebase/compat/app";
 
 export const createGame = (game) => {
-    return (dispatch, getState, { getFirebase, getFirestore }) => {
-        // MAKE ASYNC CALL TO DATABASE
+    return async (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();
         const profile = getState().firebase.profile;
         const authorID = getState().firebase.auth;
-        // console.log("authorID: ", authorID)
-        const players = [`${profile.firstName} ${profile.lastName}`];
-        while (players.length < game.maxPlayers) {
-            players.push("");
-        }
 
-        firebase
-            .firestore()
-            .collection("games")
-            .add({
+        try {
+            const docRef = firebase.firestore().collection("games").doc();
+            await docRef.set({
                 ...game,
+                id: docRef.id,
                 category: game.category.value,
                 authorFirstName: profile.firstName,
                 authorLastName: profile.lastName,
                 authorId: authorID.uid,
-                createdAt: new Date(),
-                players
-            })
-            .then((res) => {
-                res.set({ id: res.id }, { merge: true });
-                dispatch({ type: "CREATE_GAME", game });
-            })
-            .catch((err) => {
-                dispatch({ type: "CREATE_GAME_ERROR", err });
+                createdAt: new Date()
             });
+            dispatch({ type: "CREATE_GAME", game });
+        } catch (err) {
+            dispatch({ type: "CREATE_GAME_ERROR", err });
+        }
     };
 };
 
