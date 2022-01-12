@@ -1,43 +1,47 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Select from "react-select";
 import { FILTER_BY, createFilterAction } from "../../store/actions/filterActions";
 import "./GameFilter.css";
 import GameTypes from "./GameTypes";
 
-export class GameFilter extends Component{
+export class GameFilter extends Component {
     constructor(props) {
         super(props);
         this.props = props;
     }
-
     render() {
         return (
-            <div className="game-filter">
-                <div>
-                    <strong>Filter by Name:</strong>
-                    <input
-                        id={FILTER_BY.TITLE}
-                        type="text"
-                        onChange={(e) => this.props.filterByTitle(e.target.value)}
-                        value={this.props.filter.title}
-                    />
+            <div className="game-filters">
+                <div className="row align-items-center full-width">
+                    <div className="col-sm-12 col-md-6">
+                        <Select
+                            placeholder="Filter Categories:"
+                            isMulti={true}
+                            aria-multiselectable={true}
+                            isClearable={true}
+                            id={FILTER_BY.CATEGORY}
+                            options={GameTypes}
+                            onChange={(categories) => this.props.filterByCategory(categories ? categories.map(cat => cat.value) : [])}
+                            value={
+                                GameTypes.filter((gameCategory) => this.props.filter.categories.includes(gameCategory.value))
+                            }
+                        />
+                    </div>
+                    <div className="col-sm-12 col-md-6">
+                        <input
+                            className="white full-width"
+                            placeholder="Filter Name:"
+                            name="nameFilter"
+                            id={FILTER_BY.TITLE}
+                            type="text"
+                            onChange={(e) => this.props.filterByTitle(e.target.value)}
+                            value={this.props.filter.title}
+                        />
+                    </div>
                 </div>
-                <div>
-                    <strong>Filter by Category:</strong>
-                    <Select
-                        isMulti={true}
-                        aria-multiselectable={true}
-                        isClearable={true}
-                        id={FILTER_BY.CATEGORY}
-                        options={GameTypes}
-                        onChange={(categories) => this.props.filterByCategory(categories ? categories.map(cat => cat.value) : [])}
-                        value={
-                            GameTypes.filter((gameCategory) => this.props.filter.categories.includes(gameCategory.value))
-                        }
-                    />
-                </div>
-            </div>
+            </div >
         );
     }
 }
