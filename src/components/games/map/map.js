@@ -32,18 +32,14 @@ class Map extends Component {
       zoom: 16
     };
     const { games } = this.props;
-    function filterMarkers(event) {
-      if (
-        event.markers !== ""
+    const filterMarkers = (event) => {
+      return event.markers !== ""
         && event.markers !== null
         && Number.isFinite(event.markers[0].lat)
-        && Number.isFinite(event.markers[0].lng)
-      ) {
-        return true
-      }
-      return false;
-    }
-    let gamesWithAddress = games.filter(filterMarkers) || [];
+        && Number.isFinite(event.markers[0].lng);
+    };
+
+    let gamesWithAddress = (games && games.filter(filterMarkers)) || [];
     // if (!auth.uid) return <Redirect to="/signin" />; MAY REMOVE SO PEOPLE CAN SEE MAP
     return (
       <React.Fragment>
