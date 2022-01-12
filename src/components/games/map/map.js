@@ -43,7 +43,7 @@ class Map extends Component {
       }
       return false;
     }
-    let gamesWithAddress = games.filter(filterMarkers)
+    let gamesWithAddress = games.filter(filterMarkers) || [];
     // if (!auth.uid) return <Redirect to="/signin" />; MAY REMOVE SO PEOPLE CAN SEE MAP
     return (
       <React.Fragment>
