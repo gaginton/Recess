@@ -7,7 +7,9 @@ import { Redirect } from "react-router-dom";
 import moment from "moment";
 import { joinGame } from "../../../store/actions/gameActions";
 import { leaveGame } from "../../../store/actions/gameActions";
+import GameDescription from "./GameDescription";
 import TeamCards from "./teams/TeamCards";
+import GameFooter from "./GameFooter";
 
 const GameDetails = (props) => {
     const { game, auth } = props;
@@ -17,7 +19,6 @@ const GameDetails = (props) => {
         if (!game) {
             return;
         }
-
         return firebase
             .firestore()
             .collection(`/games/${game.id}/players`)
@@ -26,12 +27,15 @@ const GameDetails = (props) => {
             });
     }, [game]);
 
-    function handleTeamsChange(newTeams) {
-        console.log(newTeams);
-    }
+    // function handleTeamsChange(newTeams) {
+    //     console.log(newTeams);
+    // }
+
+    // handleTeamsChange();
 
     if (!auth.uid) return <Redirect to="/signin" />;
     if (game) {
+        const createdAt = moment(game.createdAt.toDate()).calendar();
         const displayPlayers = gamePlayers ? (
             <p>
                 Players:{" "}
@@ -43,82 +47,53 @@ const GameDetails = (props) => {
                     .join(", ")}{" "}
             </p>
         ) : null;
-        const displayMaxTime = game.maxLength ? (
-            <p>Max game length: {game.maxLength} minutes</p>
-        ) : null;
-        const displayEquipment = game.equipment ? (
-            <p>Players must bring: {game.equipment}</p>
-        ) : null;
-        const minPlayers = game.minPlayers ? game.minPlayers : 1;
-        const maxPlayers = game.maxPlayers ? game.maxPlayers : 20;
         return (
             <div className="container section">
                 <div className="game-details card z-depth-0 opacity">
-                    <div className="card-cont ent">
+                    {/* <div className="card-cont ent"> */}
 
-                        {/* HEADER ROW WITH TITLE & JOIN/LEAVE */}
-                        <div className="row row-full">
-                            <div className="col-6">
-                                <div className="card-title bold">{game.title}</div>
-                            </div>
-
-                            <div className="col-6">
-                                {/* <span className="bold">Teams:</span> */}
-                                <span className="input-field">
-                                    <button
-                                        className="btn blue z-depth-0"
-                                        onClick={() => props.joinGame(game)}
-                                    >
-                                        JOIN
-                                    </button>
-                                </span>
-                                <span className="input-field leaveGameButton">
-                                    <button
-                                        className="btn blue z-depth-0"
-                                        onClick={() => props.leaveGame(game)}
-                                    >
-                                        LEAVE
-                                    </button>
-                                </span>
-                            </div>
+                    {/* HEADER ROW*/}
+                    <div className="row row-full">
+                        {/* GAME TITLE */}
+                        <div className="col-sm-6">
+                            <div className="card-title bold">{game.title}</div>
                         </div>
-
-
-                        {/* COL 1 GAME INFO*/}
-                        <div className="row">
-                            <div className="col-6">
-                                <div className="card-title">
-                                    {game.location} || {moment(game.dateTime.toDate()).calendar()}
-                                    {/* {moment(game.dateTime).format("MMMM Do YYYY, h:mm:ss a")} */}
-                                </div>
-                                <p>Description: {game.content}</p>
-                                <p>
-                                    Number of Players: {minPlayers} - {maxPlayers}{" "}
-                                </p>
-                                {displayMaxTime}
-                                {displayEquipment}
-                            </div>
-                            {/* COL 2 */}
-
-
-                            <div className="col-6">
-                                {displayPlayers}
-                                <TeamCards game={game} teams={game.teams} onChange={handleTeamsChange} />
-                            </div>
+                        {/* GAME JOIN/LEAVE */}
+                        <div className="col-sm-6">
+                            <span className="input-field">
+                                <button
+                                    className="btn blue z-depth-0"
+                                    onClick={() => props.joinGame(game)}
+                                >
+                                    JOIN
+                                </button>
+                            </span>
+                            <span className="input-field leaveGameButton">
+                                <button
+                                    className="btn blue z-depth-0"
+                                    onClick={() => props.leaveGame(game)}
+                                >
+                                    LEAVE
+                                </button>
+                            </span>
                         </div>
                     </div>
-                    {/* FOOTER GOES HERE */}
-                    {/* <div className="spotim container">
-            <div className="bold">Discuss this Game</div> */}
-                    {/* REMOVED SPOT.IM  */}
+
+                    {/* BODY ROW(S) */}
+                    <div className="row">
+                        <div className="col-sm12 col-md-6">
+                            <GameDescription game={game} />
+                        </div>
+                        <div className="col-sm12 col-md-6">
+                            {displayPlayers}
+                            <TeamCards game={game} teams={game.teams} onChange={handleTeamsChange} />
+                        </div>
+                    </div>
                     {/* </div> */}
-                    <div className="card-action grey lighten-4 grey-text">
-                        <div>
-                            Posted by: {game.authorFirstName} {game.authorLastName}
-                        </div>
-                        <div>{moment(game.createdAt.toDate()).calendar()}</div>
-                    </div>
                 </div>
+                {/* FOOTER*/}
+                <GameFooter game={game} createdAt={createdAt} />
+                {/* OPTION FOR CHAT OR COMMENTS */}
             </div>
         );
     } else {
