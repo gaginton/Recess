@@ -27,9 +27,9 @@ const GameDetails = (props) => {
             });
     }, [game]);
 
-    // function handleTeamsChange(newTeams) {
-    //     console.log(newTeams);
-    // }
+    function handleTeamsChange(newTeams) {
+        console.log(newTeams);
+    }
 
     // handleTeamsChange();
 
@@ -86,13 +86,21 @@ const GameDetails = (props) => {
                         </div>
                         <div className="col-sm12 col-md-6">
                             {displayPlayers}
-                            <TeamCards game={game} teams={game.teams} onChange={handleTeamsChange} />
+                            <TeamCards
+                                game={game}
+                                teams={game.teams}
+                                onChange={handleTeamsChange}
+                            />
                         </div>
                     </div>
                     {/* </div> */}
                 </div>
                 {/* FOOTER*/}
-                <GameFooter game={game} createdAt={createdAt} />
+                <GameFooter
+                    authorFirstName={game.authorFirstName}
+                    authorLastName={game.authorLastName}
+                    createdAt={createdAt}
+                />
                 {/* OPTION FOR CHAT OR COMMENTS */}
             </div>
         );

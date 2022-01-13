@@ -1,11 +1,11 @@
 import React from "react";
 
-const GameFooter = ({ game, createdAt }) => {
-    if (game) {
+const GameFooter = ({ authorFirstName, authorLastName, createdAt }) => {
+    if (authorFirstName && authorLastName && createdAt) {
         return (
             <div className="card-action grey lighten-4 grey-text">
                 <div>
-                    Posted by: {game.authorFirstName} {game.authorLastName}
+                    Posted by: {authorFirstName} {authorLastName}
                 </div>
                 <div>{createdAt}</div>
             </div>
