@@ -4,6 +4,7 @@ import moment from "moment";
 
 const GameDescription = ({ game }) => {
     if (game) {
+        const defaultMaxPlayers = 100;
         const displayMaxTime = game.maxLength ? (
             <p>Max game length: {game.maxLength} minutes</p>
         ) : null;
@@ -11,7 +12,7 @@ const GameDescription = ({ game }) => {
             <p>Players must bring: {game.equipment}</p>
         ) : null;
         const minPlayers = game.minPlayers ? game.minPlayers : 1;
-        const maxPlayers = game.maxPlayers ? game.maxPlayers : 20;
+        const maxPlayers = game.maxPlayers ? game.maxPlayers : defaultMaxPlayers;
         return (
             <div>
                 <div className="card-title">
@@ -24,7 +25,7 @@ const GameDescription = ({ game }) => {
                 {displayEquipment}
             </div >
         );
-    }
-}
+    };
+};
 
 export default GameDescription;

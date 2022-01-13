@@ -36,17 +36,6 @@ const GameDetails = (props) => {
     if (!auth.uid) return <Redirect to="/signin" />;
     if (game) {
         const createdAt = moment(game.createdAt.toDate()).calendar();
-        const displayPlayers = gamePlayers ? (
-            <p>
-                Players:{" "}
-                {gamePlayers
-                    .filter(function (e) {
-                        return e.name.replace(/(\r\n|\n|\r)/gm, "");
-                    })
-                    .map((user) => user.name)
-                    .join(", ")}{" "}
-            </p>
-        ) : null;
         return (
             <div className="container section">
                 <div className="game-details card z-depth-0 opacity">
@@ -85,10 +74,10 @@ const GameDetails = (props) => {
                             <GameDescription game={game} />
                         </div>
                         <div className="col-sm12 col-md-6">
-                            {displayPlayers}
                             <TeamCards
                                 game={game}
                                 teams={game.teams}
+                                gamePlayers={gamePlayers}
                                 onChange={handleTeamsChange}
                             />
                         </div>

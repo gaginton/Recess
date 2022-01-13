@@ -11,6 +11,6 @@ const GameFooter = ({ authorFirstName, authorLastName, createdAt }) => {
             </div>
         );
     }
-}
+};
 
 export default GameFooter;
