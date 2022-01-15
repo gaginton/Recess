@@ -147,6 +147,10 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
   margin-left: 15px;
 }
 
+.editGameButton {
+  margin-left: 15px;
+}
+
 a:hover {
   color: #fff !important;
 }

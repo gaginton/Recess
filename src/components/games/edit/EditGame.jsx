@@ -6,7 +6,6 @@ import { Redirect } from "react-router-dom";
 import { editGame } from "../../../store/actions/gameActions";
 import MandatoryFields from "../create/MandatoryFields";
 import OptionalFields from "../create/OptionalFields";
-import SubmitGame from "../create/SubmitGame";
 import GameTypes from "../GameTypes";
 import { getGoogleMapsLocation, isGameValid } from "../../../utils/utils";
 
@@ -68,14 +67,13 @@ const EditGame = (props) => {
                 await updateLocation(state.address);
             }
             props.editGame(state);
-            props.history.push("/");
+            props.history.push(`/game/${state.id}`);
         } else {
             return "Mandatory fields are missing!";
         }
     };
 
     let gameError = "";
-    console.log(state);
 
     return (
         <div className="container">
@@ -100,9 +98,14 @@ const EditGame = (props) => {
                     minAge={state.minAge}
                     equipment={state.equipment}
                 />
-                <SubmitGame
-                    handleSubmit={handleSubmit}
-                />
+                <div className="input-field">
+                    <button
+                        className="btn pink lighten-1 z-depth-0"
+                        onSubmit={props.handleSubmit}
+                    >
+                        Save Game
+                    </button>
+                </div>
                 <div className="red-text center">
                     {{ gameError } ? <p>{gameError}</p> : null}
                 </div>
