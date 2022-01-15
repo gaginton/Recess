@@ -40,6 +40,10 @@ const gameReducer = (state = initState, action) => {
     case "JOIN_GAME_ERROR":
         // console.log("join game error", action.err);
         return state;
+    case "EDIT_GAME":
+        return state;
+    case "EDIT_GAME_ERROR":
+        return state;
     case "FILTER_GAMES":
         return filterGamesReducer(state, action);
     default:
