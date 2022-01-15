@@ -10,4 +10,12 @@ export const getGoogleMapsLocation = async (address) => {
         console.log(err);
         return null;
     }
-}
+};
+
+export const isGameValid = (game) => {
+    return game.title
+        && game.content
+        && game.location
+        && game.dateTime
+        && game.category;
+};

@@ -8,9 +8,9 @@ import SignUp from "./components/auth/SignUp";
 import CreateGame from "./components/games/create/CreateGame";
 import CreateLeague from "./components/games/create/CreateLeague";
 import Map from "./components/games/map/map";
-// import CreateLeague from "./components/games/CreateLeague";
 import ProfileHome from "./components/dashboard/ProfileHome";
 import RecessInfo from "./components/modals/RecessInfo";
+import EditGame from "./components/games/edit/EditGame";
 
 class App extends Component {
     constructor(props) {
@@ -27,6 +27,7 @@ class App extends Component {
                         <Route exact path="/list" component={Dashboard} />
                         <Route path="/signin" component={SignIn} />
                         <Route path="/signup" component={SignUp} />
+                        <Route path="/game/:id/edit" component={EditGame} />
                         <Route path="/game/:id" component={GameDetails} />
                         <Route path="/createGame" component={CreateGame} />
                         <Route path="/createLeague" component={CreateLeague} />

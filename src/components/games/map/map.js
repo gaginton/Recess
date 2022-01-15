@@ -33,8 +33,10 @@ class Map extends Component {
         };
         const { games } = this.props;
         const filterMarkers = (event) => {
-            return event.markers !== ""
-                && event.markers !== null
+            console.log(event);
+            return event
+                && event.markers
+                && event.markers[0]
                 && Number.isFinite(event.markers[0].lat)
                 && Number.isFinite(event.markers[0].lng);
         };

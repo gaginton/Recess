@@ -65,6 +65,14 @@ const GameDetails = (props) => {
                                     LEAVE
                                 </button>
                             </span>
+                            {game.authorId === auth.uid ? <span className="input-field editGameButton">
+                                <a
+                                    className="btn red z-depth-0"
+                                    href={`/game/${game.id}/edit`}
+                                >
+                                    EDIT
+                                </a>
+                            </span> : null}
                         </div>
                     </div>
 

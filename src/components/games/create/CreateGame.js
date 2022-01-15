@@ -6,7 +6,7 @@ import { createGame } from "../../../store/actions/gameActions";
 import OptionalFields from "./OptionalFields";
 import SubmitGame from "./SubmitGame";
 import MandatoryFields from "./MandatoryFields";
-import { getGoogleMapsLocation } from "../../../utils/utils";
+import { getGoogleMapsLocation, isGameValid } from "../../../utils/utils";
 
 export class CreateGame extends Component {
     constructor(props) {
@@ -107,13 +107,7 @@ export class CreateGame extends Component {
 
     async handleSubmit(e) {
         e.preventDefault();
-        if (
-            this.state.title !== "" &&
-            this.state.content !== "" &&
-            this.state.location !== "" &&
-            this.state.dateTime !== "" &&
-            this.state.category !== ""
-        ) {
+        if (isGameValid(this.state)) {
             if (this.state.address !== "") {
                 await this.updateLocation(this.state.address);
                 // GIVE ERROR MESSAGE IF ADDRESS DOES NOT GIVE COORD

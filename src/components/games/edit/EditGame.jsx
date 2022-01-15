@@ -8,7 +8,7 @@ import MandatoryFields from "../create/MandatoryFields";
 import OptionalFields from "../create/OptionalFields";
 import SubmitGame from "../create/SubmitGame";
 import GameTypes from "../GameTypes";
-import { getGoogleMapsLocation } from "../../../utils/utils";
+import { getGoogleMapsLocation, isGameValid } from "../../../utils/utils";
 
 const EditGame = (props) => {
     const { game, auth } = props;
@@ -44,7 +44,7 @@ const EditGame = (props) => {
     const handleSelectCategory = (option) => {
         setState({
             ...state,
-            category: option
+            category: option.value
         });
     };
 
@@ -63,19 +63,15 @@ const EditGame = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (
-            state.title !== "" &&
-            state.content !== "" &&
-            state.location !== "" &&
-            state.dateTime !== "" &&
-            state.category !== ""
-        ) {
+        if (isGameValid(state)) {
             if (state.address !== "") {
                 await updateLocation(state.address);
             }
             props.editGame(state);
             props.history.push("/");
-        } else return "Mandatory fields are missing!";
+        } else {
+            return "Mandatory fields are missing!";
+        }
     };
 
     let gameError = "";
