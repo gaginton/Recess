@@ -18,8 +18,6 @@ class Dashboard extends Component {
     render() {
         const { games, auth, filter } = this.props;
 
-        console.log('Dashboard games =>', games);
-
         return (
             <div className="dashboard container">
                 <div className="row pad-0">

@@ -1,4 +1,4 @@
-import { GOOGLE_MAPS_API_KEY } from "./constants"
+import { GOOGLE_MAPS_API_KEY } from "./constants";
 
 export const getGoogleMapsLocation = async (address) => {
     try {
