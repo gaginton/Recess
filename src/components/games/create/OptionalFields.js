@@ -17,6 +17,7 @@ export const OptionalFields = (props) => {
                     id="address"
                     onChange={props.handleChange}
                     value={props.address}
+                    maxLength="200"
                 />
             </div>
             <div className="row">
@@ -32,6 +33,7 @@ export const OptionalFields = (props) => {
                             onChange={props.handleChange}
                             value={props.minPlayers}
                             min="2"
+                            max="50"
                         />
                     </div>
                     <div className="input-field">
@@ -42,7 +44,7 @@ export const OptionalFields = (props) => {
                             onChange={props.handleChange}
                             value={props.maxPlayers}
                             min="2"
-                            max="50"
+                            max="999"
                         />
                     </div>
                     <div className="input-field">
@@ -53,17 +55,18 @@ export const OptionalFields = (props) => {
                             onChange={props.handleChange}
                             value={props.noTeams}
                             max={props.maxPlayers}
+                            min="0"
                         />
                     </div>
                 </div>
                 <div className="col s12 m6">
                     {/* ---------------- ADDITIONAL FIELDS: Max game length, bring with, min age ----------------------- */}
                     <div className="grey-text text-darken-3">
-          Additional Fields <br />
+                        Additional Fields <br />
                     </div>
                     <div className="input-field">
                         <label htmlFor="maxLength">
-            Maximum Length of Game (Minutes)
+                            Maximum Length of Game (Minutes)
                         </label>
                         <input
                             type="number"
@@ -79,17 +82,20 @@ export const OptionalFields = (props) => {
                             id="minAge"
                             onChange={props.handleChange}
                             value={props.minAge}
+                            min="0"
+                            max="100"
                         />
                     </div>
                     <div className="input-field">
                         <label htmlFor="equipment">
-            Please bring to game (Equipment, fees, etc.)
+                            Please bring to game (Equipment, fees, etc.)
                         </label>
                         <input
                             type="text"
                             id="equipment"
                             onChange={props.handleChange}
                             value={props.equipment}
+                            maxLength="200"
                         />
                     </div>
                 </div>

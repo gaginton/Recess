@@ -20,35 +20,40 @@ export const MandatoryFields = (props) => {
             </div>
             <div className="input-field">
                 <label htmlFor="title">
-        * Game Title (Ex: Football, Tag, DnD, Beer Pong)
+                    * Game Title (Ex: Football, Tag, DnD, Beer Pong)
                 </label>
                 <input
                     type="text"
                     id="title"
                     onChange={props.handleChange}
                     value={props.title}
+                    maxLength="150"
                 />
             </div>
             <div className="input-field">
                 <label htmlFor="content">
-        * Game Description (Rules, Expectations etc.)
+                    * Game Description (Rules, Expectations etc.)
                 </label>
                 <textarea
                     className="materialize-textarea"
                     id="content"
                     onChange={props.handleChange}
                     value={props.content}
+                    rows="3" //NOT WORKING
+                    maxLength="999"
+                    style={{overflowX: "hidden", wordWrap: "break-word", height: 80+"PX"}}
                 />
             </div>
             <div className="input-field">
                 <label htmlFor="location">
-        * Location (Ex: Central Park, XBox Live, Mobile)
+                    * Location (Ex: Central Park, XBox Live, Mobile)
                 </label>
                 <input
                     type="text"
                     id="location"
                     onChange={props.handleChange}
                     value={props.location}
+                    maxLength="150"
                 />
             </div>
             <div className="input-field">
