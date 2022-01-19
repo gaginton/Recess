@@ -10,10 +10,12 @@ import { leaveGame } from "../../../store/actions/gameActions";
 import GameDescription from "./GameDescription";
 import TeamCards from "./teams/TeamCards";
 import GameFooter from "./GameFooter";
+import JoinLeaveButton from "./JoinLeaveButton";
 
 const GameDetails = (props) => {
     const { game, auth } = props;
     const [gamePlayers, setGamePlayers] = useState([]);
+    // const [joined] = useState(false); //NEED TO GET JOINED FROM STATE
 
     useEffect(() => {
         if (!game) {
@@ -27,9 +29,26 @@ const GameDetails = (props) => {
             });
     }, [game]);
 
+    let joined = gamePlayers.filter(player => player.name === uid).length > 0 ? true : false;
+    const handleJoin = (game) => {
+        // console.log(
+        //     "gamePlayers: ", gamePlayers, 
+        //     "auth: ", auth, 
+        //     "GAME123: ", game, 
+        //     "JOIN123: ", joined
+        // );
+        if (joined === true) {
+            leaveGame(game);
+            return setJoined(!joined)
+            // return join = false;
+        }
+        joinGame(game);
+        return joined = true;
+    };
+
     function handleTeamsChange(newTeams) {
         console.log(newTeams);
-    }
+    };
 
     // handleTeamsChange();
 
@@ -49,22 +68,15 @@ const GameDetails = (props) => {
                         </div>
                         {/* GAME JOIN/LEAVE */}
                         <div className="col-sm-6">
-                            <span className="input-field">
-                                <button
-                                    className="btn blue z-depth-0"
-                                    onClick={() => props.joinGame(game)}
-                                >
-                                    JOIN
-                                </button>
-                            </span>
-                            <span className="input-field leaveGameButton">
-                                <button
-                                    className="btn blue z-depth-0"
-                                    onClick={() => props.leaveGame(game)}
-                                >
-                                    LEAVE
-                                </button>
-                            </span>
+                            <JoinLeaveButton
+                                joined={joined}
+                                toggleJoined={() => {
+                                    handleJoin(game);
+                                }}
+                            // toggleSelected={() => {
+                            //     setSelected(!selected);
+                            //   }}      
+                            />
                         </div>
                     </div>
 
