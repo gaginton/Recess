@@ -225,3 +225,37 @@ a:hover {
   cursor: pointer;
   margin-bottom: 15px;
 }
+
+/* PREVENTS DATEPICKER FROM FLOAT LEFT */
+.react-datepicker__month-container {
+  float: none !important;
+}
+
+/* KEEPS MONTH NAV BUTTONS AT TOP */
+.react-datepicker__navigation {
+  top: 0 !important;
+} 
+
+/* KEEPS MONTH NAV BUTTONS BLACK */
+.react-datepicker__navigation--previous {
+    border-right-color: black !important;
+}
+.react-datepicker__navigation--next {
+  border-left-color: black !important;
+}
+
+/* STYLES DATEPICKER HEADER */
+.react-datepicker__header {
+  background-color: #FA4616 !important;
+  border-bottom: 2px solid #8E8564 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important ;
+  padding-top: 8px !important;
+}
+
+/* STYLES DATEPICKER BODY */
+.react-datepicker {
+  background-color: #4c87b5   !important;
+  border: 0px !important;
+  border: 2px solid #8E8564 !important;
+}
