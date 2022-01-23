@@ -16,8 +16,6 @@ const GameIcon = ({ category }) => {
 
             <div className="filler" />
             <LazyLoad
-                height={100}
-                width={100}
                 className="mar-auto"
             >
                 <img src={gameCat.src} alt={gameCat.label} />

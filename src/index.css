@@ -20,8 +20,14 @@ img {
 }
 
 div {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  div {
+    font-size: 18px;
+  }
 }
 
 form {
@@ -84,7 +90,19 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 
 /* SPACIAL CLASSES */
 .card .card-content {
-  padding: 16px;
+  padding: 14px;
+}
+
+@media (max-width: 600px) {
+  .card .card-content {
+    padding: 2px;
+    text-align: center;
+  }
+}
+
+.card-title {
+  margin: auto;
+  margin-bottom: 0px !important; 
 }
 
 .opacity {
@@ -258,4 +276,16 @@ a:hover {
   background-color: #1890ff   !important;
   border: 0px !important;
   border: 2px solid #8E8564 !important;
+}
+
+div.LazyLoad img {
+  width: 120px;
+  height: 120px;
+}
+
+@media (max-width: 600px) {
+  div.LazyLoad img {
+    width: 60px;
+    height: 60px;
+  }
 }
