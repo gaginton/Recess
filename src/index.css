@@ -38,7 +38,7 @@ input[type="text"]:not(.browser-default):focus:not([readonly]),
 input[type="email"]:not(.browser-default):focus:not([readonly]),
 input[type="password"]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-color: #ec407a;
+  border-color: #eb2f96;
   box-shadow: none;
 }
 
@@ -46,7 +46,7 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label,
 input[type="email"]:not(.browser-default):focus:not([readonly]) + label,
 input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
-  color: #ec407a !important;
+  color: #eb2f96 !important;
 }
 
 .modal.fade.show {
@@ -139,7 +139,7 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 
 @media screen and (max-width: 1024px) {
   .brand-logo {
-    left: 50px !important;
+    left: 60px !important;
   }
 }
 
@@ -238,15 +238,15 @@ a:hover {
 
 /* KEEPS MONTH NAV BUTTONS BLACK */
 .react-datepicker__navigation--previous {
-    border-right-color: black !important;
+    border-right-color: #000000 !important;
 }
 .react-datepicker__navigation--next {
-  border-left-color: black !important;
+  border-left-color: #000000 !important;
 }
 
 /* STYLES DATEPICKER HEADER */
 .react-datepicker__header {
-  background-color: #FA4616 !important;
+  background-color: #fa8c16 !important;
   border-bottom: 2px solid #8E8564 !important;
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important ;
@@ -255,7 +255,7 @@ a:hover {
 
 /* STYLES DATEPICKER BODY */
 .react-datepicker {
-  background-color: #4c87b5   !important;
+  background-color: #1890ff   !important;
   border: 0px !important;
   border: 2px solid #8E8564 !important;
 }
