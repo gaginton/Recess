@@ -13,7 +13,8 @@
 }
 
 #signoutButton:hover {
-  background-color: #f5222d
+  background-color: #f5222d;
+  transition: background-color 0.3s ease-out;
 }
 
 a.initialsButton {
@@ -50,6 +51,7 @@ li.nav-item.dropdown:hover div {
 
 li a {
   margin: 0 !important;
+  text-align: center;
 }
 
 .dropdown-menu.dropdown-menu-right {
@@ -59,7 +61,6 @@ li a {
 }
 
 .row-full {
-  /* position: fixed; */
   width: 100%;
   margin: 0 auto;
   text-align: center;
