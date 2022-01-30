@@ -93,3 +93,18 @@ export const leaveGame = (game) => {
             });
     };
 };
+
+export const editGame = (game) => {
+    return async (dispatch, getState, { getFirebase, getFirestore }) => {
+        try {
+            const docRef = firebase
+                .firestore()
+                .collection("games")
+                .doc(game.id);
+            await docRef.set(game);
+            dispatch({ type: "EDIT_GAME", game });
+        } catch (err) {
+            dispatch({ type: "EDIT_GAME_ERROR", err });
+        }
+    };
+};

@@ -20,8 +20,14 @@ img {
 }
 
 div {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  div {
+    font-size: 18px;
+  }
 }
 
 form {
@@ -34,11 +40,27 @@ form h5 {
   margin: 20px 0;
 }
 
+input, input::placeholder {
+  width: 100% !important;
+  font-size: 20px !important;
+  min-height: 30px !important;
+  border-radius: 4px !important;
+  padding: auto !important;
+}
+
+input::placeholder {
+  color: hsl(0,0%,50%);
+}
+
+/* input:hover {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+} */
+
 input[type="text"]:not(.browser-default):focus:not([readonly]),
 input[type="email"]:not(.browser-default):focus:not([readonly]),
 input[type="password"]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-  border-color: #ec407a;
+  border-color: #eb2f96;
   box-shadow: none;
 }
 
@@ -46,7 +68,7 @@ input[type="text"]:not(.browser-default):focus:not([readonly]) + label,
 textarea.materialize-textarea:focus:not([readonly]) + label,
 input[type="email"]:not(.browser-default):focus:not([readonly]) + label,
 input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
-  color: #ec407a !important;
+  color: #eb2f96 !important;
 }
 
 .modal.fade.show {
@@ -84,7 +106,19 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 
 /* SPACIAL CLASSES */
 .card .card-content {
-  padding: 16px;
+  padding: 14px;
+}
+
+@media (max-width: 600px) {
+  .card .card-content {
+    padding: 2px;
+    text-align: center;
+  }
+}
+
+.card-title {
+  margin: auto;
+  margin-bottom: 0px !important; 
 }
 
 .opacity {
@@ -118,7 +152,7 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 }
 
 .input-field {
-  width: 100%;
+  width: 100% !important;
 }
 
 .list-container {
@@ -139,11 +173,15 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 
 @media screen and (max-width: 1024px) {
   .brand-logo {
-    left: 50px !important;
+    left: 60px !important;
   }
 }
 
 .leaveGameButton {
+  margin-left: 15px;
+}
+
+.editGameButton {
   margin-left: 15px;
 }
 
@@ -220,4 +258,50 @@ a:hover {
   background-color: #f3f3f3;
   cursor: pointer;
   margin-bottom: 15px;
+}
+
+/* PREVENTS DATEPICKER FROM FLOAT LEFT */
+.react-datepicker__month-container {
+  float: none !important;
+}
+
+/* KEEPS MONTH NAV BUTTONS AT TOP */
+.react-datepicker__navigation {
+  top: 0 !important;
+} 
+
+/* KEEPS MONTH NAV BUTTONS BLACK */
+.react-datepicker__navigation--previous {
+    border-right-color: #000000 !important;
+}
+.react-datepicker__navigation--next {
+  border-left-color: #000000 !important;
+}
+
+/* STYLES DATEPICKER HEADER */
+.react-datepicker__header {
+  background-color: #fa8c16 !important;
+  border-bottom: 2px solid #8E8564 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important ;
+  padding-top: 8px !important;
+}
+
+/* STYLES DATEPICKER BODY */
+.react-datepicker {
+  background-color: #1890ff   !important;
+  border: 0px !important;
+  border: 2px solid #8E8564 !important;
+}
+
+div.LazyLoad img {
+  width: 120px;
+  height: 120px;
+}
+
+@media (max-width: 600px) {
+  div.LazyLoad img {
+    width: 60px;
+    height: 60px;
+  }
 }

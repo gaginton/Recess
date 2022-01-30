@@ -4,20 +4,32 @@
 
 .navItem-active {
   z-index: 1;
-  background-color: red;
+  background-color: #03b2cb;
 }
 
 .navbar a:hover,
 .dropdown:hover .dropbtn {
-  background-color: red;
+  background-color: #03b2cb;
+}
+
+#signoutButton:hover {
+  background-color: #f5222d;
+  transition: background-color 0.3s ease-out;
+}
+
+a.initialsButton {
+  line-height: 100% !important;
+  width: 100% !important;
+  text-align: center !important;
 }
 
 li.nav-item.dropdown div {
   display: none;
 }
+
 li.nav-item.dropdown:hover div {
   display: block;
-  background-color: black;
+  background-color: #000000;
   opacity: 0.9;
 }
 
@@ -26,16 +38,14 @@ li.nav-item.dropdown:hover div {
   color: white; 
   border: none;
   cursor: pointer;
-  /* text-decoration: underline; */
-  /* padding: 0 1rem !important; */
   display: inline;
-  margin: 0;
-  padding: 0;
+  padding: 0 1rem !important;
 }
 
 @media (max-width: 600px) {
   .nav-link {
-    padding: 0 5px !important;
+    padding: 0 4px !important;
+    font-size: 16px;
   }
 }
 
@@ -51,7 +61,6 @@ li a {
 }
 
 .row-full {
-  /* position: fixed; */
   width: 100%;
   margin: 0 auto;
   text-align: center;

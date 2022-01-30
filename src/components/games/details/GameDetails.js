@@ -68,6 +68,7 @@ const GameDetails = (props) => {
                         </div>
                         {/* GAME JOIN/LEAVE */}
                         <div className="col-sm-6">
+<<<<<<< HEAD
                             <JoinLeaveButton
                                 joined={joined}
                                 toggleJoined={() => {
@@ -77,6 +78,32 @@ const GameDetails = (props) => {
                             //     setSelected(!selected);
                             //   }}      
                             />
+=======
+                            <span className="input-field">
+                                <button
+                                    className="btn blue z-depth-0"
+                                    onClick={() => props.joinGame(game)}
+                                >
+                                    JOIN
+                                </button>
+                            </span>
+                            <span className="input-field leaveGameButton">
+                                <button
+                                    className="btn blue z-depth-0"
+                                    onClick={() => props.leaveGame(game)}
+                                >
+                                    LEAVE
+                                </button>
+                            </span>
+                            {game.authorId === auth.uid ? <span className="input-field editGameButton">
+                                <a
+                                    className="btn red z-depth-0"
+                                    href={`/game/${game.id}/edit`}
+                                >
+                                    EDIT
+                                </a>
+                            </span> : null}
+>>>>>>> 13fc98bffea61553bcd1eddea97c358d6fb3fd72
                         </div>
                     </div>
 

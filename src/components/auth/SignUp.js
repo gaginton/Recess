@@ -31,15 +31,16 @@ export class SignUp extends Component {
         e.preventDefault();
         if (
             this.state.email !== "" &&
-      this.state.password !== "" &&
-      this.state.firstName !== "" &&
-      this.state.lastName !== "" &&
-      this.state.bday !== "" &&
-      this.state.password === this.state.confirmPass
+            this.state.password !== "" &&
+            this.state.firstName !== "" &&
+            this.state.lastName !== "" &&
+            this.state.bday !== "" &&
+            this.state.password === this.state.confirmPass
         ) {
             this.props.signUp(this.state);
         }
     };
+
     render() {
         const { authError, auth } = this.props;
         if (auth.uid) return <Redirect to="/" />;
@@ -48,13 +49,10 @@ export class SignUp extends Component {
                 <form className="white" onSubmit={this.handleSubmit}>
                     <h5 className="grey-text text-darken-3">Sign Up</h5>
                     <div className="small-text">
-            During the current testing period, there is no authentication of
-            values.
+                        During the current testing period, there is little authentication.
                         <br />
-            You must remember email and password to log back in.
-                        <br />
-            If you would like to receive notifications, use your real email and
-            phone number.
+                        If you would like to receive notifications, use your real email and
+                        phone number.
                     </div>
                     {/* START WITH NAME TO BE POLITE */}
                     <div className="row">
@@ -115,7 +113,6 @@ export class SignUp extends Component {
                             </div>
                         </div>
                     </div>
-
                     <div className="row">
                         <div className="col s12 m6">
                             <div className="input-field">

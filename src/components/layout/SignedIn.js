@@ -55,16 +55,19 @@ const SignedIn = (props) => {
             <li className="nav-item">
                 <button
                     onClick={props.signOut}
-                    className="nav-link">
+                    className="nav-link"
+                    id="signoutButton"
+                >
                     Log Out
                 </button>
             </li>
             <li>
                 <NavLink
                     to="/profile"
-                    className="btn btn-floating pink lighten-1"
+                    className="btn pink lighten-1"
                     exact
                     activeClassName="navItem-active"
+                    id="initialsButton"
                 >
                     {props.profile.initials}
                 </NavLink>

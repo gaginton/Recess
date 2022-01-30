@@ -7,6 +7,25 @@ const initState = {
     }
 };
 
+const filterByTitle = (state, { value }) => {
+    return { ...state, filter: { ...state.filter, title: value } };
+};
+
+const filterByCategory = (state, { value }) => {
+    return { ...state, filter: { ...state.filter, categories: value } };
+};
+
+const filterGamesReducer = (state, action) => {
+    switch (action.filterBy) {
+    case FILTER_BY.TITLE:
+        return filterByTitle(state, action);
+    case FILTER_BY.CATEGORY:
+        return filterByCategory(state, action);
+    default:
+        return state;
+    }
+};
+
 const gameReducer = (state = initState, action) => {
     switch (action.type) {
     case "CREATE_GAME":
@@ -21,31 +40,15 @@ const gameReducer = (state = initState, action) => {
     case "JOIN_GAME_ERROR":
         // console.log("join game error", action.err);
         return state;
+    case "EDIT_GAME":
+        return state;
+    case "EDIT_GAME_ERROR":
+        return state;
     case "FILTER_GAMES":
         return filterGamesReducer(state, action);
     default:
         return state;
     }
-};
-
-const filterGamesReducer = (state, action) => {
-    switch (action.filterBy) {
-    case FILTER_BY.TITLE:
-        return filterByTitle(state, action);
-    case FILTER_BY.CATEGORY:
-        return filterByCategory(state, action);
-    default:
-        return state;
-    }
-};
-
-const filterByTitle = (state, { value }) => {
-    return { ...state, filter: { ...state.filter, title: value } };
-};
-
-const filterByCategory = (state, { value }) => {
-    const newCategories = value;
-    return { ...state, filter: { ...state.filter, categories: newCategories } };
 };
 
 export default gameReducer;

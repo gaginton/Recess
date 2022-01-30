@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { createGame } from "../../../store/actions/gameActions";
 import { Redirect } from "react-router-dom";
 import "react-datepicker/dist/react-datepicker.css";
-// import GameTypes from "./GameTypes";
+import { createGame } from "../../../store/actions/gameActions";
 import OptionalFields from "./OptionalFields";
 import SubmitGame from "./SubmitGame";
 import MandatoryFields from "./MandatoryFields";
-// import AddressField from "./AddressField"
-
-const MAPS_API_KEY = "AIzaSyAM6_5p4WOHokKXAJ_U2bVmbBDpUqdm7-U";
+import { getGoogleMapsLocation, isGameValid } from "../../../utils/utils";
 
 export class CreateGame extends Component {
     constructor(props) {
@@ -19,10 +16,7 @@ export class CreateGame extends Component {
         this.updateLocation = this.updateLocation.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    // componentDidUpdate() {
-    //   console.log("component did update", this.state);
-    //   // this.props.createGame(this.state);
-    // }
+
     _next() {
         let currentStep = this.state.currentStep;
         currentStep = currentStep >= 2 ? 3 : currentStep + 1;
@@ -30,6 +24,7 @@ export class CreateGame extends Component {
             currentStep: currentStep
         });
     }
+
     _prev() {
         let currentStep = this.state.currentStep;
         currentStep = currentStep <= 1 ? 1 : currentStep - 1;
@@ -37,6 +32,7 @@ export class CreateGame extends Component {
             currentStep: currentStep
         });
     }
+
     get previousButton() {
         const currentStep = this.state.currentStep;
         if (currentStep !== 1) {
@@ -52,6 +48,7 @@ export class CreateGame extends Component {
         }
         return null;
     }
+
     get nextButton() {
         const currentStep = this.state.currentStep;
         if (currentStep < 3) {
@@ -67,6 +64,7 @@ export class CreateGame extends Component {
         }
         return null;
     }
+
     state = {
         currentStep: 1,
         // MANDATORY
@@ -88,30 +86,28 @@ export class CreateGame extends Component {
         isCoop: "",
         teams: []
     };
+
     handleChange = (e) => {
         this.setState({
             [e.target.id]: e.target.value
         });
     };
+
     handleDateChange = (date) => {
         this.setState({
             dateTime: date
         });
     };
+
     handleSelectCategory = (option) => {
         this.setState({
             category: option
         });
     };
+
     async handleSubmit(e) {
         e.preventDefault();
-        if (
-            this.state.title !== "" &&
-      this.state.content !== "" &&
-      this.state.location !== "" &&
-      this.state.dateTime !== "" &&
-      this.state.category !== ""
-        ) {
+        if (isGameValid(this.state)) {
             if (this.state.address !== "") {
                 await this.updateLocation(this.state.address);
                 // GIVE ERROR MESSAGE IF ADDRESS DOES NOT GIVE COORD
@@ -121,21 +117,19 @@ export class CreateGame extends Component {
             // FIX VALIDATION TO INCLUDE MORE ERROR MESSAGES
         } else return (this.gameError = "Mandatory fields are missing!");
     }
+
     async updateLocation(address) {
-        await fetch(
-            `https://maps.googleapis.com/maps/api/geocode/json?address=${address}+123&key=${MAPS_API_KEY}`
-        )
-            .then((res) => res.json())
-            .then((res) => {
-                this.setState({
-                    markers: res.results.map((result) => ({
-                        lat: result.geometry.location.lat,
-                        lng: result.geometry.location.lng
-                    }))
-                });
-            })
-            .catch(console.log);
+        const location = await getGoogleMapsLocation(address);
+        if (location) {
+            this.setState({
+                markers: location.results.map((result) => ({
+                    lat: result.geometry.location.lat,
+                    lng: result.geometry.location.lng
+                }))
+            });
+        }
     }
+
     render() {
         const { auth } = this.props;
         const gameError = null;
@@ -145,7 +139,7 @@ export class CreateGame extends Component {
                 <form className="white" onSubmit={this.handleSubmit}>
                     {/* <h4 className="bold">Create Game</h4> */}
                     <MandatoryFields
-                        currentStep={this.state.currentStep}
+                        isVisible={this.state.currentStep === 1}
                         handleChange={this.handleChange}
                         handleSelectCategory={this.handleSelectCategory}
                         handleDateChange={this.handleDateChange}
@@ -155,13 +149,8 @@ export class CreateGame extends Component {
                         dateTime={this.state.dateTime}
                         category={this.state.category}
                     />
-                    {/* <AddressField
-            handleChange={this.handleChange}
-            currentStep={this.state.currentStep}
-            address={this.state.address}
-          /> */}
                     <OptionalFields
-                        currentStep={this.state.currentStep}
+                        isVisible={this.state.currentStep === 2}
                         handleChange={this.handleChange}
                         address={this.state.address}
                         minPlayers={this.state.minPlayers}
@@ -172,7 +161,7 @@ export class CreateGame extends Component {
                         equipment={this.state.equipment}
                     />
                     <SubmitGame
-                        currentStep={this.state.currentStep}
+                        isVisible={this.state.currentStep === 3}
                         handleSubmit={this.handleSubmit}
                     />
                     <div className="red-text center">

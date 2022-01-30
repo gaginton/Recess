@@ -46,13 +46,7 @@
             "warn",
             "always"
         ],
-        "no-magic-numbers": [
-            "warn",
-            {
-                "ignore": [-1, 0, 1],
-                "enforceConst": true
-            }
-        ],
+        "no-magic-numbers": "off",
         "max-lines": [
             "warn",
             500

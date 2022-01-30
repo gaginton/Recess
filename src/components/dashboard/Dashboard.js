@@ -8,6 +8,7 @@ import GameList from "../games/list/GameList";
 // import Chatroom from "../chatroom/Chatroom";
 // import GameFilter from "../games/filter/GameFilter";
 import { RecessInfo } from "../modals/RecessInfo";
+import { isGameValid } from "../../utils/utils";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Dashboard extends Component {
     }
     render() {
         const { games, auth, filter } = this.props;
-        // if (!auth.uid) return <Redirect to="/signin" />;
+
         return (
             <div className="dashboard container">
                 <div className="row pad-0">
@@ -24,12 +25,6 @@ class Dashboard extends Component {
                         <GameList games={games} filter={filter} />
                     </div>
                 </div>
-
-                {/* <div className="row pad-0">
-          <div className="col s12 opacity">
-            <Chatroom messages={messages} />
-          </div>
-        </div> */}
                 <RecessInfo initialModalState={false} />
             </div>
         );
@@ -37,8 +32,9 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+    const games = state.firestore.ordered.games && state.firestore.ordered.games.filter(isGameValid);
     return {
-        games: state.firestore.ordered.games,
+        games: games,
         auth: state.firebase.auth,
         notifications: state.firestore.ordered.notifications,
         messages: state.firestore.ordered.chatroom,
