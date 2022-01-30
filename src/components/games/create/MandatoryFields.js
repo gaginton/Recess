@@ -20,7 +20,7 @@ export const MandatoryFields = (props) => {
             </div>
             <div className="input-field">
                 <label htmlFor="title">
-                    * Game Title (Ex: Football, Tag, DnD, Beer Pong)
+                    * Game Title (Ex: Football, Tag, DnD)
                 </label>
                 <input
                     type="text"

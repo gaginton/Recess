@@ -23,7 +23,7 @@ export const OptionalFields = (props) => {
             <div className="row">
                 <div className="col s12 m6">
                     <div className="grey-text text-darken-3">
-                        Team and Roster Layout
+                        Team and Roster
                     </div>
                     <div className="input-field">
                         <label htmlFor="minPlayers">Minimum Players</label>
@@ -66,7 +66,7 @@ export const OptionalFields = (props) => {
                     </div>
                     <div className="input-field">
                         <label htmlFor="maxLength">
-                            Maximum Length of Game (Minutes)
+                            Max Game Time (Min)
                         </label>
                         <input
                             type="number"
@@ -76,7 +76,7 @@ export const OptionalFields = (props) => {
                         />
                     </div>
                     <div className="input-field">
-                        <label htmlFor="minAge">Minimum Age of Players</label>
+                        <label htmlFor="minAge">Min Age of Players</label>
                         <input
                             type="number"
                             id="minAge"
@@ -88,7 +88,7 @@ export const OptionalFields = (props) => {
                     </div>
                     <div className="input-field">
                         <label htmlFor="equipment">
-                            Please bring to game (Equipment, fees, etc.)
+                            Please bring to game
                         </label>
                         <input
                             type="text"
