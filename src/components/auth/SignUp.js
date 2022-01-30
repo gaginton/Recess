@@ -49,10 +49,7 @@ export class SignUp extends Component {
                 <form className="white" onSubmit={this.handleSubmit}>
                     <h5 className="grey-text text-darken-3">Sign Up</h5>
                     <div className="small-text">
-                        During the current testing period, there is no authentication of
-                        values.
-                        <br />
-                        You must remember email and password to log back in.
+                        During the current testing period, there is little authentication.
                         <br />
                         If you would like to receive notifications, use your real email and
                         phone number.

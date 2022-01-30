@@ -40,6 +40,22 @@ form h5 {
   margin: 20px 0;
 }
 
+input, input::placeholder {
+  width: 100% !important;
+  font-size: 20px !important;
+  min-height: 30px !important;
+  border-radius: 4px !important;
+  padding: auto !important;
+}
+
+input::placeholder {
+  color: hsl(0,0%,50%);
+}
+
+/* input:hover {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+} */
+
 input[type="text"]:not(.browser-default):focus:not([readonly]),
 input[type="email"]:not(.browser-default):focus:not([readonly]),
 input[type="password"]:not(.browser-default):focus:not([readonly]),
@@ -136,7 +152,7 @@ input[type="password"]:not(.browser-default):focus:not([readonly]) + label {
 }
 
 .input-field {
-  width: 100%;
+  width: 100% !important;
 }
 
 .list-container {
