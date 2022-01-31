@@ -14,25 +14,53 @@ class ProfileHome extends Component {
     render() {
         const { auth, notifications } = this.props;
         if (!auth.uid) return <Redirect to="/signin" />;
-        return (  
+        return (
             <React.Fragment>
-                <div className="mapContainer text-white pad-50">
-                    <h1>Coming in Q1...</h1>
-                    <li>Customize your layout and settings</li>
-                    <li>"Standard game"</li>
-                    <li>Game scoring</li>
-                    <li>Push Notifications</li>
-                    <li>Google Calendar sync</li>
-                    <li>Private games</li>
-                    <li>User Profiles</li>
-                    <li>MUCH, MUCH MORE!</li>            
-            Write to me at guyginton@gmail.com for feedback, suggestions and
-            anything else.
-                    <br/>
-                    <Notifications
-                        notifications={notifications}
-                        initialModalState={false}
-                    />
+                <div className="container">
+                    <form className="white">
+                        <div className="row">
+                            <div className="col s12 m4">
+                                <h2>Q1 Plans: Service</h2>
+                                <ol>
+                                    <li>Create PLAYERS</li>
+                                    <li>Create CLUBS</li>
+                                    <li>Create GAMES</li>
+                                    <li>Create TOURNAMENTS</li>
+                                    <li>Create EVENTS</li>
+                                    <li>Create SKILLS</li>
+                                </ol>
+                            </div>
+
+                            <div className="col s12 m4">
+                                <h2>Q2 Plans: Convenience</h2>
+                                <ol>
+                                    <li>Push Notifications</li>
+                                    <li>Email Notifications</li>
+                                    <li>Invite friends</li>
+                                    <li>Google Calendar Sync</li>
+                                    <li>Customize layout and settings</li>
+                                </ol>
+                            </div>
+
+                            <div className="col s12 m4">
+                                <h2>Q3 Plans: Scoring</h2>
+                                <ol>
+                                    <li>Advanced user profiles</li>
+                                    <li>End game to set play length</li>
+                                    <li>Mark GAME wins & losses</li>
+                                    <li>Chess score / game</li>
+                                    <li>Game popularity on app</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        Write to me at guyginton@gmail.com for feedback, suggestions and anything else.
+                        <br /> <br/>
+                        <Notifications
+                            notifications={notifications}
+                            initialModalState={false}
+                        />
+                    </form>
                 </div>
             </React.Fragment>
         );
@@ -51,7 +79,7 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-    // { collection: "games", orderBy: ["dateTime", "asc"] },
+        // { collection: "games", orderBy: ["dateTime", "asc"] },
         { collection: "notifications", limit: 20, orderBy: ["time", "desc"] }
     ])
 )(ProfileHome);

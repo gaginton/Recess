@@ -47,12 +47,9 @@ export class SignUp extends Component {
         return (
             <div className="container">
                 <form className="white" onSubmit={this.handleSubmit}>
-                    <h5 className="grey-text text-darken-3">Sign Up</h5>
+                    <h2 className="grey-text text-darken-3">Sign Up</h2>
                     <div className="small-text">
-                        During the current testing period, there is little authentication.
-                        <br />
-                        If you would like to receive notifications, use your real email and
-                        phone number.
+                        Use your real email and phone number for notifications.
                     </div>
                     {/* START WITH NAME TO BE POLITE */}
                     <div className="row">
