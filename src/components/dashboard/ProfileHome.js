@@ -54,8 +54,9 @@ class ProfileHome extends Component {
                             </div>
                         </div>
 
-                        Write to me at guyginton@gmail.com for feedback, suggestions and anything else.
-                        <br /> <br/>
+                        <div>Write to me at guyginton@gmail.com for feedback, suggestions and anything else.</div>
+                        <br />
+                        <br />
                         <Notifications
                             notifications={notifications}
                             initialModalState={false}
