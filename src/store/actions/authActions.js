@@ -43,7 +43,8 @@ export const signUp = (newUser) => {
                         firstName: newUser.firstName,
                         lastName: newUser.lastName,
                         bday: newUser.bday,
-                        initials: newUser.firstName[0] + newUser.lastName[0]
+                        initials: newUser.firstName[0] + newUser.lastName[0],
+                        phoneNo: newUser.phoneNo
                     });
             })
             .then(() => {

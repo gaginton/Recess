@@ -82,8 +82,8 @@ export class SignUp extends Component {
                             <div className="input-field">
                                 <PhoneInput
                                     placeholder="Enter phone number"
-                                    value={this.state.phone}
-                                    onChange={(phone) => this.setState({ phone })}
+                                    value={this.state.phoneNo}
+                                    onChange={(phoneNo) => this.setState({ phoneNo })}
                                 />
                             </div>
                         </div>
