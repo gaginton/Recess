@@ -8,17 +8,13 @@ class JoinLeaveButton extends Component {
     }
     render() {
         const { joined, toggleJoined } = this.props;
-        console.log("join456: ", joined);
+        console.log("join child prop: ", joined);
         return (
             <div>
                 <span className="input-field" onClick={toggleJoined}>
                     {joined
-                        ? <button
-                            className="btn blue z-depth-0"
-                        >JOIN</button>
-                        : <button
-                            className="btn blue z-depth-0"
-                        >LEAVE</button>
+                        ? <button className="btn blue z-depth-0">JOIN</button>
+                        : <button className="btn blue z-depth-0">LEAVE</button>
                     }
                 </span>
             </div>

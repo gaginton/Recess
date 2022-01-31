@@ -15,7 +15,6 @@ import JoinLeaveButton from "./JoinLeaveButton";
 const GameDetails = (props) => {
     const { game, auth } = props;
     const [gamePlayers, setGamePlayers] = useState([]);
-    // const [joined] = useState(false); //NEED TO GET JOINED FROM STATE
 
     useEffect(() => {
         if (!game) {
@@ -29,23 +28,6 @@ const GameDetails = (props) => {
             });
     }, [game]);
 
-    let joined = gamePlayers.filter(player => player.name === uid).length > 0 ? true : false;
-    const handleJoin = (game) => {
-        // console.log(
-        //     "gamePlayers: ", gamePlayers, 
-        //     "auth: ", auth, 
-        //     "GAME123: ", game, 
-        //     "JOIN123: ", joined
-        // );
-        if (joined === true) {
-            leaveGame(game);
-            return setJoined(!joined)
-            // return join = false;
-        }
-        joinGame(game);
-        return joined = true;
-    };
-
     function handleTeamsChange(newTeams) {
         console.log(newTeams);
     };
@@ -55,10 +37,37 @@ const GameDetails = (props) => {
     if (!auth.uid) return <Redirect to="/signin" />;
     if (game) {
         const createdAt = moment(game.createdAt.toDate()).calendar();
+
+
+        // SHOULD CHECK IF AUTH.ID IN gamePLAYERS TO KNOW IF JOINED OR NOT
+        console.log("PROPS.AUTH.UID: ", props.auth.uid);
+        console.log("gamePlayers; ", gamePlayers)
+
+        let joinedGame = gamePlayers
+
+        // .filter(player => player.name === uid).length > 0 ? true : false;
+
+        // console.log("joinedGame: ", joinedGame)
+        // const handleJoin = (game) => {
+        //     // console.log(
+        //     //     "gamePlayers: ", gamePlayers, 
+        //     //     "auth: ", auth, 
+        //     //     "GAME123: ", game, 
+        //     //     "JOIN123: ", joined
+        //     // );
+        //     if (joined === true) {
+        //         leaveGame(game);
+        //         return setJoined(!joined)
+        //         // return join = false;
+        //     }
+        //     joinGame(game);
+        //     return joined = true;
+        // };
+
+
         return (
             <div className="container section">
                 <div className="game-details card z-depth-0 opacity">
-                    {/* <div className="card-cont ent"> */}
 
                     {/* HEADER ROW*/}
                     <div className="row row-full">
@@ -68,9 +77,8 @@ const GameDetails = (props) => {
                         </div>
                         {/* GAME JOIN/LEAVE */}
                         <div className="col-sm-6">
-<<<<<<< HEAD
                             <JoinLeaveButton
-                                joined={joined}
+                                joined={joinedGame}
                                 toggleJoined={() => {
                                     handleJoin(game);
                                 }}
@@ -78,40 +86,16 @@ const GameDetails = (props) => {
                             //     setSelected(!selected);
                             //   }}      
                             />
-=======
-                            <span className="input-field">
-                                <button
-                                    className="btn blue z-depth-0"
-                                    onClick={() => props.joinGame(game)}
-                                >
-                                    JOIN
-                                </button>
-                            </span>
-                            <span className="input-field leaveGameButton">
-                                <button
-                                    className="btn blue z-depth-0"
-                                    onClick={() => props.leaveGame(game)}
-                                >
-                                    LEAVE
-                                </button>
-                            </span>
-                            {game.authorId === auth.uid ? <span className="input-field editGameButton">
-                                <a
-                                    className="btn red z-depth-0"
-                                    href={`/game/${game.id}/edit`}
-                                >
-                                    EDIT
-                                </a>
-                            </span> : null}
->>>>>>> 13fc98bffea61553bcd1eddea97c358d6fb3fd72
-                        </div>
-                    </div>
+                        </div >
+                    </div >
 
-                    {/* BODY ROW(S) */}
-                    <div className="row">
+                    {/* BODY ROWS */}
+                    < div className="row" >
                         <div className="col-sm12 col-md-6">
                             <GameDescription game={game} />
                         </div>
+
+
                         <div className="col-sm12 col-md-6">
                             <TeamCards
                                 game={game}
@@ -120,17 +104,16 @@ const GameDetails = (props) => {
                                 onChange={handleTeamsChange}
                             />
                         </div>
-                    </div>
-                    {/* </div> */}
-                </div>
+                    </div >
+                </div >
                 {/* FOOTER*/}
-                <GameFooter
+                < GameFooter
                     authorFirstName={game.authorFirstName}
                     authorLastName={game.authorLastName}
                     createdAt={createdAt}
                 />
                 {/* OPTION FOR CHAT OR COMMENTS */}
-            </div>
+            </div >
         );
     } else {
         return (
