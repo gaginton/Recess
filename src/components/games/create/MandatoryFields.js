@@ -10,7 +10,7 @@ export const MandatoryFields = (props) => {
 
     return (
         <div>
-            <h4 className="bold">Mandatory Fields</h4>
+            <h2 className="bold">Mandatory Fields</h2>
             <div className="input-field">
                 <Select
                     onChange={props.handleSelectCategory}

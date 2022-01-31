@@ -93,7 +93,6 @@ export class CreateLeague extends Component {
         return (
             <div className="container">
                 <form className="white" onSubmit={this.handleSubmit}>
-                    <h4 className="bold">Create League</h4>
                     <MandatoryFields
                         currentStep={this.state.currentStep}
                         handleChange={this.handleChange}

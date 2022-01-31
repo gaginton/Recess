@@ -10,11 +10,11 @@ export class LeagueFields extends Component {
         }
         return (
             <div>
-                <h4 className="bold">League Schedule</h4>
+                <h2 className="bold">League Schedule</h2>
                 <div>The following fields will default based on the game chosen.</div>
                 <div>
-          Pick the logic of advancing between rounds. Elimination or matched
-          pairing.
+                    Pick the logic of advancing between rounds. Elimination or matched
+                    pairing.
                 </div>
                 <div>Pick frequency of games if they reccur over multiple days.</div>
                 <div className="input-field">

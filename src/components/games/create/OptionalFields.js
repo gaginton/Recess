@@ -7,7 +7,7 @@ export const OptionalFields = (props) => {
 
     return (
         <div>
-            <h4 className="bold">Optional Fields</h4>
+            <h2 className="bold">Optional Fields</h2>
             <div className="input-field">
                 <label htmlFor="address">
                     Address (Game location for map)

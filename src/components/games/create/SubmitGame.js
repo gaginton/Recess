@@ -7,14 +7,12 @@ export const SubmitGame = (props) => {
 
     return (
         <div>
-            <h4 className="bold">Read Terms and Create Game</h4>
+            <h2 className="bold">Read Terms and Create Game</h2>
             <div className="grey-text text-darken-3">
                 <li>Note, by clicking "Create Game" you are creating a PUBLIC game.</li>
                 <li>Public games are visible to all Recess users. </li>
-                <li>Currently, games can not be modified. </li>
-                <li>Recess login uses Google's Authentication.</li>
-                <li>That said, we rec you do not give personal info to strangers.</li>
-                <li>Please do not use this app if you are under 18 years of age.</li>
+                <li>Do not provide personal info.</li>
+                <li>Do not use this app if you are under 18 years old.</li>
             </div>
             <div className="input-field">
                 <button

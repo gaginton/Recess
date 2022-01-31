@@ -29,20 +29,18 @@ export class RecessInfo extends React.Component {
                 >
                     <ModalHeader toggle={this.toggle}>Recess Info</ModalHeader>
                     <ModalBody>
-                        <h4>Recess is...</h4>
-                        <p>
-                            an app to get offline, when you can. Or at least find something FUN to do. <br />
-                            Recess is a way to find, create and organize games.
+                        <h2>Recess is...</h2>
+                        <p>an app to get offline, when you can.
+                            <br />
+                            Recess is a way to find, create and organize Games, Events and Skills.
                             <br />
                         </p>
-                        <h4>Games vs Leagues</h4>
-                        <p>
-                            Games are one-off. Leagues connect games, for when one isnt enough.
-                        </p>
+                        <h2>Games vs Leagues</h2>
+                        <p>Games are one-off. Leagues connect games, for when one isn't enough.</p>
                         <p>
                             <b>Games</b> are one-off. Players may join teams or "standby" until the
                             game's start time. These games will be co-operative or competitive,
-                            private or public.
+                            public or within a club.
                         </p>
                         <p>
                             <b>Leagues</b> are organized sets of games.
@@ -54,11 +52,11 @@ export class RecessInfo extends React.Component {
                         </p>
                         <p>
                             Games are split into 6 categories: 1. Classic Recess, 2. Talent,
-                            3. Sports, 4. Video Games, 5. Party, 6. Tabletop and more.
+                            3. Sports, 4. Video Games, 5. Party, 6. "Tabletop and More".
                         </p>
-                        <h4>Scoring, Wins and Losses</h4>
+                        <h2>Scoring, Wins and Losses</h2>
                         <p>
-                            Recess can keep tracks of game scores, including wins or losses... if you want.
+                            Recess will keep track of wins or losses... if you want.
                             The intention of scoring is to improve matches based on quality of players.
                             <p>
                                 <b>"Game Administrators"</b> end a game and log scores.<br />
@@ -70,7 +68,7 @@ export class RecessInfo extends React.Component {
                                 Ie League Players can not disapprove of final scores.
                             </p>
                         </p>
-                        <h4>King of the Chill</h4>
+                        <h1>King of the Chill</h1>
                         <p>
                             King of the Chill is a project to help create sustainable, local
                             communities. Recess is one initiative of this project.
