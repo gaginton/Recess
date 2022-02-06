@@ -80,8 +80,7 @@ export class CreateClub extends Component {
         if (isClubValid(this.state)) {
             this.props.createClub(this.state);
             this.props.history.push("/");
-            // FIX VALIDATION TO INCLUDE MORE ERROR MESSAGES
-        } else return (this.clubError = "Mandatory fields are missing!");
+        } else return (this.clubError = "Mandatory club fields are missing!");
     }
 
     render() {

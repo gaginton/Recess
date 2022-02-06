@@ -8,7 +8,7 @@ import GameList from "../games/list/GameList";
 // import Chatroom from "../chatroom/Chatroom";
 // import GameFilter from "../games/filter/GameFilter";
 import { RecessInfo } from "../modals/RecessInfo";
-import { isGameValid } from "../../utils/utils";
+import { isGameValid, isClubValid } from "../../utils/utils";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -16,13 +16,13 @@ class Dashboard extends Component {
         this.state = {};
     }
     render() {
-        const { games, auth, filter } = this.props;
+        const { clubs, games, auth, filter } = this.props;
 
         return (
             <div className="dashboard container">
                 <div className="row pad-0">
                     <div className="col opacity">
-                        <GameList games={games} filter={filter} />
+                        <GameList games={games} filter={filter} clubs={clubs} />
                     </div>
                 </div>
                 <RecessInfo initialModalState={false} />
@@ -32,8 +32,10 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
+    const clubs = state.firestore.ordered.clubs && state.firestore.ordered.clubs.filter(isClubValid);
     const games = state.firestore.ordered.games && state.firestore.ordered.games.filter(isGameValid);
     return {
+        clubs: clubs,
         games: games,
         auth: state.firebase.auth,
         notifications: state.firestore.ordered.notifications,
@@ -45,8 +47,9 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
+        { collection: "clubs", orderBy: ["dateTime", "asc"] },
         { collection: "games", orderBy: ["dateTime", "asc"] },
         { collection: "notifications", limit: 20, orderBy: ["time", "desc"] }
-    // { collection: "chatroom", limit: 20, orderBy: ["createdAt", "asc"] }
+        // { collection: "chatroom", limit: 20, orderBy: ["createdAt", "asc"] }
     ])
 )(Dashboard);

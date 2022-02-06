@@ -72,6 +72,7 @@ const mapStateToProps = (state) => {
     return {
         auth: state.firebase.auth,
         notifications: state.firestore.ordered.notifications,
+        clubs: state.firestore.ordered.clubs,
         games: state.firestore.ordered.games,
         messages: state.firestore.ordered.chatroom
     };
