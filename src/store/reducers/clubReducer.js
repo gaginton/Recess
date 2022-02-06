@@ -19,8 +19,6 @@ const filterClubsReducer = (state, action) => {
     switch (action.filterBy) {
     case FILTER_BY.TITLE:
         return filterByTitle(state, action);
-    // case FILTER_BY.CATEGORY:
-    //     return filterByCategory(state, action);
     default:
         return state;
     }

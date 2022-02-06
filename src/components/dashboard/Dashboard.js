@@ -16,7 +16,7 @@ class Dashboard extends Component {
         this.state = {};
     }
     render() {
-        const { clubs, games, auth, filter } = this.props;
+        const { auth, clubs, games, filter } = this.props;
 
         return (
             <div className="dashboard container">

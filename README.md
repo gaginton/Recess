@@ -28,7 +28,7 @@ In the project directory, you can run:
 ## Firebase notes
 * Use mapStateToProps to get the state from database
 * Use mapDispatchToProps to update DB. Dispatches are defined in 'src > store > actions'
-* 
+* Update "Rules" inside of Firebase Database, on your browser, to change create, read and write permissions
 
 ## Schema and Objects
 * Player -- uid?, bday, firstName, initials, lastName, phoneNo

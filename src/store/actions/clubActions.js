@@ -11,8 +11,6 @@ export const createClub = (club) => {
             await docRef.set({
                 ...club,
                 id: docRef.id,
-                authorFirstName: profile.firstName,
-                authorLastName: profile.lastName,
                 authorId: authorID.uid,
                 createdAt: new Date()
             });
