@@ -5,6 +5,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import GameDetails from "./components/games/details/GameDetails";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
+import CreateClub from "./components/games/create/CreateClub";
 import CreateGame from "./components/games/create/CreateGame";
 import CreateLeague from "./components/games/create/CreateLeague";
 import Map from "./components/games/map/map";
@@ -29,6 +30,7 @@ class App extends Component {
                         <Route path="/signup" component={SignUp} />
                         <Route path="/game/:id/edit" component={EditGame} />
                         <Route path="/game/:id" component={GameDetails} />
+                        <Route path="/createClub" component={CreateClub} />
                         <Route path="/createGame" component={CreateGame} />
                         <Route path="/createLeague" component={CreateLeague} />
                         <Route path="/profile" component={ProfileHome} />

@@ -24,7 +24,7 @@ const EditGame = (props) => {
         );
     }
 
-    const [state, setState] = useState({...props.game});
+    const [state, setState] = useState({ ...props.game });
 
     const handleChange = (e) => {
         setState({

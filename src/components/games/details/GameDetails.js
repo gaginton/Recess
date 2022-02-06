@@ -10,6 +10,7 @@ import { leaveGame } from "../../../store/actions/gameActions";
 import GameDescription from "./GameDescription";
 import TeamCards from "./teams/TeamCards";
 import GameFooter from "./GameFooter";
+// import JoinLeaveButton from "./JoinLeaveButton";
 
 const GameDetails = (props) => {
     const { game, auth } = props;
@@ -27,15 +28,24 @@ const GameDetails = (props) => {
             });
     }, [game]);
 
-    function handleTeamsChange(newTeams) {
-        console.log(newTeams);
-    }
-
-    // handleTeamsChange();
+    // function toggleJoinGame(game) {
+    //     console.log("TOGGLE WORKS: ", game);
+    //     this.setState({
+    //         joined: !this.state.joined
+    //     });
+    // }
 
     if (!auth.uid) return <Redirect to="/signin" />;
+
     if (game) {
         const createdAt = moment(game.createdAt.toDate()).calendar();
+
+        function handleTeamsChange(newTeams) {
+            console.log(newTeams);
+        }
+
+        // handleTeamsChange();
+
         return (
             <div className="container section">
                 <div className="game-details card z-depth-0 opacity">
@@ -49,6 +59,10 @@ const GameDetails = (props) => {
                         </div>
                         {/* GAME JOIN/LEAVE */}
                         <div className="col-sm-6">
+                            {/* <JoinLeaveButton
+                                onClick={toggleJoinGame(game)}
+                            /> */}
+
                             <span className="input-field">
                                 <button
                                     className="btn blue z-depth-0"
@@ -65,6 +79,7 @@ const GameDetails = (props) => {
                                     LEAVE
                                 </button>
                             </span>
+
                             {game.authorId === auth.uid
                                 ? <span className="input-field editGameButton">
                                     <a className="btn red z-depth-0" href={`/game/${game.id}/edit`}>EDIT</a>

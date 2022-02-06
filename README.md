@@ -29,3 +29,14 @@ In the project directory, you can run:
 * Use mapStateToProps to get the state from database
 * Use mapDispatchToProps to update DB. Dispatches are defined in 'src > store > actions'
 * 
+
+## Schema and Objects
+* Player -- uid?, bday, firstName, initials, lastName, phoneNo
+* Clubs -- uid?, ,title, description, minAge
+* Team -- uid?, teamName, playerID, manager, 
+* Game, Event or Skill
+
+## Upcoming Features
+* Club and Game Chat
+* Notifications
+* Scoring

@@ -50,9 +50,9 @@ const mapStateToProps = (state) => {
     return {
         filter: state.game.filter
     };
-}
+};
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
     return {
         filterByTitle: (title) => dispatch(createFilterAction(FILTER_BY.TITLE, title)),
         filterByCategory: (categories) => dispatch(createFilterAction(FILTER_BY.CATEGORY, categories)),

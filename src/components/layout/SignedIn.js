@@ -44,6 +44,9 @@ const SignedIn = (props) => {
                     className="dropdown-menu dropdown-menu-right"
                     aria-labelledby="createDropdown"
                 >
+                    <NavLink to="/createClub" exact activeClassName="navItem-active">
+                        Club
+                    </NavLink>
                     <NavLink to="/createGame" exact activeClassName="navItem-active">
                         Game
                     </NavLink>

@@ -19,3 +19,9 @@ export const isGameValid = (game) => {
         && game.dateTime
         && game.category;
 };
+
+export const isClubValid = (club) => {
+    return club.title
+        && club.description
+        && club.minAge;
+};
