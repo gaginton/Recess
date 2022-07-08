@@ -20,7 +20,7 @@
         "firebase-functions": "^0.5.9",
         "google-map-react": "^1.1.5",
         "google-maps-react": "^2.0.2",
-        "moment": "^2.24.0",
+        "moment": "^2.29.4",
         "npm": "^7.20.6",
         "react": "^16.12.0",
         "react-bootstrap": "^1.0.0-beta.16",
